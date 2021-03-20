@@ -1,0 +1,26 @@
+# Giriş 
+
+## R Kurulumu
+
+R'ı kullandığınız işletim sistemine göre [CRAN anasayfası](https://cran.r-project.org/)ndan indirebilirsiniz. Özellikle başlangıç seviyesinde `base` indirmek yeterli olacaktır. Kaynak kodu R bazlı değil de C/C++/Fortran gibi dillerde yazılmış olan paketleri kurmak için `Rtools` indirmeniz gerekebilir ama şimdilik `base` indirerek devam edebiliriz.
+
+## RStudio
+
+RStudio, R için bir "entegre geliştirme ortamı"dır ve ücretsiz olarak [RStudio websayfası](https://www.rstudio.com/)ndan indirilebilir. Entegre geliştirme ortamları kod yazma, sonuçları ve çizdiğiniz grafikleri vs. görüntüle, otomasyon, hata ayıklama (debugging) gibi programlama ve yazılım geliştirme bileşenlerini içinde bulunduran araçlardır. RStudio ise bunların ötesinde başka programlama dilleriyle beraber kodlama, raporlama, versiyon kontrolü, komut istemcisi ve zamanlı iş çalıştırma ve daha bir çok özellik ile birlikte geliyor. R kodlama için kesinlikle RStudio ile çalışılmasını öneriyorum.
+
+## Başlangıç
+
+Hem R hem Rstudio'yu yükleyip, RStudio açtığımızda karşımıza 3 ekran çıkar. Bunlar haricinde sol üst köşedeki "yeni" tuşuna basıp R Scriptini seçersek 4. ekran açılır. Hızlıca bunların bazılarına bakalım: 
+
+* Files:
+* Terminal:
+* Console:
+* Environment:
+* Plots:
+* Help:
+* History:
+
+Bunlardan yeni açtığımız ekran da script (betik) editör ekranı, yani kodu yazıp kaydedeceğimiz kod editörümüz. Kodu konsola yazıp çalıştabiliriz ama önerim hep editörde çalışıp çalışan kodları kaydetmeniz. Editörde yazdığımız kodu kopyala yapıştır yapmadan çalıştırmanın kolay bir yolu var: Windows'ta Ctrl + Enter, Mac'te Cmd + Enter. 
+
+
+

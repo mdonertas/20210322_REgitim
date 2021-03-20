@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Bölüm 4 Insan prefrontal korteksinde gen ifadesinin zamansal dinamikleri | R Eğitim</title>
+  <meta name="description" content="22 Mart 2021 tarihinde Bioinforange tarafından düzenlenen Bioinfoconference kapsamında verilen R Eğitim çalıştay materyalini içerir." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Bölüm 4 Insan prefrontal korteksinde gen ifadesinin zamansal dinamikleri | R Eğitim" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="22 Mart 2021 tarihinde Bioinforange tarafından düzenlenen Bioinfoconference kapsamında verilen R Eğitim çalıştay materyalini içerir." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Bölüm 4 Insan prefrontal korteksinde gen ifadesinin zamansal dinamikleri | R Eğitim" />
+  
+  <meta name="twitter:description" content="22 Mart 2021 tarihinde Bioinforange tarafından düzenlenen Bioinfoconference kapsamında verilen R Eğitim çalıştay materyalini içerir." />
+  
+
+<meta name="author" content="Melike Dönertaş" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="temel-bilgiler.html"/>
+<link rel="next" href="veri-on-isleme-basamaklari.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R Eğitim Çalıştayı</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Bilgilendirme</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#yardım"><i class="fa fa-check"></i>Yardım</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="çalıştay-içeriği.html"><a href="çalıştay-içeriği.html"><i class="fa fa-check"></i><b>1</b> Çalıştay içeriği</a></li>
+<li class="chapter" data-level="2" data-path="giriş.html"><a href="giriş.html"><i class="fa fa-check"></i><b>2</b> Giriş</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="giriş.html"><a href="giriş.html#r-kurulumu"><i class="fa fa-check"></i><b>2.1</b> R Kurulumu</a></li>
+<li class="chapter" data-level="2.2" data-path="giriş.html"><a href="giriş.html#rstudio"><i class="fa fa-check"></i><b>2.2</b> RStudio</a></li>
+<li class="chapter" data-level="2.3" data-path="giriş.html"><a href="giriş.html#başlangıç"><i class="fa fa-check"></i><b>2.3</b> Başlangıç</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="temel-bilgiler.html"><a href="temel-bilgiler.html"><i class="fa fa-check"></i><b>3</b> Temel Bilgiler</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="temel-bilgiler.html"><a href="temel-bilgiler.html#rstudio-projesi"><i class="fa fa-check"></i><b>3.1</b> RStudio projesi</a></li>
+<li class="chapter" data-level="3.2" data-path="temel-bilgiler.html"><a href="temel-bilgiler.html#hesap-makinesi-olarak-r"><i class="fa fa-check"></i><b>3.2</b> Hesap makinesi olarak R</a></li>
+<li class="chapter" data-level="3.3" data-path="temel-bilgiler.html"><a href="temel-bilgiler.html#fonksiyonlar"><i class="fa fa-check"></i><b>3.3</b> Fonksiyonlar</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="temel-bilgiler.html"><a href="temel-bilgiler.html#yardım-almak"><i class="fa fa-check"></i><b>3.3.1</b> Yardım almak</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="temel-bilgiler.html"><a href="temel-bilgiler.html#değişkenlerle-çalışmak"><i class="fa fa-check"></i><b>3.4</b> Değişkenlerle çalışmak</a></li>
+<li class="chapter" data-level="3.5" data-path="temel-bilgiler.html"><a href="temel-bilgiler.html#rda-objeler"><i class="fa fa-check"></i><b>3.5</b> R’da objeler</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="temel-bilgiler.html"><a href="temel-bilgiler.html#obje-türleri"><i class="fa fa-check"></i><b>3.5.1</b> Obje türleri</a></li>
+<li class="chapter" data-level="3.5.2" data-path="temel-bilgiler.html"><a href="temel-bilgiler.html#vektör"><i class="fa fa-check"></i><b>3.5.2</b> Vektör</a></li>
+<li class="chapter" data-level="3.5.3" data-path="temel-bilgiler.html"><a href="temel-bilgiler.html#liste"><i class="fa fa-check"></i><b>3.5.3</b> Liste</a></li>
+<li class="chapter" data-level="3.5.4" data-path="temel-bilgiler.html"><a href="temel-bilgiler.html#matris"><i class="fa fa-check"></i><b>3.5.4</b> Matris</a></li>
+<li class="chapter" data-level="3.5.5" data-path="temel-bilgiler.html"><a href="temel-bilgiler.html#faktör"><i class="fa fa-check"></i><b>3.5.5</b> Faktör</a></li>
+<li class="chapter" data-level="3.5.6" data-path="temel-bilgiler.html"><a href="temel-bilgiler.html#data-frame"><i class="fa fa-check"></i><b>3.5.6</b> Data frame</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="temel-bilgiler.html"><a href="temel-bilgiler.html#paketler"><i class="fa fa-check"></i><b>3.6</b> Paketler</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html"><a href="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html"><i class="fa fa-check"></i><b>4</b> Insan prefrontal korteksinde gen ifadesinin zamansal dinamikleri</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html"><a href="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html#calistay-icin-verinin-on-hazirligi"><i class="fa fa-check"></i><b>4.1</b> Calistay icin verinin on hazirligi</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html"><i class="fa fa-check"></i><b>5</b> Veri on isleme basamaklari</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#read.csv-ve-readrds-ile-veri-okuma"><i class="fa fa-check"></i><b>5.1</b> <code>read.csv()</code> ve `readRDS()`` ile veri okuma</a></li>
+<li class="chapter" data-level="5.2" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#kesifci-veri-analizi"><i class="fa fa-check"></i><b>5.2</b> Kesifci veri analizi</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#histogram"><i class="fa fa-check"></i><b>5.2.1</b> Histogram</a></li>
+<li class="chapter" data-level="5.2.2" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#boxplot"><i class="fa fa-check"></i><b>5.2.2</b> Boxplot</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#probesetid---gen-eslestirmesi"><i class="fa fa-check"></i><b>5.3</b> ProbesetID - Gen eslestirmesi</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#in-operatoru"><i class="fa fa-check"></i><b>5.3.1</b> <code>%in%</code> operatoru</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#quantile-normalization"><i class="fa fa-check"></i><b>5.4</b> Quantile Normalization</a></li>
+<li class="chapter" data-level="5.5" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#ornek-bilgisini-duzenleme"><i class="fa fa-check"></i><b>5.5</b> Ornek bilgisini duzenleme</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#yas-verisinin-duzenlenmesi"><i class="fa fa-check"></i><b>5.5.1</b> Yas verisinin duzenlenmesi</a></li>
+<li class="chapter" data-level="5.5.2" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#biyolojik-cinsiyet-verisinin-duzenlenmesi"><i class="fa fa-check"></i><b>5.5.2</b> Biyolojik cinsiyet verisinin duzenlenmesi</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="temel-bilesenler-analizi.html"><a href="temel-bilesenler-analizi.html"><i class="fa fa-check"></i><b>6</b> Temel bilesenler analizi</a></li>
+<li class="chapter" data-level="7" data-path="yasla-degisim-analizi.html"><a href="yasla-degisim-analizi.html"><i class="fa fa-check"></i><b>7</b> Yasla degisim analizi</a></li>
+<li class="chapter" data-level="8" data-path="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html"><i class="fa fa-check"></i><b>8</b> Biyolojik cinsiyete gore farklilik gosteren gen analizi</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Eğitim</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri" class="section level1" number="4">
+<h1><span class="header-section-number">Bölüm 4</span> Insan prefrontal korteksinde gen ifadesinin zamansal dinamikleri</h1>
+<p>Bu calismada 2011 yilinda yayinlanmis bir makalede uretilmis olan bir mikrodizin veriseti kullanacagiz. Gorece eski bir teknolojiyle uretilmis olsa da verinin ve veri isleme basamaklarinin acik bir sekilde makalede paylasilmis durumda. Bu calistay mikrodizin / transkriptom veri analizi calistayi olmadigindan bu basamaklardan bazilarini atlayacagiz (orn. kismen islenmis veri ile baslayacak ve veride batch etkisi olmadigini varsayacagiz) ve kendi verinizi analiz edecek olursaniz bu calistayi birebir takip etmeniz yeterli olmayacaktir. Ancak makalede basamaklar anlatildigindan, kendiniz tekrar edebilirsiniz.</p>
+<p><strong>GEO baglantisi:</strong> <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE30272" class="uri">https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE30272</a></p>
+<p><strong>Makale:</strong> Colantuoni, C., Lipska, B. K., Ye, T., Hyde, T. M., Tao, R., Leek, J. T., Colantuoni, E. A., Elkahloun, A. G., Herman, M. M., Weinberger, D. R., &amp; Kleinman, J. E. (2011). Temporal dynamics and genetic control of transcription in the human prefrontal cortex. Nature, 478(7370), 519–523. <a href="https://doi.org/10.1038/nature10524" class="uri">https://doi.org/10.1038/nature10524</a></p>
+<p>Kisaca bu verisetinde cok sayida, farkli yaslarda bireylerin olum sonrasi beyin, prefontal korteks bolgesinden alinan orneklerde gen ifade verisi var. Biz de bu verisetini indirip, yasa bagli anlatimi degisen genler neler vs. gibi kimi sorulara cevap arayacagiz. Veriseti GEO’da herkese acik bir sekilde bulunuyor, ancak veriyi indirme asamasinda kullanilacak paket ve fonksiyonlar calistayin odagini degistirebileceginden o kismi atlayip, ilk indirme islemi tamamlandiktan sonraki kisma odaklanacagiz.</p>
+<div id="calistay-icin-verinin-on-hazirligi" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Calistay icin verinin on hazirligi</h2>
+<p>Bu kismi calistay sirasinda yapmayacagim ve sizlere on hazirligi yapilmis bir veriseti sunacagim. Ancak kendiniz veriyi GEO’dan indirip ayni basamaklari tekrar etmek isterseniz, basamaklari burada paylasiyorum:</p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html#cb163-1" aria-hidden="true" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="st">&quot;GEOquery&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GEOquery)</span>
+<span id="cb164-2"><a href="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html#cb164-2" aria-hidden="true" tabindex="-1"></a>gse <span class="ot">&lt;-</span> <span class="fu">getGEO</span>(<span class="st">&#39;GSE30272&#39;</span>,<span class="at">GSEMatrix=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html#cb165-1" aria-hidden="true" tabindex="-1"></a>gse</span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html#cb166-1" aria-hidden="true" tabindex="-1"></a>metadata <span class="ot">=</span> <span class="fu">pData</span>(gse<span class="sc">$</span>GSE30272_series_matrix.txt.gz)</span>
+<span id="cb166-2"><a href="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html#cb166-2" aria-hidden="true" tabindex="-1"></a>exprmat <span class="ot">=</span> <span class="fu">exprs</span>(gse<span class="sc">$</span>GSE30272_series_matrix.txt.gz)</span>
+<span id="cb166-3"><a href="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html#cb166-3" aria-hidden="true" tabindex="-1"></a>featdata <span class="ot">=</span> <span class="fu">fData</span>(gse<span class="sc">$</span>GSE30272_series_matrix.txt.gz)</span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html#cb167-1" aria-hidden="true" tabindex="-1"></a>metadata <span class="ot">=</span> metadata[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">10</span><span class="sc">:</span><span class="dv">17</span>)]</span>
+<span id="cb167-2"><a href="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html#cb167-2" aria-hidden="true" tabindex="-1"></a>featdata <span class="ot">=</span> featdata[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(exprmat, <span class="st">&#39;./data/expressionmatrix.rds&#39;</span>)</span>
+<span id="cb168-2"><a href="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html#cb168-2" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(featdata, <span class="st">&#39;./data/featuredat.rds&#39;</span>)</span>
+<span id="cb168-3"><a href="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html#cb168-3" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(metadata, <span class="st">&#39;./data/metadata.rds&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(exprmat,<span class="st">&#39;./data/expressionmatrix.csv&#39;</span>)</span>
+<span id="cb169-2"><a href="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html#cb169-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(featdata,<span class="st">&#39;./data/featuredat.csv&#39;</span>)</span>
+<span id="cb169-3"><a href="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html#cb169-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(metadata,<span class="st">&#39;./data/metadata.csv&#39;</span>)</span></code></pre></div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="temel-bilgiler.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="veri-on-isleme-basamaklari.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["20210322_REgitim.pdf", "20210322_REgitim.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

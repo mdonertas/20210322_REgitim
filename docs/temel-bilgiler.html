@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Bölüm 3 Temel Bilgiler | R Eğitim</title>
+  <meta name="description" content="22 Mart 2021 tarihinde Bioinforange tarafından düzenlenen Bioinfoconference kapsamında verilen R Eğitim çalıştay materyalini içerir." />
+  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Bölüm 3 Temel Bilgiler | R Eğitim" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="22 Mart 2021 tarihinde Bioinforange tarafından düzenlenen Bioinfoconference kapsamında verilen R Eğitim çalıştay materyalini içerir." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Bölüm 3 Temel Bilgiler | R Eğitim" />
+  
+  <meta name="twitter:description" content="22 Mart 2021 tarihinde Bioinforange tarafından düzenlenen Bioinfoconference kapsamında verilen R Eğitim çalıştay materyalini içerir." />
+  
+
+<meta name="author" content="Melike Dönertaş" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="giriş.html"/>
+<link rel="next" href="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R Eğitim Çalıştayı</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Bilgilendirme</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#yardım"><i class="fa fa-check"></i>Yardım</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="çalıştay-içeriği.html"><a href="çalıştay-içeriği.html"><i class="fa fa-check"></i><b>1</b> Çalıştay içeriği</a></li>
+<li class="chapter" data-level="2" data-path="giriş.html"><a href="giriş.html"><i class="fa fa-check"></i><b>2</b> Giriş</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="giriş.html"><a href="giriş.html#r-kurulumu"><i class="fa fa-check"></i><b>2.1</b> R Kurulumu</a></li>
+<li class="chapter" data-level="2.2" data-path="giriş.html"><a href="giriş.html#rstudio"><i class="fa fa-check"></i><b>2.2</b> RStudio</a></li>
+<li class="chapter" data-level="2.3" data-path="giriş.html"><a href="giriş.html#başlangıç"><i class="fa fa-check"></i><b>2.3</b> Başlangıç</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="temel-bilgiler.html"><a href="temel-bilgiler.html"><i class="fa fa-check"></i><b>3</b> Temel Bilgiler</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="temel-bilgiler.html"><a href="temel-bilgiler.html#rstudio-projesi"><i class="fa fa-check"></i><b>3.1</b> RStudio projesi</a></li>
+<li class="chapter" data-level="3.2" data-path="temel-bilgiler.html"><a href="temel-bilgiler.html#hesap-makinesi-olarak-r"><i class="fa fa-check"></i><b>3.2</b> Hesap makinesi olarak R</a></li>
+<li class="chapter" data-level="3.3" data-path="temel-bilgiler.html"><a href="temel-bilgiler.html#fonksiyonlar"><i class="fa fa-check"></i><b>3.3</b> Fonksiyonlar</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="temel-bilgiler.html"><a href="temel-bilgiler.html#yardım-almak"><i class="fa fa-check"></i><b>3.3.1</b> Yardım almak</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="temel-bilgiler.html"><a href="temel-bilgiler.html#değişkenlerle-çalışmak"><i class="fa fa-check"></i><b>3.4</b> Değişkenlerle çalışmak</a></li>
+<li class="chapter" data-level="3.5" data-path="temel-bilgiler.html"><a href="temel-bilgiler.html#rda-objeler"><i class="fa fa-check"></i><b>3.5</b> R’da objeler</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="temel-bilgiler.html"><a href="temel-bilgiler.html#obje-türleri"><i class="fa fa-check"></i><b>3.5.1</b> Obje türleri</a></li>
+<li class="chapter" data-level="3.5.2" data-path="temel-bilgiler.html"><a href="temel-bilgiler.html#vektör"><i class="fa fa-check"></i><b>3.5.2</b> Vektör</a></li>
+<li class="chapter" data-level="3.5.3" data-path="temel-bilgiler.html"><a href="temel-bilgiler.html#liste"><i class="fa fa-check"></i><b>3.5.3</b> Liste</a></li>
+<li class="chapter" data-level="3.5.4" data-path="temel-bilgiler.html"><a href="temel-bilgiler.html#matris"><i class="fa fa-check"></i><b>3.5.4</b> Matris</a></li>
+<li class="chapter" data-level="3.5.5" data-path="temel-bilgiler.html"><a href="temel-bilgiler.html#faktör"><i class="fa fa-check"></i><b>3.5.5</b> Faktör</a></li>
+<li class="chapter" data-level="3.5.6" data-path="temel-bilgiler.html"><a href="temel-bilgiler.html#data-frame"><i class="fa fa-check"></i><b>3.5.6</b> Data frame</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="temel-bilgiler.html"><a href="temel-bilgiler.html#paketler"><i class="fa fa-check"></i><b>3.6</b> Paketler</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html"><a href="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html"><i class="fa fa-check"></i><b>4</b> Insan prefrontal korteksinde gen ifadesinin zamansal dinamikleri</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html"><a href="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html#calistay-icin-verinin-on-hazirligi"><i class="fa fa-check"></i><b>4.1</b> Calistay icin verinin on hazirligi</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html"><i class="fa fa-check"></i><b>5</b> Veri on isleme basamaklari</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#read.csv-ve-readrds-ile-veri-okuma"><i class="fa fa-check"></i><b>5.1</b> <code>read.csv()</code> ve `readRDS()`` ile veri okuma</a></li>
+<li class="chapter" data-level="5.2" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#kesifci-veri-analizi"><i class="fa fa-check"></i><b>5.2</b> Kesifci veri analizi</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#histogram"><i class="fa fa-check"></i><b>5.2.1</b> Histogram</a></li>
+<li class="chapter" data-level="5.2.2" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#boxplot"><i class="fa fa-check"></i><b>5.2.2</b> Boxplot</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#probesetid---gen-eslestirmesi"><i class="fa fa-check"></i><b>5.3</b> ProbesetID - Gen eslestirmesi</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#in-operatoru"><i class="fa fa-check"></i><b>5.3.1</b> <code>%in%</code> operatoru</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#quantile-normalization"><i class="fa fa-check"></i><b>5.4</b> Quantile Normalization</a></li>
+<li class="chapter" data-level="5.5" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#ornek-bilgisini-duzenleme"><i class="fa fa-check"></i><b>5.5</b> Ornek bilgisini duzenleme</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#yas-verisinin-duzenlenmesi"><i class="fa fa-check"></i><b>5.5.1</b> Yas verisinin duzenlenmesi</a></li>
+<li class="chapter" data-level="5.5.2" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#biyolojik-cinsiyet-verisinin-duzenlenmesi"><i class="fa fa-check"></i><b>5.5.2</b> Biyolojik cinsiyet verisinin duzenlenmesi</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="temel-bilesenler-analizi.html"><a href="temel-bilesenler-analizi.html"><i class="fa fa-check"></i><b>6</b> Temel bilesenler analizi</a></li>
+<li class="chapter" data-level="7" data-path="yasla-degisim-analizi.html"><a href="yasla-degisim-analizi.html"><i class="fa fa-check"></i><b>7</b> Yasla degisim analizi</a></li>
+<li class="chapter" data-level="8" data-path="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html"><i class="fa fa-check"></i><b>8</b> Biyolojik cinsiyete gore farklilik gosteren gen analizi</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Eğitim</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="temel-bilgiler" class="section level1" number="3">
+<h1><span class="header-section-number">Bölüm 3</span> Temel Bilgiler</h1>
+<p>Kodlari editorde yazip Ctrl+Enter ile calistirabilirsiniz. Alternatif olarak Konsol’da da kodlari yazabilirsiniz ancak editore yazdiklarinizi kaydederek yazdiklarinizdan elinizde bulunmasini istediklerinizi</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="temel-bilgiler.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
+<pre><code>## [1] &quot;/Users/melike/GDrive/githubbooks/20210322_REgitim&quot;</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="temel-bilgiler.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;~/GDrive/projects/&quot;</span>)</span></code></pre></div>
+<div id="rstudio-projesi" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> RStudio projesi</h2>
+<p>R’da calisirken her zaman proje olusturmanizi tavsiye ederim. Bu sayede hem her projenize ait kod tarihi ayrica saklanir, hem de calistiginiz klasor vs. gibi konularda endiselenmeniz gerekmez. RStudio projelerinin bunlar haricinde versiyon kontrol konusu vs. gibi ileri asamalarda kullanacaginiz diger konularda da fayda saglar. Sag ust kosedeki New Project’e basip, ’yeni klasor’u secerek yeni proje olusturabilirsiniz. Bunu yaptiktan sonra <code>getwd()</code> fonksiyonunu tekrar calistiralim:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="temel-bilgiler.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div>
+<pre><code>## [1] &quot;/Users/melike/GDrive/githubbooks/20210322_REgitim&quot;</code></pre>
+<p>Benim sonucumda degisen bir sey yok cunku zaten proje icinde calisiyordum ancak sizin sonucunuz degismis olmali.</p>
+</div>
+<div id="hesap-makinesi-olarak-r" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Hesap makinesi olarak R</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="temel-bilgiler.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="temel-bilgiler.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span><span class="sc">*</span><span class="dv">7</span></span></code></pre></div>
+<pre><code>## [1] 35</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="temel-bilgiler.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dv">20-4</span></span></code></pre></div>
+<pre><code>## [1] 16</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="temel-bilgiler.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="sc">^</span><span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1] 9</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="temel-bilgiler.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span><span class="sc">/</span><span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1] 50</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="temel-bilgiler.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="dv">9</span><span class="sc">%%</span><span class="dv">5</span></span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="temel-bilgiler.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="dv">9</span><span class="sc">%/%</span><span class="dv">5</span></span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+</div>
+<div id="fonksiyonlar" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Fonksiyonlar</h2>
+<p>R kendi yazacaginiz fonksiyonlarin yaninda kendi icinde cok sayida fonksiyon barindirir, az once kullandigimiz <code>getwd()</code> fonksiyonu gibi. Bunlar fonksiyon adini takiben, parantez icinde belli argumanlar alirlar. Birkac ornek:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="temel-bilgiler.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log10</span>(<span class="at">x =</span> <span class="dv">100</span>)</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="temel-bilgiler.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log10</span>(<span class="dv">100</span>)</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="temel-bilgiler.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">16</span>)</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+<div id="yardım-almak" class="section level3" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Yardım almak</h3>
+<p>R’da cogu fonksiyon yardim sayfasi icerir ve bunlara <code>?</code> operatoru ile ulasilir:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="temel-bilgiler.html#cb26-1" aria-hidden="true" tabindex="-1"></a>?log10</span>
+<span id="cb26-2"><a href="temel-bilgiler.html#cb26-2" aria-hidden="true" tabindex="-1"></a>?getwd</span></code></pre></div>
+</div>
+</div>
+<div id="değişkenlerle-çalışmak" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Değişkenlerle çalışmak</h2>
+<p>Degiskenler veri tutuculardir. Degisken atamak icin <code>&lt;-</code> ya da <code>=</code> operatorleri kullanilir. Tarihsel olarak <code>&lt;-</code> kullanilsa da bugun pratik nedenlerle <code>=</code> daha yaygindir ve kullanimi yanlis degildir.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="temel-bilgiler.html#cb27-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb27-2"><a href="temel-bilgiler.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(a)</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="temel-bilgiler.html#cb29-1" aria-hidden="true" tabindex="-1"></a>b <span class="ot">=</span> <span class="dv">5</span></span>
+<span id="cb29-2"><a href="temel-bilgiler.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(b)</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="temel-bilgiler.html#cb31-1" aria-hidden="true" tabindex="-1"></a>c <span class="ot">=</span> a <span class="sc">+</span> b</span>
+<span id="cb31-2"><a href="temel-bilgiler.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(c)</span></code></pre></div>
+<pre><code>## [1] 8</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="temel-bilgiler.html#cb33-1" aria-hidden="true" tabindex="-1"></a>c</span></code></pre></div>
+<pre><code>## [1] 8</code></pre>
+<p>Rda degisken isimleriyle ilgili kimi kisitlamalar var:
+- harf ya da nokta ile baslar
+- ozel anlami olan kelimeler kullanilmaz (<code>if</code> ya da <code>for</code> gibi). bunlari <code>?reserved</code> yazarak ogrenebilirsiniz.
+- yasak olmasa da Rda yer alan fonksiyon isimleri ile ayni degiskenler yaratmamaya calismak gerekir, soruna yol acabilir.
+- degiskenler kucuk buyuk harfe duyarlidir, <code>a</code> ve <code>A</code> birbirinden farkli degiskenlerdir.
+- simdiye kadar ornekleri <code>a</code> <code>b</code> <code>x</code> gibi harflerden olusturmus olsak da, tuttugu veriyle ilgili bir isim secmek iyi bir aliskanliktir.</p>
+</div>
+<div id="rda-objeler" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> R’da objeler</h2>
+<div id="obje-türleri" class="section level3" number="3.5.1">
+<h3><span class="header-section-number">3.5.1</span> Obje türleri</h3>
+<p>5 temel obje turu var; karakter, numerik, tam sayi (integer), kompleks, mantiksal (logical/boolean).</p>
+<div id="karakter" class="section level4" number="3.5.1.1">
+<h4><span class="header-section-number">3.5.1.1</span> Karakter</h4>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="temel-bilgiler.html#cb35-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="st">&#39;a&#39;</span></span>
+<span id="cb35-2"><a href="temel-bilgiler.html#cb35-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## [1] &quot;a&quot;</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="temel-bilgiler.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<p>Karakter objeleri tek karakter icermek zorunda degildir</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="temel-bilgiler.html#cb39-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="st">&quot;bu da karakter&quot;</span></span>
+<span id="cb39-2"><a href="temel-bilgiler.html#cb39-2" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div>
+<pre><code>## [1] &quot;bu da karakter&quot;</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="temel-bilgiler.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(y)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<p>Degiskenler <code>a</code> gibi tirnak isareti olmadan yazilir, karakterler ise <code>"a"</code> ya da <code>'a'</code> seklinde yazilir. R’da ’ ile " kullanimi karakterlerde farketmez. Ayrica tirnak icindeki karakter sadece harf olmak zorunda degil, ne olursa olsun bir karakter objesidir:</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="temel-bilgiler.html#cb43-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="st">&#39;5&#39;</span></span>
+<span id="cb43-2"><a href="temel-bilgiler.html#cb43-2" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div>
+<pre><code>## [1] &quot;5&quot;</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="temel-bilgiler.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(a)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+</div>
+<div id="nümerik-ve-tam-sayılar" class="section level4" number="3.5.1.2">
+<h4><span class="header-section-number">3.5.1.2</span> Nümerik ve tam sayılar</h4>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="temel-bilgiler.html#cb47-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">3</span> </span>
+<span id="cb47-2"><a href="temel-bilgiler.html#cb47-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="temel-bilgiler.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="temel-bilgiler.html#cb51-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fl">3.14</span></span>
+<span id="cb51-2"><a href="temel-bilgiler.html#cb51-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## [1] 3.14</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="temel-bilgiler.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="temel-bilgiler.html#cb55-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">0</span></span>
+<span id="cb55-2"><a href="temel-bilgiler.html#cb55-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## [1] Inf</code></pre>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="temel-bilgiler.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="temel-bilgiler.html#cb59-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">0</span><span class="sc">/</span><span class="dv">0</span></span>
+<span id="cb59-2"><a href="temel-bilgiler.html#cb59-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## [1] NaN</code></pre>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="temel-bilgiler.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<p>Özellikle tam sayı oluşturmak istiyorsak sonda <code>L</code> ekini kullanmalıyız.</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="temel-bilgiler.html#cb63-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> 3L</span>
+<span id="cb63-2"><a href="temel-bilgiler.html#cb63-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## [1] 3</code></pre>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="temel-bilgiler.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div>
+<pre><code>## [1] &quot;integer&quot;</code></pre>
+</div>
+<div id="kompleks" class="section level4" number="3.5.1.3">
+<h4><span class="header-section-number">3.5.1.3</span> Kompleks</h4>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="temel-bilgiler.html#cb67-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">5</span><span class="sc">+</span>2i</span>
+<span id="cb67-2"><a href="temel-bilgiler.html#cb67-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## [1] 5+2i</code></pre>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="temel-bilgiler.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div>
+<pre><code>## [1] &quot;complex&quot;</code></pre>
+</div>
+<div id="mantıksal-logical-boolean" class="section level4" number="3.5.1.4">
+<h4><span class="header-section-number">3.5.1.4</span> Mantıksal (Logical, boolean)</h4>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="temel-bilgiler.html#cb71-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="cn">TRUE</span></span>
+<span id="cb71-2"><a href="temel-bilgiler.html#cb71-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="temel-bilgiler.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div>
+<pre><code>## [1] &quot;logical&quot;</code></pre>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="temel-bilgiler.html#cb75-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> T</span>
+<span id="cb75-2"><a href="temel-bilgiler.html#cb75-2" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="temel-bilgiler.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(y)</span></code></pre></div>
+<pre><code>## [1] &quot;logical&quot;</code></pre>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="temel-bilgiler.html#cb79-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">=</span> <span class="cn">FALSE</span></span>
+<span id="cb79-2"><a href="temel-bilgiler.html#cb79-2" aria-hidden="true" tabindex="-1"></a>z</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="temel-bilgiler.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(z)</span></code></pre></div>
+<pre><code>## [1] &quot;logical&quot;</code></pre>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="temel-bilgiler.html#cb83-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> F</span>
+<span id="cb83-2"><a href="temel-bilgiler.html#cb83-2" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="temel-bilgiler.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(a)</span></code></pre></div>
+<pre><code>## [1] &quot;logical&quot;</code></pre>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="temel-bilgiler.html#cb87-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="st">&#39;F&#39;</span></span>
+<span id="cb87-2"><a href="temel-bilgiler.html#cb87-2" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div>
+<pre><code>## [1] &quot;F&quot;</code></pre>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="temel-bilgiler.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(a)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<p>Bunlar temel obje turleri olsa da, ileride class fonksiyonunu kullandiginizda baska sonuclar alabilirsiniz. Bu temelde R’in nesne tabali dogasindan kaynakli.</p>
+<p>Ayrica objeniz bir matris ise, numerik degerlere mi karakterlere mi sahip, bunu ogrenmek icin <code>mode()</code> fonksiyonunu kullanmaniz gerekecek.</p>
+</div>
+</div>
+<div id="vektör" class="section level3" number="3.5.2">
+<h3><span class="header-section-number">3.5.2</span> Vektör</h3>
+<p>Ayni temel obje turunden olusan elementler iceren dizilerdir:</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="temel-bilgiler.html#cb91-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb91-2"><a href="temel-bilgiler.html#cb91-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## [1] 1 2 3</code></pre>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="temel-bilgiler.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<p>burada <code>c</code> vektor olusturmak icin kullanilmis bir fonksiyondur, combine ya da concatanate kelimelerinin kisaltilmisi olarak dusunulebilir.</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="temel-bilgiler.html#cb95-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(T, F, T, T)</span>
+<span id="cb95-2"><a href="temel-bilgiler.html#cb95-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## [1]  TRUE FALSE  TRUE  TRUE</code></pre>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="temel-bilgiler.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div>
+<pre><code>## [1] &quot;logical&quot;</code></pre>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="temel-bilgiler.html#cb99-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;a&#39;</span>, <span class="st">&#39;b&#39;</span>, <span class="st">&#39;cc&#39;</span>)</span>
+<span id="cb99-2"><a href="temel-bilgiler.html#cb99-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## [1] &quot;a&quot;  &quot;b&quot;  &quot;cc&quot;</code></pre>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="temel-bilgiler.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<p>Ayni tipte olmayan degerleri birlestirirseniz, beklenmeyen davranislarla karsilasabilirsiniz.</p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="temel-bilgiler.html#cb103-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="fl">3.14</span>, <span class="st">&#39;karakter&#39;</span>, 3i<span class="sc">+</span><span class="dv">2</span>, <span class="cn">TRUE</span>, F, 5L)</span>
+<span id="cb103-2"><a href="temel-bilgiler.html#cb103-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>## [1] &quot;3.14&quot;     &quot;karakter&quot; &quot;2+3i&quot;     &quot;TRUE&quot;     &quot;FALSE&quot;    &quot;5&quot;</code></pre>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="temel-bilgiler.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<p>Hata almadik ama objeler birlestirme sirasinda kendi modlarini koruyamadilar. Bu sebeple eger numerik vektoru karakter vektoruyle birlestirirseniz, numerik degerler karaktere donuseceginden artik numerik islemler yapamazsiniz.</p>
+<p>Vektorun belli bir elemanini almak icin <code>[]</code> operatoru kullanilir.</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="temel-bilgiler.html#cb107-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## [1] &quot;karakter&quot;</code></pre>
+</div>
+<div id="liste" class="section level3" number="3.5.3">
+<h3><span class="header-section-number">3.5.3</span> Liste</h3>
+<p>Listeler, birden fazla obje turunu icerebilir:</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="temel-bilgiler.html#cb109-1" aria-hidden="true" tabindex="-1"></a>mylist <span class="ot">=</span> <span class="fu">list</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">TRUE</span>, <span class="st">&#39;a&#39;</span>)</span>
+<span id="cb109-2"><a href="temel-bilgiler.html#cb109-2" aria-hidden="true" tabindex="-1"></a>mylist</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] 1
+## 
+## [[2]]
+## [1] 2
+## 
+## [[3]]
+## [1] TRUE
+## 
+## [[4]]
+## [1] &quot;a&quot;</code></pre>
+<p>Listenin belli bir elemanini almak icinse <code>[[]]</code> operatoru kullanilmalidir:</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="temel-bilgiler.html#cb111-1" aria-hidden="true" tabindex="-1"></a>mylist[[<span class="dv">1</span>]]</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="temel-bilgiler.html#cb113-1" aria-hidden="true" tabindex="-1"></a>mylist[[<span class="dv">3</span>]]</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+</div>
+<div id="matris" class="section level3" number="3.5.4">
+<h3><span class="header-section-number">3.5.4</span> Matris</h3>
+<p>Matrisler iki boyutlu verilerdir, yanyana dizilmis ayni uzunluktaki vektorler gibi de dusunebilirsiniz:</p>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="temel-bilgiler.html#cb115-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span></span>
+<span id="cb115-2"><a href="temel-bilgiler.html#cb115-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">3</span><span class="sc">:</span><span class="dv">4</span></span>
+<span id="cb115-3"><a href="temel-bilgiler.html#cb115-3" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">6</span></span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="temel-bilgiler.html#cb116-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">cbind</span>(a,b,c)</span>
+<span id="cb116-2"><a href="temel-bilgiler.html#cb116-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>##      a b c
+## [1,] 1 3 5
+## [2,] 2 4 6</code></pre>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="temel-bilgiler.html#cb118-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">rbind</span>(a,b,c)</span>
+<span id="cb118-2"><a href="temel-bilgiler.html#cb118-2" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div>
+<pre><code>##   [,1] [,2]
+## a    1    2
+## b    3    4
+## c    5    6</code></pre>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="temel-bilgiler.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(x)</span></code></pre></div>
+<pre><code>## [1] 2 3</code></pre>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="temel-bilgiler.html#cb122-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>,<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## a 
+## 1</code></pre>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="temel-bilgiler.html#cb124-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>,<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## b 
+## 3</code></pre>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="temel-bilgiler.html#cb126-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">1</span>,]</span></code></pre></div>
+<pre><code>## a b c 
+## 1 3 5</code></pre>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="temel-bilgiler.html#cb128-1" aria-hidden="true" tabindex="-1"></a>x[,<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## [1] 3 4</code></pre>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="temel-bilgiler.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(x)</span></code></pre></div>
+<pre><code>## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot;</code></pre>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="temel-bilgiler.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(x)</span></code></pre></div>
+<pre><code>## NULL</code></pre>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="temel-bilgiler.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(x) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;satir1&#39;</span>,<span class="st">&#39;satir2&#39;</span>)</span>
+<span id="cb134-2"><a href="temel-bilgiler.html#cb134-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>##        a b c
+## satir1 1 3 5
+## satir2 2 4 6</code></pre>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="temel-bilgiler.html#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(x)</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] &quot;satir1&quot; &quot;satir2&quot;
+## 
+## [[2]]
+## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot;</code></pre>
+</div>
+<div id="faktör" class="section level3" number="3.5.5">
+<h3><span class="header-section-number">3.5.5</span> Faktör</h3>
+<p>Faktörler kategorik verilerle uğraşırken kullandığımız verilerdir. Yani değişkenimiz sadece belli bir set içinden değer alabilir.</p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="temel-bilgiler.html#cb138-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span>  <span class="fu">c</span>(<span class="st">&quot;elma&quot;</span>, <span class="st">&quot;muz&quot;</span>, <span class="st">&quot;elma&quot;</span>, <span class="st">&quot;armut&quot;</span>, <span class="st">&quot;muz&quot;</span>)</span>
+<span id="cb138-2"><a href="temel-bilgiler.html#cb138-2" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div>
+<pre><code>## [1] &quot;elma&quot;  &quot;muz&quot;   &quot;elma&quot;  &quot;armut&quot; &quot;muz&quot;</code></pre>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="temel-bilgiler.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(a)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="temel-bilgiler.html#cb142-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">=</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;elma&quot;</span>, <span class="st">&quot;muz&quot;</span>, <span class="st">&quot;elma&quot;</span>, <span class="st">&quot;armut&quot;</span>, <span class="st">&quot;muz&quot;</span>))</span>
+<span id="cb142-2"><a href="temel-bilgiler.html#cb142-2" aria-hidden="true" tabindex="-1"></a>a</span></code></pre></div>
+<pre><code>## [1] elma  muz   elma  armut muz  
+## Levels: armut elma muz</code></pre>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="temel-bilgiler.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(a)</span></code></pre></div>
+<pre><code>## [1] &quot;factor&quot;</code></pre>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="temel-bilgiler.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(a)</span></code></pre></div>
+<pre><code>## [1] &quot;armut&quot; &quot;elma&quot;  &quot;muz&quot;</code></pre>
+</div>
+<div id="data-frame" class="section level3" number="3.5.6">
+<h3><span class="header-section-number">3.5.6</span> Data frame</h3>
+<p>Data frame goruntu itibariyle matrisleri andirsa da farkli veri tiplerini barindirabilmesinden dolayi, liste gibidir.</p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="temel-bilgiler.html#cb148-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">id =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>),</span>
+<span id="cb148-2"><a href="temel-bilgiler.html#cb148-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">isim =</span> <span class="fu">c</span>(<span class="st">&#39;ali&#39;</span>,<span class="st">&#39;veli&#39;</span>,<span class="st">&#39;ayse&#39;</span>,<span class="st">&#39;fatma&#39;</span>), </span>
+<span id="cb148-3"><a href="temel-bilgiler.html#cb148-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">ogrenci =</span> <span class="fu">c</span>(T,T,F,T))</span>
+<span id="cb148-4"><a href="temel-bilgiler.html#cb148-4" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<pre><code>##   id  isim ogrenci
+## 1  1   ali    TRUE
+## 2  2  veli    TRUE
+## 3  3  ayse   FALSE
+## 4  4 fatma    TRUE</code></pre>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="temel-bilgiler.html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)</span></code></pre></div>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<p>data.frame icinde bir sutunu almak icin matrislerde oldugu gibi <code>[]</code> ya da <code>$</code> operatorunu kullanabilirsiniz:</p>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="temel-bilgiler.html#cb152-1" aria-hidden="true" tabindex="-1"></a>x[,<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## [1] &quot;ali&quot;   &quot;veli&quot;  &quot;ayse&quot;  &quot;fatma&quot;</code></pre>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="temel-bilgiler.html#cb154-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">$</span>isim</span></code></pre></div>
+<pre><code>## [1] &quot;ali&quot;   &quot;veli&quot;  &quot;ayse&quot;  &quot;fatma&quot;</code></pre>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="temel-bilgiler.html#cb156-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">3</span>,<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## [1] &quot;ayse&quot;</code></pre>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="temel-bilgiler.html#cb158-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">$</span>isim[<span class="dv">3</span>]</span></code></pre></div>
+<pre><code>## [1] &quot;ayse&quot;</code></pre>
+</div>
+</div>
+<div id="paketler" class="section level2" number="3.6">
+<h2><span class="header-section-number">3.6</span> Paketler</h2>
+<p>Son olarak R’da ozellesmis bazi fonksiyonlari ve veri tiplerini bulabileceginiz fonksiyonlar vardir. Bunlardan bazilari R’i indirdiginiz CRAN uzerinden, bazilari (ozellikle biyolojik veri analizi ile ilgili olanlari) <a href="https://www.bioconductor.org/">Bioconductor</a> uzerinden, bazilari da paketi olusturan kisilerin github repolari uzerinden indirilir. Indirme komutlari farkli olsa da, hepsi <code>library(PAKETADI)</code> komutu ile R’a yuklenir. Kullanisli bir kac paketi yukleyelim:</p>
+<p>CRAN’dan indirmek icin:</p>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="temel-bilgiler.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&#39;ggplot2&#39;</span>)</span></code></pre></div>
+<p>Bioconductor’dan paket indirmeden once, CRAN’dan BiocManager paketini indirmeniz gerekir:</p>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="temel-bilgiler.html#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;BiocManager&quot;</span>)</span></code></pre></div>
+<p>Bioconductor’dan paket indirmek icin, BiocManager’i <code>library()</code> fonksiyonu ile Ra yuklemeden <code>BiocManager::</code> ile bu paket icindeki bir fonksiyonu kullanabilirsiniz:</p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="temel-bilgiler.html#cb162-1" aria-hidden="true" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="st">&quot;preprocessCore&quot;</span>)</span></code></pre></div>
+<p>GitHub’dan bir paket indirmek icinse CRANdan indireceginiz <code>devtools</code> paketine ihtiyaciniz vardir. Paketlerin Github sayfalarindan indirme komutuna ulasabilirsiniz. Biz calistayda bu sekilde bir paket kullanmayacagiz.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="giriş.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["20210322_REgitim.pdf", "20210322_REgitim.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

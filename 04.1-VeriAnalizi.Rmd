@@ -1,0 +1,423 @@
+# Veri on isleme basamaklari
+
+Veriyi GEO'dan ifade matrisi, metadata yani bireylere dair bilginin bulundugu bir tablo, ve feature data yani probeset-gen eslesmelerinin verildigi bir tablo olarak kaydettim. Simdi bunlari okuyarak baslayacagiz. Ilk olarak gen ifade verisiyle baslayalim.
+
+## `read.csv()` ve `readRDS()`` ile veri okuma
+
+`read.csv` fonksiyonu hem URL'den okuma hem de bilgisayarimizdaki bir dosyadan okuma yapmamizi saglar. Dosyayi benim github repomdan indirip, fonksiyona `file = ` degiskeni olarak indirdiginiz yeri vererek okuyabilirsiniz. Simdi kolaylik olmasi acisindan direkt olarak github repomdan okuyacagiz. Bu fonksiyon ayrica baska argumanlar da aliyor. `header` dosyada sutun isimlerinin yer alip almadigini belirtmek icin kullaniliyor ve mantiksal bir arguman yani `TRUE` ya da `FALSE` degerlerini alabilir. Kullanacagimiz bir diger arguman ise `row.names =`, bu da satir isimlerinin hangi sutunda yer aldigini belirtmemiz icin gerekli. Eger bu argumani kullanmazsak, matrisimizin satir isimleri de bir sutun olarak okunacaktir.
+
+```{r}
+expr = read.csv(file = './data/expressionmatrix.csv', header = T, 
+                row.names = 1)
+```
+
+Ilk 6 satir ve 4 sutuna bakalim:
+
+```{r}
+expr[1:6,1:4]
+```
+Her sey yolunda gozukuyor ama bir de bu objenin daha onceden ogrendigimiz gibi `class`ina bakalim:
+
+```{r}
+class(expr)
+```
+
+Genellikle `read.csv` fonksiyonu bir data.frame olusturur. Biz bu objede kimi matris operasyonlari yapmak istiyoruz. O yuzden bunu matrise donusturmeliyiz. Bunun icin `as.matrix` yani 'matrix olarak' fonksiyonunu kullanabiliriz.
+
+```{r}
+expr = as.matrix(expr)
+```
+
+Tekrar ilk birkac satir sutun ve class kontrolumuzu yapalim:
+
+```{r}
+expr[1:6, 1:4]
+```
+
+```{r}
+class(expr)
+```
+
+Arraylerden baslangicta bahsetmemistim, kullanimi cok asiri yaygin degil ama bunlar da 1 ya da daha fazla boyutlu vektorler olarak dusunulebilir, yani iki boyutlusu matris ama daha fazla boyutlu array olusturmak mumkun.
+
+Simdi bir de matrisimizin boyutlarina bakalim. Bunu ya satir (`nrow()`) ve sutun sayisini (`ncol()`) yazdirarak ya da `dim()` fonksiyonu ile yapabiliriz.
+
+```{r}
+nrow(expr)
+ncol(expr)
+dim(expr)
+```
+
+Matrisimizde 30176 satir, 269 sutun var - yani 30176 probeset ID, 269 ornek. Daha fazla ilerlemeden once bir veri okuma sekli daha gostermek istiyorum.
+
+Alternatif olarak ayni veriyi bir .rds - R objesi olarak da kaydetmistim. Onu okumak icin de `readRDS()` fonksiyonunu kullanabiliriz. Bunun avantaji verinizin bir csv dosyasina kaydedilerek olasi bozulmalarini engellemenin yani sira, obje turunu vs. de koruyabilirsiniz.
+
+```{r}
+expr = readRDS(file = './data/expressionmatrix.rds')
+class(expr)
+expr[1:6,1:4]
+dim(expr)
+```
+
+Gordugunuz gibi bu dosyayi okudugumuzda veriyi direkt olarak matrix olarak okuyabildik ve data.frame'den donusturmek zorunda kalmadik. 
+
+## Kesifci veri analizi
+
+Daha ileri gecmeden hemen bu asamada cok kisaca verimiz neye benziyor bakabiliriz. Bunun icin temel bir kac gorsellestirme fonksiyonu kullanacagiz. 
+
+### Histogram
+
+Ilk olarak verimizin dagilimi nedir, ne gibi degerler var bunlara bakalim:
+
+```{r}
+hist(expr)
+```
+
+Bu sekilde, hangi bireyin veya genin verisi olduguna bakmaksizin tum degerlerin bir histogramini aliriz. Bu histogram cogu gen ekpresyon verisinde alacaginiz ham veri grafiginden cok farkli, bunun sebebi bunun two channel microarray olmasi ve loess normalizasyonu gibi kimi normalizasyon asamalarindan da gecirilmis olmasi. 
+
+### Boxplot
+
+Simdi de ilk birkac bireyin gen anlatim profillerine bakalim.
+
+```{r}
+boxplot(expr[,1:5])
+```
+
+Ayni grafigi ilk bir kac gen icin cizmek isteyecek olsak, hem matrisi subset etmemiz hem de transpoze etmemiz gerekir. Bunu `t()` fonksiyonu ile kolaylikla yapabiliriz:
+
+```{r}
+boxplot(t(expr[1:10,]))
+```
+
+## ProbesetID - Gen eslestirmesi
+
+Ayni gen ifade verisi gibi probesetID - gen eslesmesi bilgisinin kayitli oldugu bir tablo daha kaydetmistim. Simdi onu okuyalim: 
+
+```{r}
+genedata = read.csv('./data/featuredat.csv')
+genedata[1:3,]
+class(genedata)
+```
+
+Ilk olarak gen bilgisini duzenleyelim. Bunun icin bu data.frame'den iki sutunu kullanacagiz. 
+
+```{r}
+genedata$ID[1:10]
+genedata$Gene_Symbol[1:10]
+```
+
+Simdi isimlendirilmis bir vektor olusturacagim ki, belli bir probe IDye karsilik gelen geni bulabileyim. Bunu yapmak icin `setNames()` fonksiyonunu kullanacagim. Isimler, yani ikinci arguman, probeID olacak, vektorun kendisi ise genler, bu sayede vektoru belli bir probe ID kullanarak subset ettigimde hangi gen oldugunu bulabilirim. Buna gecmeden bir ornek:
+
+```{r}
+x = setNames(c(1:3),c('bir','iki','uc'))
+x
+```
+
+ikinci elemani almak icin:
+
+```{r}
+x[2]
+x['iki']
+```
+
+Bunlarin ikisini de kullanabiliyorum. IDleri kullanarak genleri bulmam da ayni sekilde olacak: 
+
+```{r}
+genemap = setNames(genedata$Gene_Symbol,genedata$ID)
+genemap[1:5]
+head(genemap)
+```
+
+Matrisin satir isimleriyle genemap'i subset ettigimiz zaman, dogru sirayla hangi genlere karsilik geliyorsa bize bu bilgiyi verecek. Simdi once bir yanlis yapma ihtimalimize karsin matrisimizi kopyalayalim:
+
+```{r}
+expr_yedek = expr
+```
+
+Simdi ilk olarak bir probeset ID birden fazla genle eslesiyor mu buna bakmaliyiz, bunlar veri duplikasyonu yaratacagindan istatistiksel test yapmamizi zorlastirir bunlari veriden cikararak baslayacagiz:
+
+```{r}
+any(duplicated(names(genemap)))
+```
+
+Hic tekrar eden bir probesetIDmiz yok - yani bu bu veriseti icin problem degil. Bir de cok fazla sayida probesetIDye map olmus olan genlere bakalim:
+
+```{r}
+sort(table(genemap),dec=T)[1:10]
+```
+
+Bunlardan `'##noname##` ve `''` tabii ki gen ismi degil. Bunlari veriden cikartmak gerekir, ama bunu matrixe isimleri gecirdikten sonra yapacagim. Simdi probeset IDleri gen isimleriyle degistirerek devam edelim:
+
+```{r}
+rownames(expr) = genemap[rownames(expr)]
+```
+
+```{r}
+expr[1:5,1:5]
+```
+
+```{r}
+sort(table(rownames(expr)), dec = T)[1:10]
+```
+
+Burada gordugunuz gibi bazi gen isimleri birden fazla kez tekrar ediliyor. Bu mikrodizin dizaynindan kaynakli bir durum, her gen bir ya da daha fazla probeset ile temsil ediliyor. Genelde her gen bu probesetlerin ortalamasi ya da maksimumu alinarak ozetlenir - bu sayede her gen matriste bir defa yer alir. Bunu yapmak icin matrisi gen isimleriyle subset etmeyi ogrenecegiz. Zaten belli bir isimle subset yapmayi biliyoruz, ancak bu sadece tekrarli olmayan durumlarda gecerli. Suna bakalim:
+
+```{r}
+x = setNames(c(1:5), c('bir','iki','iki','dort','bes'))
+x['iki']
+```
+
+oysa 3 degerine sahip olan elemanin adi da 'iki'. Bu tarz tekrarli durumlarda otomatik olarak ilk eleman verilir. Ikisini birden istiyorsak subset islemini `%in%` operatoru ile yapmamiz gerekir. 
+
+### `%in%` operatoru
+
+```{r}
+'elma' %in% c('elma','armut')
+'muz' %in% c('elma','armut')
+c('elma', 'muz') %in% 'elma'
+c('elma', 'muz') %in% 'muz'
+```
+
+Bilmemiz gereken bir konu da bir vektoru ya da matrisi mantiksal degiskenlerle de subset edebildigimiz:
+
+```{r}
+c(1:5)[c(T,T,F,T,F)]
+```
+
+Ilk olarak gen ismi olarak `'##noname##` ve `''` gorunen satirlari veriden cikartarak baslamaliyiz:
+
+```{r}
+expr = expr[!rownames(expr) %in% c('##noname##',''),]
+```
+
+```{r}
+sort(table(rownames(expr)),dec=T)[1:10]
+```
+
+Simdi tekrar eden genleri ozetlemeye geri donelim.
+
+```{r}
+expr[rownames(expr) %in% 'VIM', 1:5]
+```
+
+Simdi yeni bir fonksiyon ogrenelim `colMeans()` bu da adi ustunde sutun ortalamasini aliyor. Yani matrisi tum VIM genine karsilik gelen probesetler icin subset edip, `colMeans()` dersek tek boyutlu, satirlarin ortalamasina sahip bir vektor verecek:
+
+```{r}
+vimmeans = colMeans(expr[rownames(expr) %in% 'VIM', ])
+head(vimmeans)
+```
+
+Ama bu sadece tek bir gen icin. Oysa biz tek genle ilgilenmiyoruz, butun genler icin bunu yapmak istiyoruz. Eger programlama dillerine asinaysaniz `for` loop larini duymussunuzdur. Bunlar ayni islemin defalarca ayni ya da farkli inputlar icin tekrarlanmasini saglar. R'da da for loop yazabiliriz bunun icin kullanilacak fonksiyon `for`. Bizse for yerine R'a ozgu *apply fonksiyonlari olarak gecen fonksiyonlardan biri olan `sapply()` fonksiyonu ile bunu yapacagiz. Ilk olarak butun gen isimlerini almaliyiz. Bunu sadece `rownames()` ile alamiyoruz cunku isimler tekrar ediyor. Onun yerine her degerin sadece bir kere tekrar edilmesini `unique()` fonksiyonu ile saglayacagiz. 
+
+```{r}
+genisimleri = unique(rownames(expr))
+nrow(expr)
+length(genisimleri)
+```
+
+Sadece 17bin gen var. Yani her gen cok defa tekrar ediliyor olmak zorunda degil. Eger tekrar edilmeyen bir geni subset edersek, 'sutun ortalamalarini ver' demek icin kullanacagimiz `colMeans` fonksiyonu calismaz, cunku bir matris degil bir vektor soz konusu olacak. Bunun icin bir de `if` fonksiyonunu ogrenmeliyiz. `if` bir kodu ancak belli kosullar altinda calistiracaktir. Bu sayede eger bir defa geciyorsa sunu yap, birden fazla kez tekrar ediliyorsa sunu yap seklinde bir kod yazmamiz mumkun olacak. If'e cok kisa bir ornek:
+
+```{r}
+vektorum = c('elma','muz','armut')
+if('cilek'%in%vektorum){
+  print('cilek var!')
+} else if('elma' %in% vektorum){
+  print('elma var!')
+} else{
+  print('ne cilek ne elma var :(')
+}
+
+```
+
+daha iyi anlayabilmemiz icin bir ornek daha:
+
+
+```{r}
+vektorum = c('elma','muz','armut')
+if('muz'%in%vektorum){
+  print('muz var!')
+} else if('elma' %in% vektorum){
+  print('elma var!')
+} else{
+  print('ne cilek ne elma var :(')
+}
+```
+
+hem elma hem muz olmasina ragmen sadece birinci komut calisti. Bunun sebebi `else` komutu ancak ilk kodumuz yanlissa calisacak olmasi. 
+
+Simdi de cok kisa `sapply()` nasil calisiyor buna bakalim:
+
+```{r}
+sapply(c(1:10),function(i){
+  i * 2
+})
+sapply(c(1:10),function(i){
+  i * (i-1)
+})
+```
+
+Simdi biraz ileri duzey gibi gorunmesi muhtemel bir kod yazacagiz ama basamak basamak inceleyince anlasilmasi kolay olacaktir:
+
+```{r}
+genexpr = sapply(genisimleri, function(gen) {
+  i = rownames(expr)%in%gen
+  if(sum(i)>1){
+    colMeans(expr[i,])
+  } else if(sum(i)==1){
+    expr[i,]
+  }
+})
+```
+
+```{r}
+genexpr[1:5,1:5]
+```
+
+satir-sutun yer degistirmis durumda. bunu yine transpoze ederek duzeltebiliriz:
+
+```{r}
+genexpr = t(genexpr)
+```
+
+```{r}
+genexpr[1:5,1:5]
+```
+
+```{r}
+dim(genexpr)
+```
+
+Artik her gen icin bir satirimiz var! 
+
+## Quantile Normalization
+
+Son olarak bu gen ifade matrixinde bir normalizasyon metodu uygulayalim. Burada amacimiz farkli ornekler arasindaki olasi teknik varyasyonu ortadan kaldirmak. Uygulayacagimiz normalizasyonun adi 'quantile normalization' - bunun sonunda tum orneklerin dagilimlari ayni olacak - genler farkli degerler alacak ama genlerin dagilimi ayni olacak. Normalizasyon oncesi ilk bir kac bireyin dagilimina bakalim.
+
+```{r}
+boxplot(genexpr[,1:20])
+```
+Gordugunuz gibi ortalamalari hemen hemen ayni olsa da (bunun sebebi verinin zaten baska bir yontemle kismen normalize edilmis olmasi), Dagilimlar farkli. 
+
+Normalizasyon icin Rda olmayan bir fonksiyon kullanacagiz, bunun icin de `preprocessCore` paketini yuklememiz gerekiyor:
+
+```{r, eval = F}
+BiocManager::install("preprocessCore")
+```
+
+```{r}
+library(preprocessCore)
+```
+
+Fonksiyonumuzun adi `normalize.quantiles()`
+
+```{r}
+genexpr_qn = normalize.quantiles(genexpr)
+dim(genexpr_qn)
+genexpr_qn[1:5,1:5]
+```
+
+Gordugunuz gibi bu fonksiyon ne yazik ki satir sutun isimlerimizi sildi. Ama bunlarin ilk matrisimizle ayni oldugunu biliyoruz cunku bir subset islemi yapmadik. Eski satir-sutun isimlerimizi yeni matrisimize aktaralim:
+
+```{r}
+dimnames(genexpr_qn) = dimnames(genexpr)
+genexpr_qn[1:5,1:5]
+```
+
+Tekrar dagilimlara bakacak olursak:
+
+```{r}
+boxplot(genexpr_qn[,1:20])
+```
+
+Gordugunuz gibi dagilimlar birebir esit oldu. Bundan sonraki asamalarda bu veriyi kullanacagiz. 
+
+## Ornek bilgisini duzenleme
+
+Son olarak, bir de orneklerle ilgili bilgilerin yer aldigi (yas, biyolojik cinsiyet) bir tablomuz var. Ama bu verinin de duzenlenmesi gerekiyor. 
+
+```{r}
+metadata = read.csv('./data/metadata.csv')
+head(metadata)
+```
+
+Bu veriyi kullanarak, ayni probeset-gen eslestirmesi icin yaptigimiz gibi yas ve biyolojik cinsiyet icin birey bilgisi vektoru olusturalim: 
+
+```{r}
+yas = setNames(metadata$characteristics_ch1.1, metadata$geo_accession)
+head(yas)
+class(yas)
+cinsiyet = setNames(metadata$characteristics_ch1.2, metadata$geo_accession)
+head(cinsiyet)
+class(cinsiyet)
+```
+
+Bu veriler gordugunuz gibi karakter verileri ve formatlari pek iyi degil. Ornegin bu yas verisiyle yapabileceklerimiz sinirli cunku numerik degil. Ilk olarak basta yazan 'age: ' kismindan kurtulmamiz lazim ki bu yas verisini kullanabilelim. Ayni sekilde biyolojik cinsiyeti de 'F' veya 'M' haline, hatta daha iyisi 'kadin' ve 'erkek' haline getirelim. 
+
+### Yas verisinin duzenlenmesi
+
+Basta yazan 'age: ' yazisinin ortadan kaldirilmasi icin bir kac secenek var. Bunlardan en basiti `gsub` fonksiyonu. Bu fonksiyon, bir karakter vektorunde belli karakterlerin degistirilmesini saglar:
+
+```{r}
+gsub('range','','Bioinforange')
+gsub('range','conference','Bioinforange')
+```
+
+Bu sekilde 'age: ' yazisini silebiliriz:
+
+```{r}
+yas = gsub('age: ','',yas)
+head(yas)
+```
+
+Ancak gordugunuz gibi, veri hala karakter. Bunu numerik yapmak icin `as.numeric()` kullaniriz:
+
+```{r}
+yas = setNames(as.numeric(yas),names(yas))
+```
+
+```{r}
+hist(yas)
+```
+
+Daha net bir sekilde verinin ozetini gormek istersek `summary()` fonksiyonunu kullanabiliriz:
+
+```{r}
+summary(yas)
+```
+
+Dogum oncesi zamandan 78 yasina kadar bireyler var ve ortalamamiz 27.7.
+
+### Biyolojik cinsiyet verisinin duzenlenmesi
+
+Bu sefer sadece 2 biyolojik cinsiyet mumkun oldugundan daha farkli bir yol izleyebiliriz. Ama oncelikle, sadece iki secenek oldugundan emin olalim. 
+
+```{r}
+unique(cinsiyet)
+```
+
+Bir de '5' var, bu muhtemelen veri girisinde bir hata demek ama bu bireyi en azindan cinsiyet icin inceleyemeyecegimiz anlamina geliyor. Ilk olarak bu veriye sahip olan bireyi hem bu veriden hem expression verisinden hem de yas verisinden cikaralim.
+
+```{r}
+cikart = names(cinsiyet[(cinsiyet %in% 'Sex: 5')])
+cinsiyet = cinsiyet[!names(cinsiyet) %in% cikart]
+yas = yas[!names(yas) %in% cikart]
+genexpr_qn = genexpr_qn[,!colnames(genexpr_qn) %in% cikart]
+```
+
+Ayni probeset-gen eslesmesi yapmak icin kullandigimiz gibi bir vektor olusturalim:
+
+```{r}
+cinsiyetMap = setNames(c('Kadin','Erkek'),c('Sex: F','Sex: M'))
+cinsiyet = setNames(cinsiyetMap[cinsiyet],names(cinsiyet))
+head(cinsiyet)
+```
+
+Kac kadin kac erkek bireyin olduguna bakmak icin `table()` fonksiyonunu kullanabiliriz:
+
+```{r}
+table(cinsiyet)
+```
+
+
+
+

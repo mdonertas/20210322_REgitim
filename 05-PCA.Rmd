@@ -1,0 +1,13 @@
+# Temel bilesenler analizi
+
+```{r}
+tba = prcomp(t(genexpr_qn), scale. = T)
+```
+
+```{r}
+renkler = colorRampPalette(c('pink','darkred'))(length(yas))
+renkler_sirali = renkler[rank(yas[rownames(tba$x)], ties.method = 'min')]
+plot(x = tba$x[,1], y = tba$x[,2], pch = 19, cex = 0.5, col = renkler_sirali, 
+     xlab = 'PC1', ylab = 'PC2')
+```
+

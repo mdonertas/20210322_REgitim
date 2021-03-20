@@ -1,0 +1,68 @@
+# Biyolojik cinsiyete gore farklilik gosteren gen analizi
+
+Diyelim ki sadece dogum sonrasi donemde 20 sonrasi ve 40 yas oncesi yasta kadin ve erkekler arasinda farkli gen ifadesi gosteren genlerle ilgileniyoruz.
+
+```{r}
+subsamp = names(which(yas>=20 & yas<40))
+subexp = genexpr_qn[,subsamp]
+subyas = yas[subsamp]
+subcins = cinsiyet[subsamp]
+table(subcins)
+```
+
+Kadin ve erkek sayisindaki fark cok fazla. Hem erkek hem de kadinlarin icinden rastegele 10ar birey secip analiz yapalim (- rastgele secim yapmayi gostermek icin!). 
+
+```{r}
+erkek = sample(names(which(subcins == 'Erkek')),10,replace = F)
+kadin = sample(names(which(subcins == 'Kadin')),10,replace = F)
+subsamp = c(erkek,kadin)
+subexp = genexpr_qn[,subsamp]
+subyas = yas[subsamp]
+subcins = cinsiyet[subsamp]
+table(subcins)
+```
+
+```{r, message = F , warning = F}
+cinsiyetfark = apply(subexp, 1, function(x){
+  tres = t.test(x~subcins)
+  c(tres$statistic, tres$p.value)
+})
+```
+
+```{r}
+dim(cinsiyetfark)
+cinsiyetfark = t(cinsiyetfark)
+head(cinsiyetfark)
+colnames(cinsiyetfark) = c('t','p')
+cinsiyetfark = cbind(cinsiyetfark,p.adjust(cinsiyetfark[,'p'],method= 'fdr'))
+```
+
+Hangi genler yasla istatistiksel olarak anlamli degisim gosteriyor? 
+
+```{r}
+anlamli = names(which(cinsiyetfark[,3]<=0.05))
+length(anlamli)
+```
+
+Sadece 12 gen anlamli fark gostermis.
+
+```{r}
+maxfark = names(which.max(abs(cinsiyetfark[,1])))
+cinsiyetfark[maxfark,]
+```
+
+
+```{r}
+boxplot(subexp[maxfark,]~subcins, ylab = 'Gen ifadesi', main = maxfark, 
+        xlab = 'Cinsiyet')
+```
+
+Figur kaydetmek:
+
+```{r}
+pdf('./cinsiyetfark.pdf')
+boxplot(subexp[maxfark,]~subcins, ylab = 'Gen ifadesi', main = maxfark, 
+        xlab = 'Cinsiyet')
+dev.off()
+```
+

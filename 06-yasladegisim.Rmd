@@ -1,0 +1,59 @@
+# Yasla degisim analizi
+
+Diyelim ki sadece dogum sonrasi donemde 20 sonrasi yasta yasla degisen genlerle ilgileniyoruz. Bunun icin ilk olarak veriyi subset etmeliyiz. Yas'in 20den buyuk oldugu bireyleri almaliyiz:
+
+```{r}
+subsamp = names(which(yas>=20))
+subexp = genexpr_qn[,subsamp]
+subyas = yas[subsamp]
+```
+
+```{r, message = F , warning = F}
+yasladegisim = apply(subexp, 1, function(x){
+  co = cor.test(x, subyas[colnames(subexp)], method = 'spearman')
+  c(co$est, co$p.val)
+})
+```
+
+```{r}
+dim(yasladegisim)
+yasladegisim = t(yasladegisim)
+head(yasladegisim)
+colnames(yasladegisim) = c('rho','p')
+yasladegisim = cbind(yasladegisim, p.adjust(yasladegisim[,'p'], method= 'fdr'))
+```
+
+Hangi genler yasla istatistiksel olarak anlamli degisim gosteriyor? 
+
+```{r}
+anlamli = names(which(yasladegisim[,3]<=0.05))
+table(yasladegisim[rownames(yasladegisim)%in%anlamli,1]>=0)
+```
+
+Bunlardan 1419 tanesi artis yonunde anlamli degisim gosteriyor, 1538 tanesi ise dusus. Bunlardan en cok artis gostereni secip gorsellestirelim:
+
+```{r}
+maxartis = names(which.max(yasladegisim[,1]))
+yasladegisim[maxartis,]
+```
+
+
+```{r}
+plot(x = subyas, y = subexp[maxartis,], pch = 19, cex = 0.5, xlab='Yas',
+     ylab = 'Gen ifadesi', main = maxartis)
+abline(lm(subexp[maxartis,]~subyas), col = 'darkred',cex = 2)
+```
+
+```{r}
+pdf('./yasladegisim.pdf')
+plot(x = subyas, y = subexp[maxartis,], pch = 19, cex = 0.5, xlab='Yas',
+     ylab = 'Gen ifadesi', main = maxartis)
+abline(lm(subexp[maxartis,]~subyas), col = 'darkred',cex = 2)
+dev.off()
+```
+
+```{r}
+write.csv(x = yasladegisim, file = './yasladegisim.csv',quote = F,
+          row.names = T)
+```
+

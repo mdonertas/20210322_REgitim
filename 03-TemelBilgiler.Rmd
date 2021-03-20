@@ -1,0 +1,343 @@
+# Temel Bilgiler
+
+Kodlari editorde yazip Ctrl+Enter ile calistirabilirsiniz. Alternatif olarak Konsol'da da kodlari yazabilirsiniz ancak editore yazdiklarinizi kaydederek yazdiklarinizdan elinizde bulunmasini istediklerinizi 
+
+```{r}
+getwd()
+```
+
+```{r, eval = F}
+setwd("~/GDrive/projects/")
+```
+
+## RStudio projesi
+
+R'da calisirken her zaman proje olusturmanizi tavsiye ederim. Bu sayede hem her projenize ait kod tarihi ayrica saklanir, hem de calistiginiz klasor vs. gibi konularda endiselenmeniz gerekmez. RStudio projelerinin bunlar haricinde versiyon kontrol konusu vs. gibi ileri asamalarda kullanacaginiz diger konularda da fayda saglar. Sag ust kosedeki New Project'e basip, 'yeni klasor'u secerek yeni proje olusturabilirsiniz. Bunu yaptiktan sonra `getwd()` fonksiyonunu tekrar calistiralim:
+
+```{r}
+getwd()
+```
+
+Benim sonucumda degisen bir sey yok cunku zaten proje icinde calisiyordum ancak sizin sonucunuz degismis olmali. 
+
+## Hesap makinesi olarak R
+
+```{r}
+2+2
+5*7
+20-4
+3^2
+100/2
+9%%5
+9%/%5
+```
+
+## Fonksiyonlar
+
+R kendi yazacaginiz fonksiyonlarin yaninda kendi icinde cok sayida fonksiyon barindirir, az once kullandigimiz `getwd()` fonksiyonu gibi. Bunlar fonksiyon adini takiben, parantez icinde belli argumanlar alirlar. Birkac ornek:
+
+```{r}
+log10(x = 100)
+log10(100)
+sqrt(16)
+```
+
+### Yardım almak
+
+R'da cogu fonksiyon yardim sayfasi icerir ve bunlara `?` operatoru ile ulasilir:
+
+```{r, eval = F}
+?log10
+?getwd
+```
+
+## Değişkenlerle çalışmak
+
+Degiskenler veri tutuculardir. Degisken atamak icin `<-` ya da `=` operatorleri kullanilir. Tarihsel olarak `<-` kullanilsa da bugun pratik nedenlerle `=` daha yaygindir ve kullanimi yanlis degildir. 
+
+```{r}
+a <- 3
+print(a)
+```
+
+```{r}
+b = 5
+print(b)
+```
+
+```{r}
+c = a + b
+print(c)
+c
+```
+
+Rda degisken isimleriyle ilgili kimi kisitlamalar var:
+- harf ya da nokta ile baslar
+- ozel anlami olan kelimeler kullanilmaz (`if` ya da `for` gibi). bunlari `?reserved` yazarak ogrenebilirsiniz.
+- yasak olmasa da Rda yer alan fonksiyon isimleri ile ayni degiskenler yaratmamaya calismak gerekir, soruna yol acabilir.
+- degiskenler kucuk buyuk harfe duyarlidir, `a` ve `A` birbirinden farkli degiskenlerdir. 
+- simdiye kadar ornekleri `a` `b` `x` gibi harflerden olusturmus olsak da, tuttugu veriyle ilgili bir isim secmek iyi bir aliskanliktir. 
+
+## R'da objeler
+
+### Obje türleri
+
+5 temel obje turu var; karakter, numerik, tam sayi (integer), kompleks, mantiksal (logical/boolean).
+
+#### Karakter
+
+```{r}
+x = 'a'
+x
+class(x)
+```
+
+Karakter objeleri tek karakter icermek zorunda degildir
+
+```{r}
+y = "bu da karakter"
+y
+class(y)
+```
+
+Degiskenler `a` gibi tirnak isareti olmadan yazilir, karakterler ise `"a"` ya da `'a'` seklinde yazilir. R'da ' ile " kullanimi karakterlerde farketmez. Ayrica tirnak icindeki karakter sadece harf olmak zorunda degil, ne olursa olsun bir karakter objesidir:
+
+```{r}
+a = '5'
+a
+class(a)
+```
+
+#### Nümerik ve tam sayılar
+
+```{r}
+x = 3 
+x
+class(x)
+```
+
+```{r}
+x = 3.14
+x
+class(x)
+```
+
+```{r}
+x = 1/0
+x
+class(x)
+```
+
+```{r}
+x = 0/0
+x
+class(x)
+```
+
+Özellikle tam sayı oluşturmak istiyorsak sonda `L` ekini kullanmalıyız.
+
+```{r}
+x = 3L
+x
+class(x)
+```
+
+#### Kompleks
+
+```{r}
+x = 5+2i
+x
+class(x)
+```
+
+#### Mantıksal (Logical, boolean)
+
+```{r}
+x = TRUE
+x
+class(x)
+```
+
+```{r}
+y = T
+y
+class(y)
+```
+
+```{r}
+z = FALSE
+z
+class(z)
+```
+
+```{r}
+a = F
+a
+class(a)
+```
+
+```{r}
+a = 'F'
+a
+class(a)
+```
+
+Bunlar temel obje turleri olsa da, ileride class fonksiyonunu kullandiginizda baska sonuclar alabilirsiniz. Bu temelde R'in nesne tabali dogasindan kaynakli. 
+
+Ayrica objeniz bir matris ise, numerik degerlere mi karakterlere mi sahip, bunu ogrenmek icin `mode()` fonksiyonunu kullanmaniz gerekecek.  
+
+### Vektör
+
+Ayni temel obje turunden olusan elementler iceren dizilerdir:
+
+```{r}
+x = c(1, 2, 3)
+x
+class(x)
+```
+
+burada `c` vektor olusturmak icin kullanilmis bir fonksiyondur, combine ya da concatanate kelimelerinin kisaltilmisi olarak dusunulebilir. 
+
+```{r}
+x = c(T, F, T, T)
+x
+class(x)
+```
+
+```{r}
+x = c('a', 'b', 'cc')
+x
+class(x)
+```
+
+Ayni tipte olmayan degerleri birlestirirseniz, beklenmeyen davranislarla karsilasabilirsiniz. 
+
+```{r}
+x = c(3.14, 'karakter', 3i+2, TRUE, F, 5L)
+x
+class(x)
+```
+
+Hata almadik ama objeler birlestirme sirasinda kendi modlarini koruyamadilar. Bu sebeple eger numerik vektoru karakter vektoruyle birlestirirseniz, numerik degerler karaktere donuseceginden artik numerik islemler yapamazsiniz. 
+
+Vektorun belli bir elemanini almak icin `[]` operatoru kullanilir.
+
+```{r}
+x[2]
+```
+
+
+### Liste
+
+Listeler, birden fazla obje turunu icerebilir:
+
+```{r}
+mylist = list(1, 2, TRUE, 'a')
+mylist
+```
+
+Listenin belli bir elemanini almak icinse `[[]]` operatoru kullanilmalidir:
+
+```{r}
+mylist[[1]]
+mylist[[3]]
+```
+
+### Matris
+
+Matrisler iki boyutlu verilerdir, yanyana dizilmis ayni uzunluktaki vektorler gibi de dusunebilirsiniz:
+
+```{r}
+a <- 1:2
+b <- 3:4
+c <- 5:6
+```
+
+```{r}
+x = cbind(a,b,c)
+x
+y = rbind(a,b,c)
+y
+```
+
+```{r}
+dim(x)
+x[1,1]
+x[1,2]
+x[1,]
+x[,2]
+```
+
+```{r}
+colnames(x)
+rownames(x)
+```
+
+```{r}
+rownames(x) = c('satir1','satir2')
+x
+dimnames(x)
+```
+
+### Faktör 
+
+Faktörler kategorik verilerle uğraşırken kullandığımız verilerdir. Yani değişkenimiz sadece belli bir set içinden değer alabilir.
+
+```{r}
+a =  c("elma", "muz", "elma", "armut", "muz")
+a
+class(a)
+```
+
+```{r}
+a = factor(c("elma", "muz", "elma", "armut", "muz"))
+a
+class(a)
+levels(a)
+```
+
+### Data frame
+
+Data frame goruntu itibariyle matrisleri andirsa da farkli veri tiplerini barindirabilmesinden dolayi, liste gibidir. 
+```{r}
+x = data.frame(id = c(1,2,3,4),
+               isim = c('ali','veli','ayse','fatma'), 
+               ogrenci = c(T,T,F,T))
+x
+class(x)
+```
+
+data.frame icinde bir sutunu almak icin matrislerde oldugu gibi `[]` ya da `$` operatorunu kullanabilirsiniz:
+
+```{r}
+x[,2]
+x$isim
+x[3,2]
+x$isim[3]
+```
+
+## Paketler
+
+Son olarak R'da ozellesmis bazi fonksiyonlari ve veri tiplerini bulabileceginiz fonksiyonlar vardir. Bunlardan bazilari R'i indirdiginiz CRAN uzerinden, bazilari (ozellikle biyolojik veri analizi ile ilgili olanlari) [Bioconductor](https://www.bioconductor.org/) uzerinden, bazilari da paketi olusturan kisilerin github repolari uzerinden indirilir. Indirme komutlari farkli olsa da, hepsi `library(PAKETADI)` komutu ile R'a yuklenir. Kullanisli bir kac paketi yukleyelim:
+
+CRAN'dan indirmek icin:
+
+```{r, eval = F}
+install.packages('ggplot2')
+```
+
+Bioconductor'dan paket indirmeden once, CRAN'dan BiocManager paketini indirmeniz gerekir:
+
+```{r, eval = F}
+install.packages("BiocManager")
+```
+
+Bioconductor'dan paket indirmek icin, BiocManager'i `library()` fonksiyonu ile Ra yuklemeden `BiocManager::` ile bu paket icindeki bir fonksiyonu kullanabilirsiniz:
+
+```{r, eval = F}
+BiocManager::install("preprocessCore")
+```
+
+GitHub'dan bir paket indirmek icinse CRANdan indireceginiz `devtools` paketine ihtiyaciniz vardir. Paketlerin Github sayfalarindan indirme komutuna ulasabilirsiniz. Biz calistayda bu sekilde bir paket kullanmayacagiz. 
+
+
