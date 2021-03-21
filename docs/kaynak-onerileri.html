@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Bölüm 4 Insan prefrontal korteksinde gen ifadesinin zamansal dinamikleri | R Eğitim</title>
+  <title>Bölüm 9 Kaynak onerileri | R Eğitim</title>
   <meta name="description" content="22 Mart 2021 tarihinde Bioinforange tarafından düzenlenen Bioinfoconference kapsamında verilen R Eğitim çalıştay materyalini içerir." />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Bölüm 4 Insan prefrontal korteksinde gen ifadesinin zamansal dinamikleri | R Eğitim" />
+  <meta property="og:title" content="Bölüm 9 Kaynak onerileri | R Eğitim" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Bölüm 4 Insan prefrontal korteksinde gen ifadesinin zamansal dinamikleri | R Eğitim" />
+  <meta name="twitter:title" content="Bölüm 9 Kaynak onerileri | R Eğitim" />
   
   <meta name="twitter:description" content="22 Mart 2021 tarihinde Bioinforange tarafından düzenlenen Bioinfoconference kapsamında verilen R Eğitim çalıştay materyalini içerir." />
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="temel-bilgiler.html"/>
-<link rel="next" href="veri-on-isleme-basamaklari.html"/>
+<link rel="prev" href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html"/>
+
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -216,46 +216,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri" class="section level1" number="4">
-<h1><span class="header-section-number">Bölüm 4</span> Insan prefrontal korteksinde gen ifadesinin zamansal dinamikleri</h1>
-<p>Bu calismada 2011 yilinda yayinlanmis bir makalede uretilmis olan bir microarray (mikrodizin?) veriseti kullanacagiz. Gorece eski bir teknolojiyle uretilmis olsa da verinin ve veri isleme basamaklari acik bir sekilde makalede paylasilmis durumda. Bu calistay mikrodizin / transkriptom veri analizi calistayi olmadigindan bu basamaklardan bazilarini atlayacagiz (orn. kismen islenmis veri ile baslayacak ve veride batch etkisi olmadigini varsayacagiz) ve kendi verinizi analiz edecek olursaniz bu calistayi birebir takip etmeniz yeterli olmayacaktir. Ancak makalede basamaklar anlatildigindan, kendiniz onlari tekrar edebilir daha detayli ogrenebilirsiniz.</p>
-<p>Kisaca, bu verisetinde cok sayida, farkli yaslarda bireylerin olum sonrasi beyin, prefontal korteks bolgesinden alinan orneklerde gen ifade verisi var. Biz de bu verisetini indirip, yasa bagli anlatimi degisen genler neler vs. gibi kimi sorulara cevap arayacagiz. Veriseti GEO’da herkese acik bir sekilde bulunuyor, ancak veriyi indirme asamasinda kullanilacak paket ve fonksiyonlar calistayin odagini degistirebileceginden o kismi atlayip, ilk indirme islemi tamamlandiktan sonraki kisma odaklanacagiz.</p>
-<p><strong>Veriyi indirmek icin GEO baglantisi:</strong> <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE30272" class="uri">https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE30272</a></p>
-<p><strong>Makale:</strong> Colantuoni, C., Lipska, B. K., Ye, T., Hyde, T. M., Tao, R., Leek, J. T., Colantuoni, E. A., Elkahloun, A. G., Herman, M. M., Weinberger, D. R., &amp; Kleinman, J. E. (2011). Temporal dynamics and genetic control of transcription in the human prefrontal cortex. Nature, 478(7370), 519–523. <a href="https://doi.org/10.1038/nature10524" class="uri">https://doi.org/10.1038/nature10524</a></p>
-<div id="calistay-icin-verinin-on-hazirligi" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> Calistay icin verinin on hazirligi</h2>
-<p>Bu kismi calistay sirasinda yapmayacagim ve sizlere on hazirligi yapilmis bir veriseti sunacagim. Ancak kendiniz veriyi GEO’dan indirip ayni basamaklari tekrar etmek isterseniz, basamaklari burada paylasiyorum:</p>
-<p>Kismi islenmis veriyi GEOquery paketi ile GEOdan indirebiliriz:</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html#cb163-1" aria-hidden="true" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="st">&quot;GEOquery&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(GEOquery)</span>
-<span id="cb164-2"><a href="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html#cb164-2" aria-hidden="true" tabindex="-1"></a>gse <span class="ot">&lt;-</span> <span class="fu">getGEO</span>(<span class="st">&#39;GSE30272&#39;</span>,<span class="at">GSEMatrix=</span><span class="cn">TRUE</span>)</span></code></pre></div>
-<p>Bu bize bir <code>ExpressionSet</code> objesi veriyor:</p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html#cb165-1" aria-hidden="true" tabindex="-1"></a>gse</span></code></pre></div>
-<p>Buradan bireylere ait metadata, gen ekspresyon matrisi, ve gen-probeset eslesmesini bulabilecegimiz bir feature verisi olusturalim:</p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html#cb166-1" aria-hidden="true" tabindex="-1"></a>metadata <span class="ot">=</span> <span class="fu">pData</span>(gse<span class="sc">$</span>GSE30272_series_matrix.txt.gz)</span>
-<span id="cb166-2"><a href="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html#cb166-2" aria-hidden="true" tabindex="-1"></a>exprmat <span class="ot">=</span> <span class="fu">exprs</span>(gse<span class="sc">$</span>GSE30272_series_matrix.txt.gz)</span>
-<span id="cb166-3"><a href="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html#cb166-3" aria-hidden="true" tabindex="-1"></a>featdata <span class="ot">=</span> <span class="fu">fData</span>(gse<span class="sc">$</span>GSE30272_series_matrix.txt.gz)</span></code></pre></div>
-<p>Bazi bilgileri kullanmayacagiz, bu yuzden verisetinin sadece belli sutunlarini aliyorum:</p>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html#cb167-1" aria-hidden="true" tabindex="-1"></a>metadata <span class="ot">=</span> metadata[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">10</span><span class="sc">:</span><span class="dv">17</span>)]</span>
-<span id="cb167-2"><a href="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html#cb167-2" aria-hidden="true" tabindex="-1"></a>featdata <span class="ot">=</span> featdata[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>)]</span></code></pre></div>
-<p>.rds objesi olarak kaydetmek icin:</p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(exprmat, <span class="st">&#39;./data/expressionmatrix.rds&#39;</span>)</span>
-<span id="cb168-2"><a href="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html#cb168-2" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(featdata, <span class="st">&#39;./data/featuredat.rds&#39;</span>)</span>
-<span id="cb168-3"><a href="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html#cb168-3" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(metadata, <span class="st">&#39;./data/metadata.rds&#39;</span>)</span></code></pre></div>
-<p>.csv dosyasi olarak kaydetmek icin:</p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(exprmat,<span class="st">&#39;./data/expressionmatrix.csv&#39;</span>)</span>
-<span id="cb169-2"><a href="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html#cb169-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(featdata,<span class="st">&#39;./data/featuredat.csv&#39;</span>)</span>
-<span id="cb169-3"><a href="insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri.html#cb169-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(metadata,<span class="st">&#39;./data/metadata.csv&#39;</span>)</span></code></pre></div>
+<div id="kaynak-onerileri" class="section level1" number="9">
+<h1><span class="header-section-number">Bölüm 9</span> Kaynak onerileri</h1>
+<div id="online-ders" class="section level2" number="9.1">
+<h2><span class="header-section-number">9.1</span> Online ders</h2>
+<ul>
+<li><p>R ve veri bilimine giris: <a href="https://www.edx.org/professional-certificate/harvardx-data-science" class="uri">https://www.edx.org/professional-certificate/harvardx-data-science</a></p></li>
+<li><p>R ve yasam bilimlerinde veri analizi: <a href="https://www.edx.org/professional-certificate/harvardx-data-analysis-for-life-sciences" class="uri">https://www.edx.org/professional-certificate/harvardx-data-analysis-for-life-sciences</a></p></li>
+<li><p>Rda genomik analiz: <a href="https://www.edx.org/professional-certificate/harvardx-data-analysis-for-genomics" class="uri">https://www.edx.org/professional-certificate/harvardx-data-analysis-for-genomics</a></p></li>
+<li><p>R programlama: <a href="https://www.coursera.org/learn/r-programming" class="uri">https://www.coursera.org/learn/r-programming</a></p></li>
+<li><p>Coursera Data Science Specialization icinde ~10 ders var: <a href="https://www.coursera.org/specializations/jhu-data-science" class="uri">https://www.coursera.org/specializations/jhu-data-science</a></p></li>
+</ul>
+</div>
+<div id="kitaplar" class="section level2" number="9.2">
+<h2><span class="header-section-number">9.2</span> Kitaplar</h2>
+<ul>
+<li><p>R Programming for Data Science: <a href="https://leanpub.com/rprogramming" class="uri">https://leanpub.com/rprogramming</a></p></li>
+<li><p>Data Analysis for the Life Sciences: <a href="https://leanpub.com/dataanalysisforthelifesciences" class="uri">https://leanpub.com/dataanalysisforthelifesciences</a></p></li>
+<li><p>Tidyverse ogrenmek icin: <a href="https://r4ds.had.co.nz/" class="uri">https://r4ds.had.co.nz/</a></p></li>
+<li><p>ggplot’ta grafikler: <a href="https://ggplot2-book.org/" class="uri">https://ggplot2-book.org/</a></p></li>
+</ul>
+</div>
+<div id="diger" class="section level2" number="9.3">
+<h2><span class="header-section-number">9.3</span> Diger</h2>
+<p>Zaman zaman R’da hem giris duzeyinde Turkce ders notlari hem de biyolojide kullanilan grafiklere ornekler paylastigim bir blogum var: <a href="https://compbioscratchpad.com/bilgi-deposu/" class="uri">https://compbioscratchpad.com/bilgi-deposu/</a></p>
+<hr />
+<p><strong>Kaynak onerileriniz olursa bana iletirseniz bu sayfayi guncelleyebilirim.</strong></p>
 
 </div>
 </div>
+
+
+
+
+
+
             </section>
 
           </div>
         </div>
       </div>
-<a href="temel-bilgiler.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="veri-on-isleme-basamaklari.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

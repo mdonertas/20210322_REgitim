@@ -11,3 +11,18 @@ plot(x = tba$x[,1], y = tba$x[,2], pch = 19, cex = 0.5, col = renkler_sirali,
      xlab = 'PC1', ylab = 'PC2')
 ```
 
+Ayni figuru ggplot ile yapabiliriz. Ancak bunun icin bir kac `tidyverse`de yer alan paketlerden bir kac fonksiyon kullanarak veriyi sekillendirmem gerekiyor:
+
+```{r}
+library(tidyverse)
+pcadat = as.data.frame(tba$x[,1:2]) %>%
+  mutate(sample = rownames(tba$x)) %>%
+  mutate(yas = yas[sample],
+         cinsiyet = cinsiyet[sample])
+head(pcadat)
+ggplot(pcadat, aes(x = PC1, y = PC2, color = yas, shape = cinsiyet)) +
+  geom_point(size = 3) +
+  scale_color_gradient(low = 'pink', high = 'darkred') +
+  theme_bw()
+```
+

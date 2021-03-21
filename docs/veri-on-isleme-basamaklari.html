@@ -170,7 +170,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html"><i class="fa fa-check"></i><b>5</b> Veri on isleme basamaklari</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#read.csv-ve-readrds-ile-veri-okuma"><i class="fa fa-check"></i><b>5.1</b> <code>read.csv()</code> ve `readRDS()`` ile veri okuma</a></li>
+<li class="chapter" data-level="5.1" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#read.csv-ve-readrds-ile-veri-okuma"><i class="fa fa-check"></i><b>5.1</b> <code>read.csv()</code> ve <code>readRDS()</code> ile veri okuma</a></li>
 <li class="chapter" data-level="5.2" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#kesifci-veri-analizi"><i class="fa fa-check"></i><b>5.2</b> Kesifci veri analizi</a>
 <ul>
 <li class="chapter" data-level="5.2.1" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#histogram"><i class="fa fa-check"></i><b>5.2.1</b> Histogram</a></li>
@@ -190,6 +190,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6" data-path="temel-bilesenler-analizi.html"><a href="temel-bilesenler-analizi.html"><i class="fa fa-check"></i><b>6</b> Temel bilesenler analizi</a></li>
 <li class="chapter" data-level="7" data-path="yasla-degisim-analizi.html"><a href="yasla-degisim-analizi.html"><i class="fa fa-check"></i><b>7</b> Yasla degisim analizi</a></li>
 <li class="chapter" data-level="8" data-path="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html"><i class="fa fa-check"></i><b>8</b> Biyolojik cinsiyete gore farklilik gosteren gen analizi</a></li>
+<li class="chapter" data-level="9" data-path="kaynak-onerileri.html"><a href="kaynak-onerileri.html"><i class="fa fa-check"></i><b>9</b> Kaynak onerileri</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="kaynak-onerileri.html"><a href="kaynak-onerileri.html#online-ders"><i class="fa fa-check"></i><b>9.1</b> Online ders</a></li>
+<li class="chapter" data-level="9.2" data-path="kaynak-onerileri.html"><a href="kaynak-onerileri.html#kitaplar"><i class="fa fa-check"></i><b>9.2</b> Kitaplar</a></li>
+<li class="chapter" data-level="9.3" data-path="kaynak-onerileri.html"><a href="kaynak-onerileri.html#diger"><i class="fa fa-check"></i><b>9.3</b> Diger</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -214,10 +220,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Bölüm 5</span> Veri on isleme basamaklari</h1>
 <p>Veriyi GEO’dan ifade matrisi, metadata yani bireylere dair bilginin bulundugu bir tablo, ve feature data yani probeset-gen eslesmelerinin verildigi bir tablo olarak kaydettim. Simdi bunlari okuyarak baslayacagiz. Ilk olarak gen ifade verisiyle baslayalim.</p>
 <div id="read.csv-ve-readrds-ile-veri-okuma" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> <code>read.csv()</code> ve `readRDS()`` ile veri okuma</h2>
-<p><code>read.csv</code> fonksiyonu hem URL’den okuma hem de bilgisayarimizdaki bir dosyadan okuma yapmamizi saglar. Dosyayi benim github repomdan indirip, fonksiyona <code>file =</code> degiskeni olarak indirdiginiz yeri vererek okuyabilirsiniz. Simdi kolaylik olmasi acisindan direkt olarak github repomdan okuyacagiz. Bu fonksiyon ayrica baska argumanlar da aliyor. <code>header</code> dosyada sutun isimlerinin yer alip almadigini belirtmek icin kullaniliyor ve mantiksal bir arguman yani <code>TRUE</code> ya da <code>FALSE</code> degerlerini alabilir. Kullanacagimiz bir diger arguman ise <code>row.names =</code>, bu da satir isimlerinin hangi sutunda yer aldigini belirtmemiz icin gerekli. Eger bu argumani kullanmazsak, matrisimizin satir isimleri de bir sutun olarak okunacaktir.</p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="veri-on-isleme-basamaklari.html#cb170-1" aria-hidden="true" tabindex="-1"></a>expr <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">&#39;./data/expressionmatrix.csv&#39;</span>, <span class="at">header =</span> T, </span>
-<span id="cb170-2"><a href="veri-on-isleme-basamaklari.html#cb170-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">row.names =</span> <span class="dv">1</span>)</span></code></pre></div>
+<h2><span class="header-section-number">5.1</span> <code>read.csv()</code> ve <code>readRDS()</code> ile veri okuma</h2>
+<p><code>read.csv</code> fonksiyonu hem URL’den okuma hem de bilgisayarimizdaki bir dosyadan okuma yapmamizi saglar. Dosyayi <a href="https://github.com/mdonertas/20210322_REgitim/tree/master/data">github repomdan</a> indirip, fonksiyona <code>file =</code> degiskeni olarak bilgisayarinizda indirdiginiz yeri vererek okuyabilirsiniz. Simdi kolaylik olmasi acisindan direkt olarak github repomdan okuyacagiz. Bu fonksiyon ayrica baska argumanlar da aliyor. <code>header</code> dosyada sutun isimlerinin yer alip almadigini belirtmek icin kullaniliyor ve mantiksal bir arguman yani <code>TRUE</code> ya da <code>FALSE</code> degerlerini alabilir. Kullanacagimiz bir diger arguman ise <code>row.names =</code>, bu da satir isimlerinin hangi sutunda yer aldigini belirtmemiz icin gerekli. Eger bu argumani kullanmazsak, matrisimizin satir isimleri de bir sutun olarak okunacaktir.</p>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="veri-on-isleme-basamaklari.html#cb170-1" aria-hidden="true" tabindex="-1"></a>expr <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">&#39;https://github.com/mdonertas/20210322_REgitim/raw/master/data/expressionmatrix.csv&#39;</span>, </span>
+<span id="cb170-2"><a href="veri-on-isleme-basamaklari.html#cb170-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">header =</span> T, </span>
+<span id="cb170-3"><a href="veri-on-isleme-basamaklari.html#cb170-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">row.names =</span> <span class="dv">1</span>)</span></code></pre></div>
 <p>Ilk 6 satir ve 4 sutuna bakalim:</p>
 <div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="veri-on-isleme-basamaklari.html#cb171-1" aria-hidden="true" tabindex="-1"></a>expr[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span></code></pre></div>
 <pre><code>##                    GSM749899  GSM749900 GSM749901  GSM749902
@@ -230,7 +237,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Her sey yolunda gozukuyor ama bir de bu objenin daha onceden ogrendigimiz gibi <code>class</code>ina bakalim:</p>
 <div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="veri-on-isleme-basamaklari.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(expr)</span></code></pre></div>
 <pre><code>## [1] &quot;data.frame&quot;</code></pre>
-<p>Genellikle <code>read.csv</code> fonksiyonu bir data.frame olusturur. Biz bu objede kimi matris operasyonlari yapmak istiyoruz. O yuzden bunu matrise donusturmeliyiz. Bunun icin <code>as.matrix</code> yani ‘matrix olarak’ fonksiyonunu kullanabiliriz.</p>
+<p>Genellikle <code>read.csv</code> fonksiyonu bir data.frame olusturur. Biz bu objede kimi matris operasyonlari yapmak istiyoruz ve verimiz de sadece numerik degerlerden olusuyor. O yuzden bunu matrise donusturebiliriz. Bunun icin <code>as.matrix</code> yani ‘matrix olarak’ fonksiyonunu kullanabiliriz.</p>
 <div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="veri-on-isleme-basamaklari.html#cb175-1" aria-hidden="true" tabindex="-1"></a>expr <span class="ot">=</span> <span class="fu">as.matrix</span>(expr)</span></code></pre></div>
 <p>Tekrar ilk birkac satir sutun ve class kontrolumuzu yapalim:</p>
 <div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="veri-on-isleme-basamaklari.html#cb176-1" aria-hidden="true" tabindex="-1"></a>expr[<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span></code></pre></div>
@@ -273,26 +280,69 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Daha ileri gecmeden hemen bu asamada cok kisaca verimiz neye benziyor bakabiliriz. Bunun icin temel bir kac gorsellestirme fonksiyonu kullanacagiz.</p>
 <div id="histogram" class="section level3" number="5.2.1">
 <h3><span class="header-section-number">5.2.1</span> Histogram</h3>
-<p>Ilk olarak verimizin dagilimi nedir, ne gibi degerler var bunlara bakalim:</p>
+<p>Ilk olarak verimizin dagilimi nedir, ne gibi degerler var bunlara bakalim. Bunun icin histogram kullanabiliriz, ve ilk olarak temel Rda histogram cizmeyi gorelim.</p>
 <div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="veri-on-isleme-basamaklari.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(expr)</span></code></pre></div>
 <p><img src="20210322_REgitim_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
 <p>Bu sekilde, hangi bireyin veya genin verisi olduguna bakmaksizin tum degerlerin bir histogramini aliriz. Bu histogram cogu gen ekpresyon verisinde alacaginiz ham veri grafiginden cok farkli, bunun sebebi bunun two channel microarray olmasi ve loess normalizasyonu gibi kimi normalizasyon asamalarindan da gecirilmis olmasi.</p>
+<p>Buna bakmak oldukca kolaydi, ama ben genel olarak <code>ggplot2</code> paketinin gorsellestirmelerini kullaniyorum ve herkese en bastan itibaren ggplot ogrenmesini tavsiye ediyorum. Basit grafiklerde biraz zahmetli gelse de kompleks yayina hazir figur olusturmak icin cok ciddi kolaylik sagliyor. <code>ggplot2</code> data.frame objesiyle calisir, oysa bu bir matris. Bu yuzden ufak bir degisiklik yapmamiz lazim:</p>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="veri-on-isleme-basamaklari.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb193-2"><a href="veri-on-isleme-basamaklari.html#cb193-2" aria-hidden="true" tabindex="-1"></a>mydat <span class="ot">=</span> reshape2<span class="sc">::</span><span class="fu">melt</span>(expr)</span>
+<span id="cb193-3"><a href="veri-on-isleme-basamaklari.html#cb193-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mydat, <span class="fu">aes</span>(<span class="at">x =</span> value)) <span class="sc">+</span></span>
+<span id="cb193-4"><a href="veri-on-isleme-basamaklari.html#cb193-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="20210322_REgitim_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="veri-on-isleme-basamaklari.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mydat, <span class="fu">aes</span>(<span class="at">x =</span> value)) <span class="sc">+</span></span>
+<span id="cb195-2"><a href="veri-on-isleme-basamaklari.html#cb195-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">&#39;gray60&#39;</span>, <span class="at">bins =</span> <span class="dv">50</span>) <span class="sc">+</span></span>
+<span id="cb195-3"><a href="veri-on-isleme-basamaklari.html#cb195-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&#39;Probeset Expression&#39;</span>) <span class="sc">+</span></span>
+<span id="cb195-4"><a href="veri-on-isleme-basamaklari.html#cb195-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&#39;Count&#39;</span>) <span class="sc">+</span></span>
+<span id="cb195-5"><a href="veri-on-isleme-basamaklari.html#cb195-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="20210322_REgitim_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
 </div>
 <div id="boxplot" class="section level3" number="5.2.2">
 <h3><span class="header-section-number">5.2.2</span> Boxplot</h3>
-<p>Simdi de ilk birkac bireyin gen anlatim profillerine bakalim.</p>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="veri-on-isleme-basamaklari.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(expr[,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code></pre></div>
-<p><img src="20210322_REgitim_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
+<p>Simdi de ilk birkac bireyin gen anlatim profillerine bakalim. Ilk once base R gorsellestirme fonksiyonu ile:</p>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="veri-on-isleme-basamaklari.html#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(expr[,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code></pre></div>
+<p><img src="20210322_REgitim_files/figure-html/unnamed-chunk-61-1.png" width="672" /></p>
 <p>Ayni grafigi ilk bir kac gen icin cizmek isteyecek olsak, hem matrisi subset etmemiz hem de transpoze etmemiz gerekir. Bunu <code>t()</code> fonksiyonu ile kolaylikla yapabiliriz:</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="veri-on-isleme-basamaklari.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(<span class="fu">t</span>(expr[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,]))</span></code></pre></div>
-<p><img src="20210322_REgitim_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="veri-on-isleme-basamaklari.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(<span class="fu">t</span>(expr[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,]))</span></code></pre></div>
+<p><img src="20210322_REgitim_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
+<p>Aynisini ggplot ile yapalim:</p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="veri-on-isleme-basamaklari.html#cb198-1" aria-hidden="true" tabindex="-1"></a>mydat <span class="ot">=</span> reshape2<span class="sc">::</span><span class="fu">melt</span>(expr[,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span>
+<span id="cb198-2"><a href="veri-on-isleme-basamaklari.html#cb198-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mydat)</span></code></pre></div>
+<pre><code>##                 Var1      Var2     value
+## 1  HEEBO-002-CTRL2I1 GSM749899 -1.455124
+## 2 HEEBO-002-CTRL2I10 GSM749899  1.044670
+## 3 HEEBO-002-CTRL2I11 GSM749899  1.164344
+## 4 HEEBO-002-CTRL2I14 GSM749899  1.597227
+## 5 HEEBO-002-CTRL2I15 GSM749899 -1.454337
+## 6 HEEBO-002-CTRL2I16 GSM749899  1.396667</code></pre>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="veri-on-isleme-basamaklari.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mydat,<span class="fu">aes</span>(<span class="at">x =</span> Var2, <span class="at">y =</span> value)) <span class="sc">+</span></span>
+<span id="cb200-2"><a href="veri-on-isleme-basamaklari.html#cb200-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">outlier.size =</span> <span class="fl">0.01</span>, <span class="at">outlier.color =</span> <span class="st">&#39;gray&#39;</span>, <span class="at">color =</span> <span class="st">&#39;darkred&#39;</span>) <span class="sc">+</span></span>
+<span id="cb200-3"><a href="veri-on-isleme-basamaklari.html#cb200-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb200-4"><a href="veri-on-isleme-basamaklari.html#cb200-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="cn">NULL</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&#39;Probeset Expression Value&#39;</span>)</span></code></pre></div>
+<p><img src="20210322_REgitim_files/figure-html/unnamed-chunk-63-1.png" width="672" /></p>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="veri-on-isleme-basamaklari.html#cb201-1" aria-hidden="true" tabindex="-1"></a>mydat <span class="ot">=</span> reshape2<span class="sc">::</span><span class="fu">melt</span>(expr[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,])</span>
+<span id="cb201-2"><a href="veri-on-isleme-basamaklari.html#cb201-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mydat)</span></code></pre></div>
+<pre><code>##                 Var1      Var2     value
+## 1  HEEBO-002-CTRL2I1 GSM749899 -1.455124
+## 2 HEEBO-002-CTRL2I10 GSM749899  1.044670
+## 3 HEEBO-002-CTRL2I11 GSM749899  1.164344
+## 4 HEEBO-002-CTRL2I14 GSM749899  1.597227
+## 5 HEEBO-002-CTRL2I15 GSM749899 -1.454337
+## 6  HEEBO-002-CTRL2I1 GSM749900 -2.624420</code></pre>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="veri-on-isleme-basamaklari.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mydat,<span class="fu">aes</span>(<span class="at">x =</span> Var1, <span class="at">y =</span> value)) <span class="sc">+</span></span>
+<span id="cb203-2"><a href="veri-on-isleme-basamaklari.html#cb203-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape=</span><span class="cn">NA</span>, <span class="at">color =</span> <span class="st">&#39;darkred&#39;</span>) <span class="sc">+</span></span>
+<span id="cb203-3"><a href="veri-on-isleme-basamaklari.html#cb203-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">size =</span> <span class="fl">0.5</span>, <span class="at">width =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb203-4"><a href="veri-on-isleme-basamaklari.html#cb203-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb203-5"><a href="veri-on-isleme-basamaklari.html#cb203-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="cn">NULL</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&#39;Probeset Expression Value&#39;</span>)</span></code></pre></div>
+<p><img src="20210322_REgitim_files/figure-html/unnamed-chunk-64-1.png" width="672" /></p>
 </div>
 </div>
 <div id="probesetid---gen-eslestirmesi" class="section level2" number="5.3">
 <h2><span class="header-section-number">5.3</span> ProbesetID - Gen eslestirmesi</h2>
 <p>Ayni gen ifade verisi gibi probesetID - gen eslesmesi bilgisinin kayitli oldugu bir tablo daha kaydetmistim. Simdi onu okuyalim:</p>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="veri-on-isleme-basamaklari.html#cb195-1" aria-hidden="true" tabindex="-1"></a>genedata <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&#39;./data/featuredat.csv&#39;</span>)</span>
-<span id="cb195-2"><a href="veri-on-isleme-basamaklari.html#cb195-2" aria-hidden="true" tabindex="-1"></a>genedata[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,]</span></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="veri-on-isleme-basamaklari.html#cb204-1" aria-hidden="true" tabindex="-1"></a>genedata <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&#39;https://github.com/mdonertas/20210322_REgitim/raw/master/data/featuredat.csv&#39;</span>)</span>
+<span id="cb204-2"><a href="veri-on-isleme-basamaklari.html#cb204-2" aria-hidden="true" tabindex="-1"></a>genedata[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,]</span></code></pre></div>
 <pre><code>##                    X                 ID   OligoID
 ## 1  HEEBO-002-CTRL2I1  HEEBO-002-CTRL2I1 hCT000577
 ## 2 HEEBO-002-CTRL2I10 HEEBO-002-CTRL2I10 hCT000586
@@ -309,94 +359,94 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 1           1509          Hs.654447 100/100_Unique_RefSeq        
 ## 2           1938          Hs.515070 100/100_Unique_RefSeq        
 ## 3           7431          Hs.455493 100/100_Unique_RefSeq</code></pre>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="veri-on-isleme-basamaklari.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(genedata)</span></code></pre></div>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="veri-on-isleme-basamaklari.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(genedata)</span></code></pre></div>
 <pre><code>## [1] &quot;data.frame&quot;</code></pre>
 <p>Ilk olarak gen bilgisini duzenleyelim. Bunun icin bu data.frame’den iki sutunu kullanacagiz.</p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="veri-on-isleme-basamaklari.html#cb199-1" aria-hidden="true" tabindex="-1"></a>genedata<span class="sc">$</span>ID[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="veri-on-isleme-basamaklari.html#cb208-1" aria-hidden="true" tabindex="-1"></a>genedata<span class="sc">$</span>ID[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
 <pre><code>##  [1] &quot;HEEBO-002-CTRL2I1&quot;  &quot;HEEBO-002-CTRL2I10&quot; &quot;HEEBO-002-CTRL2I11&quot;
 ##  [4] &quot;HEEBO-002-CTRL2I14&quot; &quot;HEEBO-002-CTRL2I15&quot; &quot;HEEBO-002-CTRL2I16&quot;
 ##  [7] &quot;HEEBO-002-CTRL2I17&quot; &quot;HEEBO-002-CTRL2I18&quot; &quot;HEEBO-002-CTRL2I19&quot;
 ## [10] &quot;HEEBO-002-CTRL2I2&quot;</code></pre>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="veri-on-isleme-basamaklari.html#cb201-1" aria-hidden="true" tabindex="-1"></a>genedata<span class="sc">$</span>Gene_Symbol[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="veri-on-isleme-basamaklari.html#cb210-1" aria-hidden="true" tabindex="-1"></a>genedata<span class="sc">$</span>Gene_Symbol[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
 <pre><code>##  [1] &quot;CTSD&quot; &quot;EEF2&quot; &quot;VIM&quot;  &quot;VIM&quot;  &quot;GSN&quot;  &quot;EEF2&quot; &quot;VIM&quot;  &quot;CTSD&quot; &quot;RPN2&quot; &quot;RPN2&quot;</code></pre>
 <p>Simdi isimlendirilmis bir vektor olusturacagim ki, belli bir probe IDye karsilik gelen geni bulabileyim. Bunu yapmak icin <code>setNames()</code> fonksiyonunu kullanacagim. Isimler, yani ikinci arguman, probeID olacak, vektorun kendisi ise genler, bu sayede vektoru belli bir probe ID kullanarak subset ettigimde hangi gen oldugunu bulabilirim. Buna gecmeden bir ornek:</p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="veri-on-isleme-basamaklari.html#cb203-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">setNames</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>),<span class="fu">c</span>(<span class="st">&#39;bir&#39;</span>,<span class="st">&#39;iki&#39;</span>,<span class="st">&#39;uc&#39;</span>))</span>
-<span id="cb203-2"><a href="veri-on-isleme-basamaklari.html#cb203-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="veri-on-isleme-basamaklari.html#cb212-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">setNames</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>),<span class="fu">c</span>(<span class="st">&#39;bir&#39;</span>,<span class="st">&#39;iki&#39;</span>,<span class="st">&#39;uc&#39;</span>))</span>
+<span id="cb212-2"><a href="veri-on-isleme-basamaklari.html#cb212-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>## bir iki  uc 
 ##   1   2   3</code></pre>
 <p>ikinci elemani almak icin:</p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="veri-on-isleme-basamaklari.html#cb205-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="veri-on-isleme-basamaklari.html#cb214-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">2</span>]</span></code></pre></div>
 <pre><code>## iki 
 ##   2</code></pre>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="veri-on-isleme-basamaklari.html#cb207-1" aria-hidden="true" tabindex="-1"></a>x[<span class="st">&#39;iki&#39;</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="veri-on-isleme-basamaklari.html#cb216-1" aria-hidden="true" tabindex="-1"></a>x[<span class="st">&#39;iki&#39;</span>]</span></code></pre></div>
 <pre><code>## iki 
 ##   2</code></pre>
 <p>Bunlarin ikisini de kullanabiliyorum. IDleri kullanarak genleri bulmam da ayni sekilde olacak:</p>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="veri-on-isleme-basamaklari.html#cb209-1" aria-hidden="true" tabindex="-1"></a>genemap <span class="ot">=</span> <span class="fu">setNames</span>(genedata<span class="sc">$</span>Gene_Symbol,genedata<span class="sc">$</span>ID)</span>
-<span id="cb209-2"><a href="veri-on-isleme-basamaklari.html#cb209-2" aria-hidden="true" tabindex="-1"></a>genemap[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="veri-on-isleme-basamaklari.html#cb218-1" aria-hidden="true" tabindex="-1"></a>genemap <span class="ot">=</span> <span class="fu">setNames</span>(genedata<span class="sc">$</span>Gene_Symbol,genedata<span class="sc">$</span>ID)</span>
+<span id="cb218-2"><a href="veri-on-isleme-basamaklari.html#cb218-2" aria-hidden="true" tabindex="-1"></a>genemap[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div>
 <pre><code>##  HEEBO-002-CTRL2I1 HEEBO-002-CTRL2I10 HEEBO-002-CTRL2I11 HEEBO-002-CTRL2I14 
 ##             &quot;CTSD&quot;             &quot;EEF2&quot;              &quot;VIM&quot;              &quot;VIM&quot; 
 ## HEEBO-002-CTRL2I15 
 ##              &quot;GSN&quot;</code></pre>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="veri-on-isleme-basamaklari.html#cb211-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(genemap)</span></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="veri-on-isleme-basamaklari.html#cb220-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(genemap)</span></code></pre></div>
 <pre><code>##  HEEBO-002-CTRL2I1 HEEBO-002-CTRL2I10 HEEBO-002-CTRL2I11 HEEBO-002-CTRL2I14 
 ##             &quot;CTSD&quot;             &quot;EEF2&quot;              &quot;VIM&quot;              &quot;VIM&quot; 
 ## HEEBO-002-CTRL2I15 HEEBO-002-CTRL2I16 
 ##              &quot;GSN&quot;             &quot;EEF2&quot;</code></pre>
 <p>Matrisin satir isimleriyle genemap’i subset ettigimiz zaman, dogru sirayla hangi genlere karsilik geliyorsa bize bu bilgiyi verecek. Simdi once bir yanlis yapma ihtimalimize karsin matrisimizi kopyalayalim:</p>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="veri-on-isleme-basamaklari.html#cb213-1" aria-hidden="true" tabindex="-1"></a>expr_yedek <span class="ot">=</span> expr</span></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="veri-on-isleme-basamaklari.html#cb222-1" aria-hidden="true" tabindex="-1"></a>expr_yedek <span class="ot">=</span> expr</span></code></pre></div>
 <p>Simdi ilk olarak bir probeset ID birden fazla genle eslesiyor mu buna bakmaliyiz, bunlar veri duplikasyonu yaratacagindan istatistiksel test yapmamizi zorlastirir bunlari veriden cikararak baslayacagiz:</p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="veri-on-isleme-basamaklari.html#cb214-1" aria-hidden="true" tabindex="-1"></a><span class="fu">any</span>(<span class="fu">duplicated</span>(<span class="fu">names</span>(genemap)))</span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="veri-on-isleme-basamaklari.html#cb223-1" aria-hidden="true" tabindex="-1"></a><span class="fu">any</span>(<span class="fu">duplicated</span>(<span class="fu">names</span>(genemap)))</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>Hic tekrar eden bir probesetIDmiz yok - yani bu bu veriseti icin problem degil. Bir de cok fazla sayida probesetIDye map olmus olan genlere bakalim:</p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb216-1"><a href="veri-on-isleme-basamaklari.html#cb216-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">table</span>(genemap),<span class="at">dec=</span>T)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="veri-on-isleme-basamaklari.html#cb225-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">table</span>(genemap),<span class="at">dec=</span>T)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
 <pre><code>## genemap
 ## ##noname##                  LRP1       OCRL       TLN1        TTN      CDH23 
 ##        903        825         88         62         55         55         41 
 ##      ANXA7        RB1      DNAH9 
 ##         40         40         37</code></pre>
 <p>Bunlardan <code>'##noname##</code> ve <code>''</code> tabii ki gen ismi degil. Bunlari veriden cikartmak gerekir, ama bunu matrixe isimleri gecirdikten sonra yapacagim. Simdi probeset IDleri gen isimleriyle degistirerek devam edelim:</p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb218-1"><a href="veri-on-isleme-basamaklari.html#cb218-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(expr) <span class="ot">=</span> genemap[<span class="fu">rownames</span>(expr)]</span></code></pre></div>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="veri-on-isleme-basamaklari.html#cb219-1" aria-hidden="true" tabindex="-1"></a>expr[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="veri-on-isleme-basamaklari.html#cb227-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(expr) <span class="ot">=</span> genemap[<span class="fu">rownames</span>(expr)]</span></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="veri-on-isleme-basamaklari.html#cb228-1" aria-hidden="true" tabindex="-1"></a>expr[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div>
 <pre><code>##      GSM749899  GSM749900 GSM749901  GSM749902  GSM749903
 ## CTSD -1.455124 -2.6244200 -1.904436 -1.5793507 -2.1666262
 ## EEF2  1.044670  0.4490985  0.619243  0.1930628 -0.4370544
 ## VIM   1.164344  1.5833201  1.150024  1.5764080  1.3569308
 ## VIM   1.597227  1.4105770  1.469449  2.6433802  1.7567335
 ## GSN  -1.454337 -1.9784923 -1.485409 -1.5038039 -1.2828650</code></pre>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="veri-on-isleme-basamaklari.html#cb221-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">table</span>(<span class="fu">rownames</span>(expr)), <span class="at">dec =</span> T)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="veri-on-isleme-basamaklari.html#cb230-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">table</span>(<span class="fu">rownames</span>(expr)), <span class="at">dec =</span> T)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
 <pre><code>## 
 ## ##noname##                  LRP1       OCRL       TLN1        TTN      CDH23 
 ##        903        825         88         62         55         55         41 
 ##      ANXA7        RB1      DNAH9 
 ##         40         40         37</code></pre>
 <p>Burada gordugunuz gibi bazi gen isimleri birden fazla kez tekrar ediliyor. Bu mikrodizin dizaynindan kaynakli bir durum, her gen bir ya da daha fazla probeset ile temsil ediliyor. Genelde her gen bu probesetlerin ortalamasi ya da maksimumu alinarak ozetlenir - bu sayede her gen matriste bir defa yer alir. Bunu yapmak icin matrisi gen isimleriyle subset etmeyi ogrenecegiz. Zaten belli bir isimle subset yapmayi biliyoruz, ancak bu sadece tekrarli olmayan durumlarda gecerli. Suna bakalim:</p>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="veri-on-isleme-basamaklari.html#cb223-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">setNames</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>), <span class="fu">c</span>(<span class="st">&#39;bir&#39;</span>,<span class="st">&#39;iki&#39;</span>,<span class="st">&#39;iki&#39;</span>,<span class="st">&#39;dort&#39;</span>,<span class="st">&#39;bes&#39;</span>))</span>
-<span id="cb223-2"><a href="veri-on-isleme-basamaklari.html#cb223-2" aria-hidden="true" tabindex="-1"></a>x[<span class="st">&#39;iki&#39;</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="veri-on-isleme-basamaklari.html#cb232-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">setNames</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>), <span class="fu">c</span>(<span class="st">&#39;bir&#39;</span>,<span class="st">&#39;iki&#39;</span>,<span class="st">&#39;iki&#39;</span>,<span class="st">&#39;dort&#39;</span>,<span class="st">&#39;bes&#39;</span>))</span>
+<span id="cb232-2"><a href="veri-on-isleme-basamaklari.html#cb232-2" aria-hidden="true" tabindex="-1"></a>x[<span class="st">&#39;iki&#39;</span>]</span></code></pre></div>
 <pre><code>## iki 
 ##   2</code></pre>
 <p>oysa 3 degerine sahip olan elemanin adi da ‘iki.’ Bu tarz tekrarli durumlarda otomatik olarak ilk eleman verilir. Ikisini birden istiyorsak subset islemini <code>%in%</code> operatoru ile yapmamiz gerekir.</p>
 <div id="in-operatoru" class="section level3" number="5.3.1">
 <h3><span class="header-section-number">5.3.1</span> <code>%in%</code> operatoru</h3>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="veri-on-isleme-basamaklari.html#cb225-1" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;elma&#39;</span> <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&#39;elma&#39;</span>,<span class="st">&#39;armut&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="veri-on-isleme-basamaklari.html#cb234-1" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;elma&#39;</span> <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&#39;elma&#39;</span>,<span class="st">&#39;armut&#39;</span>)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="veri-on-isleme-basamaklari.html#cb227-1" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;muz&#39;</span> <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&#39;elma&#39;</span>,<span class="st">&#39;armut&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="veri-on-isleme-basamaklari.html#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="st">&#39;muz&#39;</span> <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&#39;elma&#39;</span>,<span class="st">&#39;armut&#39;</span>)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="veri-on-isleme-basamaklari.html#cb229-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">&#39;elma&#39;</span>, <span class="st">&#39;muz&#39;</span>) <span class="sc">%in%</span> <span class="st">&#39;elma&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="veri-on-isleme-basamaklari.html#cb238-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">&#39;elma&#39;</span>, <span class="st">&#39;muz&#39;</span>) <span class="sc">%in%</span> <span class="st">&#39;elma&#39;</span></span></code></pre></div>
 <pre><code>## [1]  TRUE FALSE</code></pre>
-<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="veri-on-isleme-basamaklari.html#cb231-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">&#39;elma&#39;</span>, <span class="st">&#39;muz&#39;</span>) <span class="sc">%in%</span> <span class="st">&#39;muz&#39;</span></span></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="veri-on-isleme-basamaklari.html#cb240-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">&#39;elma&#39;</span>, <span class="st">&#39;muz&#39;</span>) <span class="sc">%in%</span> <span class="st">&#39;muz&#39;</span></span></code></pre></div>
 <pre><code>## [1] FALSE  TRUE</code></pre>
 <p>Bilmemiz gereken bir konu da bir vektoru ya da matrisi mantiksal degiskenlerle de subset edebildigimiz:</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="veri-on-isleme-basamaklari.html#cb233-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)[<span class="fu">c</span>(T,T,F,T,F)]</span></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="veri-on-isleme-basamaklari.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)[<span class="fu">c</span>(T,T,F,T,F)]</span></code></pre></div>
 <pre><code>## [1] 1 2 4</code></pre>
 <p>Ilk olarak gen ismi olarak <code>'##noname##</code> ve <code>''</code> gorunen satirlari veriden cikartarak baslamaliyiz:</p>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="veri-on-isleme-basamaklari.html#cb235-1" aria-hidden="true" tabindex="-1"></a>expr <span class="ot">=</span> expr[<span class="sc">!</span><span class="fu">rownames</span>(expr) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&#39;##noname##&#39;</span>,<span class="st">&#39;&#39;</span>),]</span></code></pre></div>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="veri-on-isleme-basamaklari.html#cb236-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">table</span>(<span class="fu">rownames</span>(expr)),<span class="at">dec=</span>T)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="veri-on-isleme-basamaklari.html#cb244-1" aria-hidden="true" tabindex="-1"></a>expr <span class="ot">=</span> expr[<span class="sc">!</span><span class="fu">rownames</span>(expr) <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&#39;##noname##&#39;</span>,<span class="st">&#39;&#39;</span>),]</span></code></pre></div>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="veri-on-isleme-basamaklari.html#cb245-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">table</span>(<span class="fu">rownames</span>(expr)),<span class="at">dec=</span>T)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
 <pre><code>## 
 ##  LRP1  OCRL  TLN1   TTN CDH23 ANXA7   RB1 DNAH9 WDFY3 SYNE2 
 ##    88    62    55    55    41    40    40    37    37    36</code></pre>
 <p>Simdi tekrar eden genleri ozetlemeye geri donelim.</p>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="veri-on-isleme-basamaklari.html#cb238-1" aria-hidden="true" tabindex="-1"></a>expr[<span class="fu">rownames</span>(expr) <span class="sc">%in%</span> <span class="st">&#39;VIM&#39;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="veri-on-isleme-basamaklari.html#cb247-1" aria-hidden="true" tabindex="-1"></a>expr[<span class="fu">rownames</span>(expr) <span class="sc">%in%</span> <span class="st">&#39;VIM&#39;</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div>
 <pre><code>##     GSM749899 GSM749900 GSM749901 GSM749902 GSM749903
 ## VIM  1.164344  1.583320  1.150024  1.576408  1.356931
 ## VIM  1.597227  1.410577  1.469449  2.643380  1.756734
@@ -408,56 +458,56 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## VIM  1.446696  1.451936  1.782307  2.605349  1.957581
 ## VIM  1.131674  1.172329  1.053107  1.871871  1.780982</code></pre>
 <p>Simdi yeni bir fonksiyon ogrenelim <code>colMeans()</code> bu da adi ustunde sutun ortalamasini aliyor. Yani matrisi tum VIM genine karsilik gelen probesetler icin subset edip, <code>colMeans()</code> dersek tek boyutlu, satirlarin ortalamasina sahip bir vektor verecek:</p>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="veri-on-isleme-basamaklari.html#cb240-1" aria-hidden="true" tabindex="-1"></a>vimmeans <span class="ot">=</span> <span class="fu">colMeans</span>(expr[<span class="fu">rownames</span>(expr) <span class="sc">%in%</span> <span class="st">&#39;VIM&#39;</span>, ])</span>
-<span id="cb240-2"><a href="veri-on-isleme-basamaklari.html#cb240-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(vimmeans)</span></code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="veri-on-isleme-basamaklari.html#cb249-1" aria-hidden="true" tabindex="-1"></a>vimmeans <span class="ot">=</span> <span class="fu">colMeans</span>(expr[<span class="fu">rownames</span>(expr) <span class="sc">%in%</span> <span class="st">&#39;VIM&#39;</span>, ])</span>
+<span id="cb249-2"><a href="veri-on-isleme-basamaklari.html#cb249-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(vimmeans)</span></code></pre></div>
 <pre><code>## GSM749899 GSM749900 GSM749901 GSM749902 GSM749903 GSM749904 
 ##  1.784125  1.566502  1.696743  2.150507  1.953699  1.409357</code></pre>
 <p>Ama bu sadece tek bir gen icin. Oysa biz tek genle ilgilenmiyoruz, butun genler icin bunu yapmak istiyoruz. Eger programlama dillerine asinaysaniz <code>for</code> loop larini duymussunuzdur. Bunlar ayni islemin defalarca ayni ya da farkli inputlar icin tekrarlanmasini saglar. R’da da for loop yazabiliriz bunun icin kullanilacak fonksiyon <code>for</code>. Bizse for yerine R’a ozgu *apply fonksiyonlari olarak gecen fonksiyonlardan biri olan <code>sapply()</code> fonksiyonu ile bunu yapacagiz. Ilk olarak butun gen isimlerini almaliyiz. Bunu sadece <code>rownames()</code> ile alamiyoruz cunku isimler tekrar ediyor. Onun yerine her degerin sadece bir kere tekrar edilmesini <code>unique()</code> fonksiyonu ile saglayacagiz.</p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="veri-on-isleme-basamaklari.html#cb242-1" aria-hidden="true" tabindex="-1"></a>genisimleri <span class="ot">=</span> <span class="fu">unique</span>(<span class="fu">rownames</span>(expr))</span>
-<span id="cb242-2"><a href="veri-on-isleme-basamaklari.html#cb242-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(expr)</span></code></pre></div>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="veri-on-isleme-basamaklari.html#cb251-1" aria-hidden="true" tabindex="-1"></a>genisimleri <span class="ot">=</span> <span class="fu">unique</span>(<span class="fu">rownames</span>(expr))</span>
+<span id="cb251-2"><a href="veri-on-isleme-basamaklari.html#cb251-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(expr)</span></code></pre></div>
 <pre><code>## [1] 28448</code></pre>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="veri-on-isleme-basamaklari.html#cb244-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(genisimleri)</span></code></pre></div>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="veri-on-isleme-basamaklari.html#cb253-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(genisimleri)</span></code></pre></div>
 <pre><code>## [1] 17160</code></pre>
 <p>Sadece 17bin gen var. Yani her gen cok defa tekrar ediliyor olmak zorunda degil. Eger tekrar edilmeyen bir geni subset edersek, ‘sutun ortalamalarini ver’ demek icin kullanacagimiz <code>colMeans</code> fonksiyonu calismaz, cunku bir matris degil bir vektor soz konusu olacak. Bunun icin bir de <code>if</code> fonksiyonunu ogrenmeliyiz. <code>if</code> bir kodu ancak belli kosullar altinda calistiracaktir. Bu sayede eger bir defa geciyorsa sunu yap, birden fazla kez tekrar ediliyorsa sunu yap seklinde bir kod yazmamiz mumkun olacak. If’e cok kisa bir ornek:</p>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="veri-on-isleme-basamaklari.html#cb246-1" aria-hidden="true" tabindex="-1"></a>vektorum <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;elma&#39;</span>,<span class="st">&#39;muz&#39;</span>,<span class="st">&#39;armut&#39;</span>)</span>
-<span id="cb246-2"><a href="veri-on-isleme-basamaklari.html#cb246-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="st">&#39;cilek&#39;</span><span class="sc">%in%</span>vektorum){</span>
-<span id="cb246-3"><a href="veri-on-isleme-basamaklari.html#cb246-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&#39;cilek var!&#39;</span>)</span>
-<span id="cb246-4"><a href="veri-on-isleme-basamaklari.html#cb246-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span>(<span class="st">&#39;elma&#39;</span> <span class="sc">%in%</span> vektorum){</span>
-<span id="cb246-5"><a href="veri-on-isleme-basamaklari.html#cb246-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&#39;elma var!&#39;</span>)</span>
-<span id="cb246-6"><a href="veri-on-isleme-basamaklari.html#cb246-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span>{</span>
-<span id="cb246-7"><a href="veri-on-isleme-basamaklari.html#cb246-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&#39;ne cilek ne elma var :(&#39;</span>)</span>
-<span id="cb246-8"><a href="veri-on-isleme-basamaklari.html#cb246-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="veri-on-isleme-basamaklari.html#cb255-1" aria-hidden="true" tabindex="-1"></a>vektorum <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;elma&#39;</span>,<span class="st">&#39;muz&#39;</span>,<span class="st">&#39;armut&#39;</span>)</span>
+<span id="cb255-2"><a href="veri-on-isleme-basamaklari.html#cb255-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="st">&#39;cilek&#39;</span><span class="sc">%in%</span>vektorum){</span>
+<span id="cb255-3"><a href="veri-on-isleme-basamaklari.html#cb255-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&#39;cilek var!&#39;</span>)</span>
+<span id="cb255-4"><a href="veri-on-isleme-basamaklari.html#cb255-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span>(<span class="st">&#39;elma&#39;</span> <span class="sc">%in%</span> vektorum){</span>
+<span id="cb255-5"><a href="veri-on-isleme-basamaklari.html#cb255-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&#39;elma var!&#39;</span>)</span>
+<span id="cb255-6"><a href="veri-on-isleme-basamaklari.html#cb255-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span>{</span>
+<span id="cb255-7"><a href="veri-on-isleme-basamaklari.html#cb255-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&#39;ne cilek ne elma var :(&#39;</span>)</span>
+<span id="cb255-8"><a href="veri-on-isleme-basamaklari.html#cb255-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;elma var!&quot;</code></pre>
 <p>daha iyi anlayabilmemiz icin bir ornek daha:</p>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="veri-on-isleme-basamaklari.html#cb248-1" aria-hidden="true" tabindex="-1"></a>vektorum <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;elma&#39;</span>,<span class="st">&#39;muz&#39;</span>,<span class="st">&#39;armut&#39;</span>)</span>
-<span id="cb248-2"><a href="veri-on-isleme-basamaklari.html#cb248-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="st">&#39;muz&#39;</span><span class="sc">%in%</span>vektorum){</span>
-<span id="cb248-3"><a href="veri-on-isleme-basamaklari.html#cb248-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&#39;muz var!&#39;</span>)</span>
-<span id="cb248-4"><a href="veri-on-isleme-basamaklari.html#cb248-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span>(<span class="st">&#39;elma&#39;</span> <span class="sc">%in%</span> vektorum){</span>
-<span id="cb248-5"><a href="veri-on-isleme-basamaklari.html#cb248-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&#39;elma var!&#39;</span>)</span>
-<span id="cb248-6"><a href="veri-on-isleme-basamaklari.html#cb248-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span>{</span>
-<span id="cb248-7"><a href="veri-on-isleme-basamaklari.html#cb248-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&#39;ne cilek ne elma var :(&#39;</span>)</span>
-<span id="cb248-8"><a href="veri-on-isleme-basamaklari.html#cb248-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="veri-on-isleme-basamaklari.html#cb257-1" aria-hidden="true" tabindex="-1"></a>vektorum <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;elma&#39;</span>,<span class="st">&#39;muz&#39;</span>,<span class="st">&#39;armut&#39;</span>)</span>
+<span id="cb257-2"><a href="veri-on-isleme-basamaklari.html#cb257-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="st">&#39;muz&#39;</span><span class="sc">%in%</span>vektorum){</span>
+<span id="cb257-3"><a href="veri-on-isleme-basamaklari.html#cb257-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&#39;muz var!&#39;</span>)</span>
+<span id="cb257-4"><a href="veri-on-isleme-basamaklari.html#cb257-4" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span>(<span class="st">&#39;elma&#39;</span> <span class="sc">%in%</span> vektorum){</span>
+<span id="cb257-5"><a href="veri-on-isleme-basamaklari.html#cb257-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&#39;elma var!&#39;</span>)</span>
+<span id="cb257-6"><a href="veri-on-isleme-basamaklari.html#cb257-6" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span>{</span>
+<span id="cb257-7"><a href="veri-on-isleme-basamaklari.html#cb257-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&#39;ne cilek ne elma var :(&#39;</span>)</span>
+<span id="cb257-8"><a href="veri-on-isleme-basamaklari.html#cb257-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;muz var!&quot;</code></pre>
 <p>hem elma hem muz olmasina ragmen sadece birinci komut calisti. Bunun sebebi <code>else</code> komutu ancak ilk kodumuz yanlissa calisacak olmasi.</p>
 <p>Simdi de cok kisa <code>sapply()</code> nasil calisiyor buna bakalim:</p>
-<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="veri-on-isleme-basamaklari.html#cb250-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),<span class="cf">function</span>(i){</span>
-<span id="cb250-2"><a href="veri-on-isleme-basamaklari.html#cb250-2" aria-hidden="true" tabindex="-1"></a>  i <span class="sc">*</span> <span class="dv">2</span></span>
-<span id="cb250-3"><a href="veri-on-isleme-basamaklari.html#cb250-3" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="veri-on-isleme-basamaklari.html#cb259-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),<span class="cf">function</span>(i){</span>
+<span id="cb259-2"><a href="veri-on-isleme-basamaklari.html#cb259-2" aria-hidden="true" tabindex="-1"></a>  i <span class="sc">*</span> <span class="dv">2</span></span>
+<span id="cb259-3"><a href="veri-on-isleme-basamaklari.html#cb259-3" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
 <pre><code>##  [1]  2  4  6  8 10 12 14 16 18 20</code></pre>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="veri-on-isleme-basamaklari.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),<span class="cf">function</span>(i){</span>
-<span id="cb252-2"><a href="veri-on-isleme-basamaklari.html#cb252-2" aria-hidden="true" tabindex="-1"></a>  i <span class="sc">*</span> (i<span class="dv">-1</span>)</span>
-<span id="cb252-3"><a href="veri-on-isleme-basamaklari.html#cb252-3" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="veri-on-isleme-basamaklari.html#cb261-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>),<span class="cf">function</span>(i){</span>
+<span id="cb261-2"><a href="veri-on-isleme-basamaklari.html#cb261-2" aria-hidden="true" tabindex="-1"></a>  i <span class="sc">*</span> (i<span class="dv">-1</span>)</span>
+<span id="cb261-3"><a href="veri-on-isleme-basamaklari.html#cb261-3" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
 <pre><code>##  [1]  0  2  6 12 20 30 42 56 72 90</code></pre>
 <p>Simdi biraz ileri duzey gibi gorunmesi muhtemel bir kod yazacagiz ama basamak basamak inceleyince anlasilmasi kolay olacaktir:</p>
-<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="veri-on-isleme-basamaklari.html#cb254-1" aria-hidden="true" tabindex="-1"></a>genexpr <span class="ot">=</span> <span class="fu">sapply</span>(genisimleri, <span class="cf">function</span>(gen) {</span>
-<span id="cb254-2"><a href="veri-on-isleme-basamaklari.html#cb254-2" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">=</span> <span class="fu">rownames</span>(expr)<span class="sc">%in%</span>gen</span>
-<span id="cb254-3"><a href="veri-on-isleme-basamaklari.html#cb254-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">sum</span>(i)<span class="sc">&gt;</span><span class="dv">1</span>){</span>
-<span id="cb254-4"><a href="veri-on-isleme-basamaklari.html#cb254-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">colMeans</span>(expr[i,])</span>
-<span id="cb254-5"><a href="veri-on-isleme-basamaklari.html#cb254-5" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span>(<span class="fu">sum</span>(i)<span class="sc">==</span><span class="dv">1</span>){</span>
-<span id="cb254-6"><a href="veri-on-isleme-basamaklari.html#cb254-6" aria-hidden="true" tabindex="-1"></a>    expr[i,]</span>
-<span id="cb254-7"><a href="veri-on-isleme-basamaklari.html#cb254-7" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb254-8"><a href="veri-on-isleme-basamaklari.html#cb254-8" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="veri-on-isleme-basamaklari.html#cb255-1" aria-hidden="true" tabindex="-1"></a>genexpr[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="veri-on-isleme-basamaklari.html#cb263-1" aria-hidden="true" tabindex="-1"></a>genexpr <span class="ot">=</span> <span class="fu">sapply</span>(genisimleri, <span class="cf">function</span>(gen) {</span>
+<span id="cb263-2"><a href="veri-on-isleme-basamaklari.html#cb263-2" aria-hidden="true" tabindex="-1"></a>  i <span class="ot">=</span> <span class="fu">rownames</span>(expr)<span class="sc">%in%</span>gen</span>
+<span id="cb263-3"><a href="veri-on-isleme-basamaklari.html#cb263-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span>(<span class="fu">sum</span>(i)<span class="sc">&gt;</span><span class="dv">1</span>){</span>
+<span id="cb263-4"><a href="veri-on-isleme-basamaklari.html#cb263-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">colMeans</span>(expr[i,])</span>
+<span id="cb263-5"><a href="veri-on-isleme-basamaklari.html#cb263-5" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span>(<span class="fu">sum</span>(i)<span class="sc">==</span><span class="dv">1</span>){</span>
+<span id="cb263-6"><a href="veri-on-isleme-basamaklari.html#cb263-6" aria-hidden="true" tabindex="-1"></a>    expr[i,]</span>
+<span id="cb263-7"><a href="veri-on-isleme-basamaklari.html#cb263-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb263-8"><a href="veri-on-isleme-basamaklari.html#cb263-8" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="veri-on-isleme-basamaklari.html#cb264-1" aria-hidden="true" tabindex="-1"></a>genexpr[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div>
 <pre><code>##                 CTSD      EEF2      VIM        GSN     RPN2
 ## GSM749899 -0.8124619 1.5620237 1.784125 -0.6578933 1.658038
 ## GSM749900 -1.3310489 1.4339156 1.566502 -1.1007844 1.528385
@@ -465,15 +515,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## GSM749902 -1.2017866 0.7393814 2.150507 -0.8413292 1.153392
 ## GSM749903 -1.1041998 0.2957918 1.953699 -0.7242716 0.789019</code></pre>
 <p>satir-sutun yer degistirmis durumda. bunu yine transpoze ederek duzeltebiliriz:</p>
-<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="veri-on-isleme-basamaklari.html#cb257-1" aria-hidden="true" tabindex="-1"></a>genexpr <span class="ot">=</span> <span class="fu">t</span>(genexpr)</span></code></pre></div>
-<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="veri-on-isleme-basamaklari.html#cb258-1" aria-hidden="true" tabindex="-1"></a>genexpr[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="veri-on-isleme-basamaklari.html#cb266-1" aria-hidden="true" tabindex="-1"></a>genexpr <span class="ot">=</span> <span class="fu">t</span>(genexpr)</span></code></pre></div>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="veri-on-isleme-basamaklari.html#cb267-1" aria-hidden="true" tabindex="-1"></a>genexpr[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div>
 <pre><code>##       GSM749899 GSM749900  GSM749901  GSM749902  GSM749903
 ## CTSD -0.8124619 -1.331049 -1.2447029 -1.2017866 -1.1041998
 ## EEF2  1.5620237  1.433916  0.9832866  0.7393814  0.2957918
 ## VIM   1.7841245  1.566502  1.6967431  2.1505070  1.9536987
 ## GSN  -0.6578933 -1.100784 -1.0306526 -0.8413292 -0.7242716
 ## RPN2  1.6580375  1.528385  1.2863177  1.1533917  0.7890190</code></pre>
-<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="veri-on-isleme-basamaklari.html#cb260-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(genexpr)</span></code></pre></div>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="veri-on-isleme-basamaklari.html#cb269-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(genexpr)</span></code></pre></div>
 <pre><code>## [1] 17160   269</code></pre>
 <p>Artik her gen icin bir satirimiz var!</p>
 </div>
@@ -481,17 +531,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="quantile-normalization" class="section level2" number="5.4">
 <h2><span class="header-section-number">5.4</span> Quantile Normalization</h2>
 <p>Son olarak bu gen ifade matrixinde bir normalizasyon metodu uygulayalim. Burada amacimiz farkli ornekler arasindaki olasi teknik varyasyonu ortadan kaldirmak. Uygulayacagimiz normalizasyonun adi ‘quantile normalization’ - bunun sonunda tum orneklerin dagilimlari ayni olacak - genler farkli degerler alacak ama genlerin dagilimi ayni olacak. Normalizasyon oncesi ilk bir kac bireyin dagilimina bakalim.</p>
-<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="veri-on-isleme-basamaklari.html#cb262-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(genexpr[,<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>])</span></code></pre></div>
-<p><img src="20210322_REgitim_files/figure-html/unnamed-chunk-88-1.png" width="672" />
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="veri-on-isleme-basamaklari.html#cb271-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(genexpr[,<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>])</span></code></pre></div>
+<p><img src="20210322_REgitim_files/figure-html/unnamed-chunk-92-1.png" width="672" />
 Gordugunuz gibi ortalamalari hemen hemen ayni olsa da (bunun sebebi verinin zaten baska bir yontemle kismen normalize edilmis olmasi), Dagilimlar farkli.</p>
 <p>Normalizasyon icin Rda olmayan bir fonksiyon kullanacagiz, bunun icin de <code>preprocessCore</code> paketini yuklememiz gerekiyor:</p>
-<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="veri-on-isleme-basamaklari.html#cb263-1" aria-hidden="true" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="st">&quot;preprocessCore&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="veri-on-isleme-basamaklari.html#cb264-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(preprocessCore)</span></code></pre></div>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="veri-on-isleme-basamaklari.html#cb272-1" aria-hidden="true" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="st">&quot;preprocessCore&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="veri-on-isleme-basamaklari.html#cb273-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(preprocessCore)</span></code></pre></div>
 <p>Fonksiyonumuzun adi <code>normalize.quantiles()</code></p>
-<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="veri-on-isleme-basamaklari.html#cb265-1" aria-hidden="true" tabindex="-1"></a>genexpr_qn <span class="ot">=</span> <span class="fu">normalize.quantiles</span>(genexpr)</span>
-<span id="cb265-2"><a href="veri-on-isleme-basamaklari.html#cb265-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(genexpr_qn)</span></code></pre></div>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="veri-on-isleme-basamaklari.html#cb274-1" aria-hidden="true" tabindex="-1"></a>genexpr_qn <span class="ot">=</span> <span class="fu">normalize.quantiles</span>(genexpr)</span>
+<span id="cb274-2"><a href="veri-on-isleme-basamaklari.html#cb274-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(genexpr_qn)</span></code></pre></div>
 <pre><code>## [1] 17160   269</code></pre>
-<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb267-1"><a href="veri-on-isleme-basamaklari.html#cb267-1" aria-hidden="true" tabindex="-1"></a>genexpr_qn[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="veri-on-isleme-basamaklari.html#cb276-1" aria-hidden="true" tabindex="-1"></a>genexpr_qn[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div>
 <pre><code>##            [,1]       [,2]       [,3]       [,4]       [,5]
 ## [1,] -0.4993920 -0.6776740 -0.7796459 -0.8040486 -0.8587960
 ## [2,]  1.0141904  0.8355595  0.6704056  0.5563232  0.2924776
@@ -499,8 +549,8 @@ Gordugunuz gibi ortalamalari hemen hemen ayni olsa da (bunun sebebi verinin zate
 ## [4,] -0.4112961 -0.5602207 -0.6620208 -0.5704519 -0.6015157
 ## [5,]  1.0659865  0.8908564  0.8555507  0.8361596  0.6749602</code></pre>
 <p>Gordugunuz gibi bu fonksiyon ne yazik ki satir sutun isimlerimizi sildi. Ama bunlarin ilk matrisimizle ayni oldugunu biliyoruz cunku bir subset islemi yapmadik. Eski satir-sutun isimlerimizi yeni matrisimize aktaralim:</p>
-<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="veri-on-isleme-basamaklari.html#cb269-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(genexpr_qn) <span class="ot">=</span> <span class="fu">dimnames</span>(genexpr)</span>
-<span id="cb269-2"><a href="veri-on-isleme-basamaklari.html#cb269-2" aria-hidden="true" tabindex="-1"></a>genexpr_qn[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="veri-on-isleme-basamaklari.html#cb278-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(genexpr_qn) <span class="ot">=</span> <span class="fu">dimnames</span>(genexpr)</span>
+<span id="cb278-2"><a href="veri-on-isleme-basamaklari.html#cb278-2" aria-hidden="true" tabindex="-1"></a>genexpr_qn[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div>
 <pre><code>##       GSM749899  GSM749900  GSM749901  GSM749902  GSM749903
 ## CTSD -0.4993920 -0.6776740 -0.7796459 -0.8040486 -0.8587960
 ## EEF2  1.0141904  0.8355595  0.6704056  0.5563232  0.2924776
@@ -508,15 +558,15 @@ Gordugunuz gibi ortalamalari hemen hemen ayni olsa da (bunun sebebi verinin zate
 ## GSN  -0.4112961 -0.5602207 -0.6620208 -0.5704519 -0.6015157
 ## RPN2  1.0659865  0.8908564  0.8555507  0.8361596  0.6749602</code></pre>
 <p>Tekrar dagilimlara bakacak olursak:</p>
-<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="veri-on-isleme-basamaklari.html#cb271-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(genexpr_qn[,<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>])</span></code></pre></div>
-<p><img src="20210322_REgitim_files/figure-html/unnamed-chunk-93-1.png" width="672" /></p>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="veri-on-isleme-basamaklari.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(genexpr_qn[,<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>])</span></code></pre></div>
+<p><img src="20210322_REgitim_files/figure-html/unnamed-chunk-97-1.png" width="672" /></p>
 <p>Gordugunuz gibi dagilimlar birebir esit oldu. Bundan sonraki asamalarda bu veriyi kullanacagiz.</p>
 </div>
 <div id="ornek-bilgisini-duzenleme" class="section level2" number="5.5">
 <h2><span class="header-section-number">5.5</span> Ornek bilgisini duzenleme</h2>
 <p>Son olarak, bir de orneklerle ilgili bilgilerin yer aldigi (yas, biyolojik cinsiyet) bir tablomuz var. Ama bu verinin de duzenlenmesi gerekiyor.</p>
-<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="veri-on-isleme-basamaklari.html#cb272-1" aria-hidden="true" tabindex="-1"></a>metadata <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&#39;./data/metadata.csv&#39;</span>)</span>
-<span id="cb272-2"><a href="veri-on-isleme-basamaklari.html#cb272-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(metadata)</span></code></pre></div>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="veri-on-isleme-basamaklari.html#cb281-1" aria-hidden="true" tabindex="-1"></a>metadata <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">&#39;https://github.com/mdonertas/20210322_REgitim/raw/master/data/metadata.csv&#39;</span>)</span>
+<span id="cb281-2"><a href="veri-on-isleme-basamaklari.html#cb281-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(metadata)</span></code></pre></div>
 <pre><code>##           X    title geo_accession characteristics_ch1 characteristics_ch1.1
 ## 1 GSM749899 HB_18_34     GSM749899     array batch: 10     age: -0.498630137
 ## 2 GSM749900 HB_22_35     GSM749900     array batch: 18     age: -0.498630137
@@ -539,41 +589,41 @@ Gordugunuz gibi ortalamalari hemen hemen ayni olsa da (bunun sebebi verinin zate
 ## 5              ph: NULL   rna integrity number (rin): 9 smoke at death: Unknown
 ## 6              ph: NULL rna integrity number (rin): 9.8      smoke at death: No</code></pre>
 <p>Bu veriyi kullanarak, ayni probeset-gen eslestirmesi icin yaptigimiz gibi yas ve biyolojik cinsiyet icin birey bilgisi vektoru olusturalim:</p>
-<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="veri-on-isleme-basamaklari.html#cb274-1" aria-hidden="true" tabindex="-1"></a>yas <span class="ot">=</span> <span class="fu">setNames</span>(metadata<span class="sc">$</span>characteristics_ch1<span class="fl">.1</span>, metadata<span class="sc">$</span>geo_accession)</span>
-<span id="cb274-2"><a href="veri-on-isleme-basamaklari.html#cb274-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(yas)</span></code></pre></div>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="veri-on-isleme-basamaklari.html#cb283-1" aria-hidden="true" tabindex="-1"></a>yas <span class="ot">=</span> <span class="fu">setNames</span>(metadata<span class="sc">$</span>characteristics_ch1<span class="fl">.1</span>, metadata<span class="sc">$</span>geo_accession)</span>
+<span id="cb283-2"><a href="veri-on-isleme-basamaklari.html#cb283-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(yas)</span></code></pre></div>
 <pre><code>##           GSM749899           GSM749900           GSM749901           GSM749902 
 ## &quot;age: -0.498630137&quot; &quot;age: -0.498630137&quot; &quot;age: -0.498630137&quot; &quot;age: -0.498630137&quot; 
 ##           GSM749903           GSM749904 
 ## &quot;age: -0.479452055&quot; &quot;age: -0.479452055&quot;</code></pre>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="veri-on-isleme-basamaklari.html#cb276-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(yas)</span></code></pre></div>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb285-1"><a href="veri-on-isleme-basamaklari.html#cb285-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(yas)</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="veri-on-isleme-basamaklari.html#cb278-1" aria-hidden="true" tabindex="-1"></a>cinsiyet <span class="ot">=</span> <span class="fu">setNames</span>(metadata<span class="sc">$</span>characteristics_ch1<span class="fl">.2</span>, metadata<span class="sc">$</span>geo_accession)</span>
-<span id="cb278-2"><a href="veri-on-isleme-basamaklari.html#cb278-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cinsiyet)</span></code></pre></div>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb287-1"><a href="veri-on-isleme-basamaklari.html#cb287-1" aria-hidden="true" tabindex="-1"></a>cinsiyet <span class="ot">=</span> <span class="fu">setNames</span>(metadata<span class="sc">$</span>characteristics_ch1<span class="fl">.2</span>, metadata<span class="sc">$</span>geo_accession)</span>
+<span id="cb287-2"><a href="veri-on-isleme-basamaklari.html#cb287-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cinsiyet)</span></code></pre></div>
 <pre><code>## GSM749899 GSM749900 GSM749901 GSM749902 GSM749903 GSM749904 
 ##  &quot;Sex: F&quot;  &quot;Sex: F&quot;  &quot;Sex: M&quot;  &quot;Sex: M&quot;  &quot;Sex: M&quot;  &quot;Sex: M&quot;</code></pre>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="veri-on-isleme-basamaklari.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(cinsiyet)</span></code></pre></div>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="veri-on-isleme-basamaklari.html#cb289-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(cinsiyet)</span></code></pre></div>
 <pre><code>## [1] &quot;character&quot;</code></pre>
 <p>Bu veriler gordugunuz gibi karakter verileri ve formatlari pek iyi degil. Ornegin bu yas verisiyle yapabileceklerimiz sinirli cunku numerik degil. Ilk olarak basta yazan ‘age:’ kismindan kurtulmamiz lazim ki bu yas verisini kullanabilelim. Ayni sekilde biyolojik cinsiyeti de ‘F’ veya ‘M’ haline, hatta daha iyisi ‘kadin’ ve ‘erkek’ haline getirelim.</p>
 <div id="yas-verisinin-duzenlenmesi" class="section level3" number="5.5.1">
 <h3><span class="header-section-number">5.5.1</span> Yas verisinin duzenlenmesi</h3>
 <p>Basta yazan ‘age:’ yazisinin ortadan kaldirilmasi icin bir kac secenek var. Bunlardan en basiti <code>gsub</code> fonksiyonu. Bu fonksiyon, bir karakter vektorunde belli karakterlerin degistirilmesini saglar:</p>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="veri-on-isleme-basamaklari.html#cb282-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gsub</span>(<span class="st">&#39;range&#39;</span>,<span class="st">&#39;&#39;</span>,<span class="st">&#39;Bioinforange&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="veri-on-isleme-basamaklari.html#cb291-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gsub</span>(<span class="st">&#39;range&#39;</span>,<span class="st">&#39;&#39;</span>,<span class="st">&#39;Bioinforange&#39;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Bioinfo&quot;</code></pre>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="veri-on-isleme-basamaklari.html#cb284-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gsub</span>(<span class="st">&#39;range&#39;</span>,<span class="st">&#39;conference&#39;</span>,<span class="st">&#39;Bioinforange&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="veri-on-isleme-basamaklari.html#cb293-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gsub</span>(<span class="st">&#39;range&#39;</span>,<span class="st">&#39;conference&#39;</span>,<span class="st">&#39;Bioinforange&#39;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;Bioinfoconference&quot;</code></pre>
 <p>Bu sekilde ‘age:’ yazisini silebiliriz:</p>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="veri-on-isleme-basamaklari.html#cb286-1" aria-hidden="true" tabindex="-1"></a>yas <span class="ot">=</span> <span class="fu">gsub</span>(<span class="st">&#39;age: &#39;</span>,<span class="st">&#39;&#39;</span>,yas)</span>
-<span id="cb286-2"><a href="veri-on-isleme-basamaklari.html#cb286-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(yas)</span></code></pre></div>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="veri-on-isleme-basamaklari.html#cb295-1" aria-hidden="true" tabindex="-1"></a>yas <span class="ot">=</span> <span class="fu">gsub</span>(<span class="st">&#39;age: &#39;</span>,<span class="st">&#39;&#39;</span>,yas)</span>
+<span id="cb295-2"><a href="veri-on-isleme-basamaklari.html#cb295-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(yas)</span></code></pre></div>
 <pre><code>##      GSM749899      GSM749900      GSM749901      GSM749902      GSM749903 
 ## &quot;-0.498630137&quot; &quot;-0.498630137&quot; &quot;-0.498630137&quot; &quot;-0.498630137&quot; &quot;-0.479452055&quot; 
 ##      GSM749904 
 ## &quot;-0.479452055&quot;</code></pre>
 <p>Ancak gordugunuz gibi, veri hala karakter. Bunu numerik yapmak icin <code>as.numeric()</code> kullaniriz:</p>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="veri-on-isleme-basamaklari.html#cb288-1" aria-hidden="true" tabindex="-1"></a>yas <span class="ot">=</span> <span class="fu">setNames</span>(<span class="fu">as.numeric</span>(yas),<span class="fu">names</span>(yas))</span></code></pre></div>
-<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="veri-on-isleme-basamaklari.html#cb289-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(yas)</span></code></pre></div>
-<p><img src="20210322_REgitim_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="veri-on-isleme-basamaklari.html#cb297-1" aria-hidden="true" tabindex="-1"></a>yas <span class="ot">=</span> <span class="fu">setNames</span>(<span class="fu">as.numeric</span>(yas),<span class="fu">names</span>(yas))</span></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="veri-on-isleme-basamaklari.html#cb298-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(yas)</span></code></pre></div>
+<p><img src="20210322_REgitim_files/figure-html/unnamed-chunk-103-1.png" width="672" /></p>
 <p>Daha net bir sekilde verinin ozetini gormek istersek <code>summary()</code> fonksiyonunu kullanabiliriz:</p>
-<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="veri-on-isleme-basamaklari.html#cb290-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(yas)</span></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="veri-on-isleme-basamaklari.html#cb299-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(yas)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ## -0.4986  5.3452 24.2658 27.7920 46.9671 78.2274</code></pre>
 <p>Dogum oncesi zamandan 78 yasina kadar bireyler var ve ortalamamiz 27.7.</p>
@@ -581,21 +631,21 @@ Gordugunuz gibi ortalamalari hemen hemen ayni olsa da (bunun sebebi verinin zate
 <div id="biyolojik-cinsiyet-verisinin-duzenlenmesi" class="section level3" number="5.5.2">
 <h3><span class="header-section-number">5.5.2</span> Biyolojik cinsiyet verisinin duzenlenmesi</h3>
 <p>Bu sefer sadece 2 biyolojik cinsiyet mumkun oldugundan daha farkli bir yol izleyebiliriz. Ama oncelikle, sadece iki secenek oldugundan emin olalim.</p>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="veri-on-isleme-basamaklari.html#cb292-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(cinsiyet)</span></code></pre></div>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="veri-on-isleme-basamaklari.html#cb301-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(cinsiyet)</span></code></pre></div>
 <pre><code>## [1] &quot;Sex: F&quot; &quot;Sex: M&quot; &quot;Sex: 5&quot;</code></pre>
 <p>Bir de ‘5’ var, bu muhtemelen veri girisinde bir hata demek ama bu bireyi en azindan cinsiyet icin inceleyemeyecegimiz anlamina geliyor. Ilk olarak bu veriye sahip olan bireyi hem bu veriden hem expression verisinden hem de yas verisinden cikaralim.</p>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="veri-on-isleme-basamaklari.html#cb294-1" aria-hidden="true" tabindex="-1"></a>cikart <span class="ot">=</span> <span class="fu">names</span>(cinsiyet[(cinsiyet <span class="sc">%in%</span> <span class="st">&#39;Sex: 5&#39;</span>)])</span>
-<span id="cb294-2"><a href="veri-on-isleme-basamaklari.html#cb294-2" aria-hidden="true" tabindex="-1"></a>cinsiyet <span class="ot">=</span> cinsiyet[<span class="sc">!</span><span class="fu">names</span>(cinsiyet) <span class="sc">%in%</span> cikart]</span>
-<span id="cb294-3"><a href="veri-on-isleme-basamaklari.html#cb294-3" aria-hidden="true" tabindex="-1"></a>yas <span class="ot">=</span> yas[<span class="sc">!</span><span class="fu">names</span>(yas) <span class="sc">%in%</span> cikart]</span>
-<span id="cb294-4"><a href="veri-on-isleme-basamaklari.html#cb294-4" aria-hidden="true" tabindex="-1"></a>genexpr_qn <span class="ot">=</span> genexpr_qn[,<span class="sc">!</span><span class="fu">colnames</span>(genexpr_qn) <span class="sc">%in%</span> cikart]</span></code></pre></div>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="veri-on-isleme-basamaklari.html#cb303-1" aria-hidden="true" tabindex="-1"></a>cikart <span class="ot">=</span> <span class="fu">names</span>(cinsiyet[(cinsiyet <span class="sc">%in%</span> <span class="st">&#39;Sex: 5&#39;</span>)])</span>
+<span id="cb303-2"><a href="veri-on-isleme-basamaklari.html#cb303-2" aria-hidden="true" tabindex="-1"></a>cinsiyet <span class="ot">=</span> cinsiyet[<span class="sc">!</span><span class="fu">names</span>(cinsiyet) <span class="sc">%in%</span> cikart]</span>
+<span id="cb303-3"><a href="veri-on-isleme-basamaklari.html#cb303-3" aria-hidden="true" tabindex="-1"></a>yas <span class="ot">=</span> yas[<span class="sc">!</span><span class="fu">names</span>(yas) <span class="sc">%in%</span> cikart]</span>
+<span id="cb303-4"><a href="veri-on-isleme-basamaklari.html#cb303-4" aria-hidden="true" tabindex="-1"></a>genexpr_qn <span class="ot">=</span> genexpr_qn[,<span class="sc">!</span><span class="fu">colnames</span>(genexpr_qn) <span class="sc">%in%</span> cikart]</span></code></pre></div>
 <p>Ayni probeset-gen eslesmesi yapmak icin kullandigimiz gibi bir vektor olusturalim:</p>
-<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="veri-on-isleme-basamaklari.html#cb295-1" aria-hidden="true" tabindex="-1"></a>cinsiyetMap <span class="ot">=</span> <span class="fu">setNames</span>(<span class="fu">c</span>(<span class="st">&#39;Kadin&#39;</span>,<span class="st">&#39;Erkek&#39;</span>),<span class="fu">c</span>(<span class="st">&#39;Sex: F&#39;</span>,<span class="st">&#39;Sex: M&#39;</span>))</span>
-<span id="cb295-2"><a href="veri-on-isleme-basamaklari.html#cb295-2" aria-hidden="true" tabindex="-1"></a>cinsiyet <span class="ot">=</span> <span class="fu">setNames</span>(cinsiyetMap[cinsiyet],<span class="fu">names</span>(cinsiyet))</span>
-<span id="cb295-3"><a href="veri-on-isleme-basamaklari.html#cb295-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cinsiyet)</span></code></pre></div>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb304-1"><a href="veri-on-isleme-basamaklari.html#cb304-1" aria-hidden="true" tabindex="-1"></a>cinsiyetMap <span class="ot">=</span> <span class="fu">setNames</span>(<span class="fu">c</span>(<span class="st">&#39;Kadin&#39;</span>,<span class="st">&#39;Erkek&#39;</span>),<span class="fu">c</span>(<span class="st">&#39;Sex: F&#39;</span>,<span class="st">&#39;Sex: M&#39;</span>))</span>
+<span id="cb304-2"><a href="veri-on-isleme-basamaklari.html#cb304-2" aria-hidden="true" tabindex="-1"></a>cinsiyet <span class="ot">=</span> <span class="fu">setNames</span>(cinsiyetMap[cinsiyet],<span class="fu">names</span>(cinsiyet))</span>
+<span id="cb304-3"><a href="veri-on-isleme-basamaklari.html#cb304-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cinsiyet)</span></code></pre></div>
 <pre><code>## GSM749899 GSM749900 GSM749901 GSM749902 GSM749903 GSM749904 
 ##   &quot;Kadin&quot;   &quot;Kadin&quot;   &quot;Erkek&quot;   &quot;Erkek&quot;   &quot;Erkek&quot;   &quot;Erkek&quot;</code></pre>
 <p>Kac kadin kac erkek bireyin olduguna bakmak icin <code>table()</code> fonksiyonunu kullanabiliriz:</p>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="veri-on-isleme-basamaklari.html#cb297-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(cinsiyet)</span></code></pre></div>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="veri-on-isleme-basamaklari.html#cb306-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(cinsiyet)</span></code></pre></div>
 <pre><code>## cinsiyet
 ## Erkek Kadin 
 ##   177    91</code></pre>

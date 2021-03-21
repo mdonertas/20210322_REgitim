@@ -170,7 +170,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html"><i class="fa fa-check"></i><b>5</b> Veri on isleme basamaklari</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#read.csv-ve-readrds-ile-veri-okuma"><i class="fa fa-check"></i><b>5.1</b> <code>read.csv()</code> ve `readRDS()`` ile veri okuma</a></li>
+<li class="chapter" data-level="5.1" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#read.csv-ve-readrds-ile-veri-okuma"><i class="fa fa-check"></i><b>5.1</b> <code>read.csv()</code> ve <code>readRDS()</code> ile veri okuma</a></li>
 <li class="chapter" data-level="5.2" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#kesifci-veri-analizi"><i class="fa fa-check"></i><b>5.2</b> Kesifci veri analizi</a>
 <ul>
 <li class="chapter" data-level="5.2.1" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#histogram"><i class="fa fa-check"></i><b>5.2.1</b> Histogram</a></li>
@@ -190,6 +190,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6" data-path="temel-bilesenler-analizi.html"><a href="temel-bilesenler-analizi.html"><i class="fa fa-check"></i><b>6</b> Temel bilesenler analizi</a></li>
 <li class="chapter" data-level="7" data-path="yasla-degisim-analizi.html"><a href="yasla-degisim-analizi.html"><i class="fa fa-check"></i><b>7</b> Yasla degisim analizi</a></li>
 <li class="chapter" data-level="8" data-path="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html"><i class="fa fa-check"></i><b>8</b> Biyolojik cinsiyete gore farklilik gosteren gen analizi</a></li>
+<li class="chapter" data-level="9" data-path="kaynak-onerileri.html"><a href="kaynak-onerileri.html"><i class="fa fa-check"></i><b>9</b> Kaynak onerileri</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="kaynak-onerileri.html"><a href="kaynak-onerileri.html#online-ders"><i class="fa fa-check"></i><b>9.1</b> Online ders</a></li>
+<li class="chapter" data-level="9.2" data-path="kaynak-onerileri.html"><a href="kaynak-onerileri.html#kitaplar"><i class="fa fa-check"></i><b>9.2</b> Kitaplar</a></li>
+<li class="chapter" data-level="9.3" data-path="kaynak-onerileri.html"><a href="kaynak-onerileri.html#diger"><i class="fa fa-check"></i><b>9.3</b> Diger</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -218,19 +224,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="rstudio" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> RStudio</h2>
-<p>RStudio, R için bir “entegre geliştirme ortamı”dır ve ücretsiz olarak <a href="https://www.rstudio.com/">RStudio websayfası</a>ndan indirilebilir. Entegre geliştirme ortamları kod yazma, sonuçları ve çizdiğiniz grafikleri vs. görüntüle, otomasyon, hata ayıklama (debugging) gibi programlama ve yazılım geliştirme bileşenlerini içinde bulunduran araçlardır. RStudio ise bunların ötesinde başka programlama dilleriyle beraber kodlama, raporlama, versiyon kontrolü, komut istemcisi ve zamanlı iş çalıştırma ve daha bir çok özellik ile birlikte geliyor. R kodlama için kesinlikle RStudio ile çalışılmasını öneriyorum.</p>
+<p>RStudio, R için bir IDE yani “entegre geliştirme ortamı”dır ve ücretsiz olarak <a href="https://www.rstudio.com/">RStudio websayfası</a>ndan indirilebilir. Entegre geliştirme ortamları kod yazma, sonuçları ve çizdiğiniz grafikleri vs. görüntüleme, otomasyon, hata ayıklama (debugging) gibi programlama ve yazılım geliştirme bileşenlerini içinde bulunduran araçlardır. RStudio ise bunların ötesinde başka programlama dilleriyle beraber kodlama, raporlama, versiyon kontrolü, komut istemcisi ve zamanlı iş çalıştırma ve daha bir çok özellik ile birlikte geliyor. R kodlama için kesinlikle RStudio ile çalışılmasını öneriyorum.</p>
 </div>
 <div id="başlangıç" class="section level2" number="2.3">
 <h2><span class="header-section-number">2.3</span> Başlangıç</h2>
-<p>Hem R hem Rstudio’yu yükleyip, RStudio açtığımızda karşımıza 3 ekran çıkar. Bunlar haricinde sol üst köşedeki “yeni” tuşuna basıp R Scriptini seçersek 4. ekran açılır. Hızlıca bunların bazılarına bakalım:</p>
+<p>Hem R hem Rstudio’yu yükleyip, RStudio açtığımızda karşımıza 3 ekran çıkar. Bunlar haricinde sol üst köşedeki “yeni” tuşuna basıp R Scriptini seçersek 4. ekran açılır. Hızlıca bunların içeriğine bakalım:</p>
 <ul>
-<li>Files:</li>
-<li>Terminal:</li>
-<li>Console:</li>
-<li>Environment:</li>
-<li>Plots:</li>
-<li>Help:</li>
-<li>History:</li>
+<li>Files: İçinde bulunduğumuz klasörün içindeki dosyaları listeliyor.</li>
+<li>Console: Burası kodu yazıp sonuçları gördüğümüz kısım. Denemek için <code>2+2</code> yazıp enter’a basalım.</li>
+<li>Terminal: Burası da bilgisayarınızın terminali veya komut istemcisine erişim sağlayan bir kısım.</li>
+<li>Environment: Oluşturduğumuz değişkenlerin listesini ve bilgilerini burada görebiliriz.</li>
+<li>Plots: Çizdiğimiz grafikleri görüntüleyebileceğimiz kısım.</li>
+<li>Help: Bu sekme RStudio’daki en büyük dostumuz. Açıp öğrenme linklerini kurcalamak iyi bir başlangıç. Ayrıca <code>?</code> operatörü ile burada fonksiyonların yardım sayfalarını görüntüleyebiliriz.</li>
+<li>History: Mevcut R oturumunuzda yazdığınız kodları listeleyen bir kısım. Buradan önceden çalıştırdığınız kodları görebilirsiniz. Ancak daha pratik, daha çok kullanılan bir kısa yol, konsolda iken klavyedeki yukarı ok tuşu ile önceki kodları tekrar çağırmak. Geçmiş sadece açık oturumdaki kodları kaydediyor olsa da, .Rhistory dosyası sayesinde ortamlar arası geçmiş bilgisini aktarabilirsiniz. Yine de buna bağlı kalmak yerine daha sonra tekrar kullanacağımız kodları .R scripti olarak kaydetmek çok daha elverişli olacaktır.</li>
+<li>Packages: R’da yüklü olan çeşitli paketleri (kütüphaneleri) görüyoruz. Ancak buradan R ortamımıza yükleme yapmaktansa <code>library()</code> komutunu kullanmalıyız ki yazdığımız kodlar daha sonra hem biz hem başkaları tarafından kolaylıkla çalıştırılabilsin.</li>
 </ul>
 <p>Bunlardan yeni açtığımız ekran da script (betik) editör ekranı, yani kodu yazıp kaydedeceğimiz kod editörümüz. Kodu konsola yazıp çalıştabiliriz ama önerim hep editörde çalışıp çalışan kodları kaydetmeniz. Editörde yazdığımız kodu kopyala yapıştır yapmadan çalıştırmanın kolay bir yolu var: Windows’ta Ctrl + Enter, Mac’te Cmd + Enter.</p>
 

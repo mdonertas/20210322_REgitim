@@ -170,7 +170,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html"><i class="fa fa-check"></i><b>5</b> Veri on isleme basamaklari</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#read.csv-ve-readrds-ile-veri-okuma"><i class="fa fa-check"></i><b>5.1</b> <code>read.csv()</code> ve `readRDS()`` ile veri okuma</a></li>
+<li class="chapter" data-level="5.1" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#read.csv-ve-readrds-ile-veri-okuma"><i class="fa fa-check"></i><b>5.1</b> <code>read.csv()</code> ve <code>readRDS()</code> ile veri okuma</a></li>
 <li class="chapter" data-level="5.2" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#kesifci-veri-analizi"><i class="fa fa-check"></i><b>5.2</b> Kesifci veri analizi</a>
 <ul>
 <li class="chapter" data-level="5.2.1" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#histogram"><i class="fa fa-check"></i><b>5.2.1</b> Histogram</a></li>
@@ -190,6 +190,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6" data-path="temel-bilesenler-analizi.html"><a href="temel-bilesenler-analizi.html"><i class="fa fa-check"></i><b>6</b> Temel bilesenler analizi</a></li>
 <li class="chapter" data-level="7" data-path="yasla-degisim-analizi.html"><a href="yasla-degisim-analizi.html"><i class="fa fa-check"></i><b>7</b> Yasla degisim analizi</a></li>
 <li class="chapter" data-level="8" data-path="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html"><i class="fa fa-check"></i><b>8</b> Biyolojik cinsiyete gore farklilik gosteren gen analizi</a></li>
+<li class="chapter" data-level="9" data-path="kaynak-onerileri.html"><a href="kaynak-onerileri.html"><i class="fa fa-check"></i><b>9</b> Kaynak onerileri</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="kaynak-onerileri.html"><a href="kaynak-onerileri.html#online-ders"><i class="fa fa-check"></i><b>9.1</b> Online ders</a></li>
+<li class="chapter" data-level="9.2" data-path="kaynak-onerileri.html"><a href="kaynak-onerileri.html#kitaplar"><i class="fa fa-check"></i><b>9.2</b> Kitaplar</a></li>
+<li class="chapter" data-level="9.3" data-path="kaynak-onerileri.html"><a href="kaynak-onerileri.html#diger"><i class="fa fa-check"></i><b>9.3</b> Diger</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -213,17 +219,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="yasla-degisim-analizi" class="section level1" number="7">
 <h1><span class="header-section-number">Bölüm 7</span> Yasla degisim analizi</h1>
 <p>Diyelim ki sadece dogum sonrasi donemde 20 sonrasi yasta yasla degisen genlerle ilgileniyoruz. Bunun icin ilk olarak veriyi subset etmeliyiz. Yas’in 20den buyuk oldugu bireyleri almaliyiz:</p>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="yasla-degisim-analizi.html#cb301-1" aria-hidden="true" tabindex="-1"></a>subsamp <span class="ot">=</span> <span class="fu">names</span>(<span class="fu">which</span>(yas<span class="sc">&gt;=</span><span class="dv">20</span>))</span>
-<span id="cb301-2"><a href="yasla-degisim-analizi.html#cb301-2" aria-hidden="true" tabindex="-1"></a>subexp <span class="ot">=</span> genexpr_qn[,subsamp]</span>
-<span id="cb301-3"><a href="yasla-degisim-analizi.html#cb301-3" aria-hidden="true" tabindex="-1"></a>subyas <span class="ot">=</span> yas[subsamp]</span></code></pre></div>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb302-1"><a href="yasla-degisim-analizi.html#cb302-1" aria-hidden="true" tabindex="-1"></a>yasladegisim <span class="ot">=</span> <span class="fu">apply</span>(subexp, <span class="dv">1</span>, <span class="cf">function</span>(x){</span>
-<span id="cb302-2"><a href="yasla-degisim-analizi.html#cb302-2" aria-hidden="true" tabindex="-1"></a>  co <span class="ot">=</span> <span class="fu">cor.test</span>(x, subyas[<span class="fu">colnames</span>(subexp)], <span class="at">method =</span> <span class="st">&#39;spearman&#39;</span>)</span>
-<span id="cb302-3"><a href="yasla-degisim-analizi.html#cb302-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(co<span class="sc">$</span>est, co<span class="sc">$</span>p.val)</span>
-<span id="cb302-4"><a href="yasla-degisim-analizi.html#cb302-4" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
-<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="yasla-degisim-analizi.html#cb303-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(yasladegisim)</span></code></pre></div>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="yasla-degisim-analizi.html#cb317-1" aria-hidden="true" tabindex="-1"></a>subsamp <span class="ot">=</span> <span class="fu">names</span>(<span class="fu">which</span>(yas<span class="sc">&gt;=</span><span class="dv">20</span>))</span>
+<span id="cb317-2"><a href="yasla-degisim-analizi.html#cb317-2" aria-hidden="true" tabindex="-1"></a>subexp <span class="ot">=</span> genexpr_qn[,subsamp]</span>
+<span id="cb317-3"><a href="yasla-degisim-analizi.html#cb317-3" aria-hidden="true" tabindex="-1"></a>subyas <span class="ot">=</span> yas[subsamp]</span></code></pre></div>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="yasla-degisim-analizi.html#cb318-1" aria-hidden="true" tabindex="-1"></a>yasladegisim <span class="ot">=</span> <span class="fu">apply</span>(subexp, <span class="dv">1</span>, <span class="cf">function</span>(x){</span>
+<span id="cb318-2"><a href="yasla-degisim-analizi.html#cb318-2" aria-hidden="true" tabindex="-1"></a>  co <span class="ot">=</span> <span class="fu">cor.test</span>(x, subyas[<span class="fu">colnames</span>(subexp)], <span class="at">method =</span> <span class="st">&#39;spearman&#39;</span>)</span>
+<span id="cb318-3"><a href="yasla-degisim-analizi.html#cb318-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(co<span class="sc">$</span>est, co<span class="sc">$</span>p.val)</span>
+<span id="cb318-4"><a href="yasla-degisim-analizi.html#cb318-4" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="yasla-degisim-analizi.html#cb319-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(yasladegisim)</span></code></pre></div>
 <pre><code>## [1]     2 17160</code></pre>
-<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="yasla-degisim-analizi.html#cb305-1" aria-hidden="true" tabindex="-1"></a>yasladegisim <span class="ot">=</span> <span class="fu">t</span>(yasladegisim)</span>
-<span id="cb305-2"><a href="yasla-degisim-analizi.html#cb305-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(yasladegisim)</span></code></pre></div>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="yasla-degisim-analizi.html#cb321-1" aria-hidden="true" tabindex="-1"></a>yasladegisim <span class="ot">=</span> <span class="fu">t</span>(yasladegisim)</span>
+<span id="cb321-2"><a href="yasla-degisim-analizi.html#cb321-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(yasladegisim)</span></code></pre></div>
 <pre><code>##                rho             
 ## CTSD   -0.03253336 0.6956624723
 ## EEF2   -0.12309924 0.1374343793
@@ -231,32 +237,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## GSN     0.11697104 0.1581010511
 ## RPN2   -0.22977129 0.0052073498
 ## POLR2A  0.01173037 0.8878589579</code></pre>
-<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="yasla-degisim-analizi.html#cb307-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(yasladegisim) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;rho&#39;</span>,<span class="st">&#39;p&#39;</span>)</span>
-<span id="cb307-2"><a href="yasla-degisim-analizi.html#cb307-2" aria-hidden="true" tabindex="-1"></a>yasladegisim <span class="ot">=</span> <span class="fu">cbind</span>(yasladegisim, <span class="fu">p.adjust</span>(yasladegisim[,<span class="st">&#39;p&#39;</span>], <span class="at">method=</span> <span class="st">&#39;fdr&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="yasla-degisim-analizi.html#cb323-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(yasladegisim) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;rho&#39;</span>,<span class="st">&#39;p&#39;</span>)</span>
+<span id="cb323-2"><a href="yasla-degisim-analizi.html#cb323-2" aria-hidden="true" tabindex="-1"></a>yasladegisim <span class="ot">=</span> <span class="fu">cbind</span>(yasladegisim, <span class="fu">p.adjust</span>(yasladegisim[,<span class="st">&#39;p&#39;</span>], <span class="at">method=</span> <span class="st">&#39;fdr&#39;</span>))</span></code></pre></div>
 <p>Hangi genler yasla istatistiksel olarak anlamli degisim gosteriyor?</p>
-<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="yasla-degisim-analizi.html#cb308-1" aria-hidden="true" tabindex="-1"></a>anlamli <span class="ot">=</span> <span class="fu">names</span>(<span class="fu">which</span>(yasladegisim[,<span class="dv">3</span>]<span class="sc">&lt;=</span><span class="fl">0.05</span>))</span>
-<span id="cb308-2"><a href="yasla-degisim-analizi.html#cb308-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(yasladegisim[<span class="fu">rownames</span>(yasladegisim)<span class="sc">%in%</span>anlamli,<span class="dv">1</span>]<span class="sc">&gt;=</span><span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="yasla-degisim-analizi.html#cb324-1" aria-hidden="true" tabindex="-1"></a>anlamli <span class="ot">=</span> <span class="fu">names</span>(<span class="fu">which</span>(yasladegisim[,<span class="dv">3</span>]<span class="sc">&lt;=</span><span class="fl">0.05</span>))</span>
+<span id="cb324-2"><a href="yasla-degisim-analizi.html#cb324-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(yasladegisim[<span class="fu">rownames</span>(yasladegisim)<span class="sc">%in%</span>anlamli,<span class="dv">1</span>]<span class="sc">&gt;=</span><span class="dv">0</span>)</span></code></pre></div>
 <pre><code>## 
 ## FALSE  TRUE 
 ##  1538  1418</code></pre>
 <p>Bunlardan 1419 tanesi artis yonunde anlamli degisim gosteriyor, 1538 tanesi ise dusus. Bunlardan en cok artis gostereni secip gorsellestirelim:</p>
-<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="yasla-degisim-analizi.html#cb310-1" aria-hidden="true" tabindex="-1"></a>maxartis <span class="ot">=</span> <span class="fu">names</span>(<span class="fu">which.max</span>(yasladegisim[,<span class="dv">1</span>]))</span>
-<span id="cb310-2"><a href="yasla-degisim-analizi.html#cb310-2" aria-hidden="true" tabindex="-1"></a>yasladegisim[maxartis,]</span></code></pre></div>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="yasla-degisim-analizi.html#cb326-1" aria-hidden="true" tabindex="-1"></a>maxartis <span class="ot">=</span> <span class="fu">names</span>(<span class="fu">which.max</span>(yasladegisim[,<span class="dv">1</span>]))</span>
+<span id="cb326-2"><a href="yasla-degisim-analizi.html#cb326-2" aria-hidden="true" tabindex="-1"></a>yasladegisim[maxartis,]</span></code></pre></div>
 <pre><code>##          rho            p              
 ## 6.980232e-01 8.761466e-23 1.002312e-19</code></pre>
-<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="yasla-degisim-analizi.html#cb312-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> subyas, <span class="at">y =</span> subexp[maxartis,], <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">cex =</span> <span class="fl">0.5</span>, <span class="at">xlab=</span><span class="st">&#39;Yas&#39;</span>,</span>
-<span id="cb312-2"><a href="yasla-degisim-analizi.html#cb312-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&#39;Gen ifadesi&#39;</span>, <span class="at">main =</span> maxartis)</span>
-<span id="cb312-3"><a href="yasla-degisim-analizi.html#cb312-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(subexp[maxartis,]<span class="sc">~</span>subyas), <span class="at">col =</span> <span class="st">&#39;darkred&#39;</span>,<span class="at">cex =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="20210322_REgitim_files/figure-html/unnamed-chunk-112-1.png" width="672" /></p>
-<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb313-1"><a href="yasla-degisim-analizi.html#cb313-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pdf</span>(<span class="st">&#39;./yasladegisim.pdf&#39;</span>)</span>
-<span id="cb313-2"><a href="yasla-degisim-analizi.html#cb313-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> subyas, <span class="at">y =</span> subexp[maxartis,], <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">cex =</span> <span class="fl">0.5</span>, <span class="at">xlab=</span><span class="st">&#39;Yas&#39;</span>,</span>
-<span id="cb313-3"><a href="yasla-degisim-analizi.html#cb313-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&#39;Gen ifadesi&#39;</span>, <span class="at">main =</span> maxartis)</span>
-<span id="cb313-4"><a href="yasla-degisim-analizi.html#cb313-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(subexp[maxartis,]<span class="sc">~</span>subyas), <span class="at">col =</span> <span class="st">&#39;darkred&#39;</span>,<span class="at">cex =</span> <span class="dv">2</span>)</span>
-<span id="cb313-5"><a href="yasla-degisim-analizi.html#cb313-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="yasla-degisim-analizi.html#cb328-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> subyas, <span class="at">y =</span> subexp[maxartis,], <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">cex =</span> <span class="fl">0.5</span>, <span class="at">xlab=</span><span class="st">&#39;Yas&#39;</span>,</span>
+<span id="cb328-2"><a href="yasla-degisim-analizi.html#cb328-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&#39;Gen ifadesi&#39;</span>, <span class="at">main =</span> maxartis)</span>
+<span id="cb328-3"><a href="yasla-degisim-analizi.html#cb328-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(subexp[maxartis,]<span class="sc">~</span>subyas), <span class="at">col =</span> <span class="st">&#39;darkred&#39;</span>,<span class="at">cex =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="20210322_REgitim_files/figure-html/unnamed-chunk-117-1.png" width="672" /></p>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="yasla-degisim-analizi.html#cb329-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pdf</span>(<span class="st">&#39;./yasladegisim.pdf&#39;</span>)</span>
+<span id="cb329-2"><a href="yasla-degisim-analizi.html#cb329-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> subyas, <span class="at">y =</span> subexp[maxartis,], <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">cex =</span> <span class="fl">0.5</span>, <span class="at">xlab=</span><span class="st">&#39;Yas&#39;</span>,</span>
+<span id="cb329-3"><a href="yasla-degisim-analizi.html#cb329-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">&#39;Gen ifadesi&#39;</span>, <span class="at">main =</span> maxartis)</span>
+<span id="cb329-4"><a href="yasla-degisim-analizi.html#cb329-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(subexp[maxartis,]<span class="sc">~</span>subyas), <span class="at">col =</span> <span class="st">&#39;darkred&#39;</span>,<span class="at">cex =</span> <span class="dv">2</span>)</span>
+<span id="cb329-5"><a href="yasla-degisim-analizi.html#cb329-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
 <pre><code>## quartz_off_screen 
 ##                 2</code></pre>
-<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="yasla-degisim-analizi.html#cb315-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(<span class="at">x =</span> yasladegisim, <span class="at">file =</span> <span class="st">&#39;./yasladegisim.csv&#39;</span>,<span class="at">quote =</span> F,</span>
-<span id="cb315-2"><a href="yasla-degisim-analizi.html#cb315-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">row.names =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="yasla-degisim-analizi.html#cb331-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(<span class="at">x =</span> yasladegisim, <span class="at">file =</span> <span class="st">&#39;./yasladegisim.csv&#39;</span>,<span class="at">quote =</span> F,</span>
+<span id="cb331-2"><a href="yasla-degisim-analizi.html#cb331-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">row.names =</span> T)</span></code></pre></div>
+<p>Ayni figuru ggplot ile cizelim:</p>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="yasla-degisim-analizi.html#cb332-1" aria-hidden="true" tabindex="-1"></a>mydat <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">expression =</span> subexp[maxartis,], <span class="at">sample  =</span> <span class="fu">colnames</span>(subexp), </span>
+<span id="cb332-2"><a href="yasla-degisim-analizi.html#cb332-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">yas =</span> subyas[<span class="fu">colnames</span>(subexp)],<span class="at">cinsiyet =</span> cinsiyet[<span class="fu">colnames</span>(subexp)])</span>
+<span id="cb332-3"><a href="yasla-degisim-analizi.html#cb332-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mydat, <span class="fu">aes</span>(<span class="at">x =</span> yas, <span class="at">y =</span> expression)) <span class="sc">+</span></span>
+<span id="cb332-4"><a href="yasla-degisim-analizi.html#cb332-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> cinsiyet)) <span class="sc">+</span> </span>
+<span id="cb332-5"><a href="yasla-degisim-analizi.html#cb332-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;lm&#39;</span>, <span class="at">color =</span> <span class="st">&#39;midnightblue&#39;</span>) <span class="sc">+</span></span>
+<span id="cb332-6"><a href="yasla-degisim-analizi.html#cb332-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_brewer</span>(<span class="at">type =</span> <span class="st">&#39;qual&#39;</span>, <span class="at">palette =</span> <span class="dv">6</span>) <span class="sc">+</span></span>
+<span id="cb332-7"><a href="yasla-degisim-analizi.html#cb332-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="20210322_REgitim_files/figure-html/unnamed-chunk-120-1.png" width="672" /></p>
 
 </div>
             </section>

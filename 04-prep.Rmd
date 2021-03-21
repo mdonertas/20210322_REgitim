@@ -1,16 +1,18 @@
 # Insan prefrontal korteksinde gen ifadesinin zamansal dinamikleri
 
-Bu calismada 2011 yilinda yayinlanmis bir makalede uretilmis olan bir mikrodizin veriseti kullanacagiz. Gorece eski bir teknolojiyle uretilmis olsa da verinin ve veri isleme basamaklarinin acik bir sekilde makalede paylasilmis durumda. Bu calistay mikrodizin / transkriptom veri analizi calistayi olmadigindan bu basamaklardan bazilarini atlayacagiz (orn. kismen islenmis veri ile baslayacak ve veride batch etkisi olmadigini varsayacagiz) ve kendi verinizi analiz edecek olursaniz bu calistayi birebir takip etmeniz yeterli olmayacaktir. Ancak makalede basamaklar anlatildigindan, kendiniz tekrar edebilirsiniz. 
+Bu calismada 2011 yilinda yayinlanmis bir makalede uretilmis olan bir microarray (mikrodizin?) veriseti kullanacagiz. Gorece eski bir teknolojiyle uretilmis olsa da verinin ve veri isleme basamaklari acik bir sekilde makalede paylasilmis durumda. Bu calistay mikrodizin / transkriptom veri analizi calistayi olmadigindan bu basamaklardan bazilarini atlayacagiz (orn. kismen islenmis veri ile baslayacak ve veride batch etkisi olmadigini varsayacagiz) ve kendi verinizi analiz edecek olursaniz bu calistayi birebir takip etmeniz yeterli olmayacaktir. Ancak makalede basamaklar anlatildigindan, kendiniz onlari tekrar edebilir daha detayli ogrenebilirsiniz.
 
-**GEO baglantisi:** https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE30272
+Kisaca, bu verisetinde cok sayida, farkli yaslarda bireylerin olum sonrasi beyin, prefontal korteks bolgesinden alinan orneklerde gen ifade verisi var. Biz de bu verisetini indirip, yasa bagli anlatimi degisen genler neler vs. gibi kimi sorulara cevap arayacagiz. Veriseti GEO'da herkese acik bir sekilde bulunuyor, ancak veriyi indirme asamasinda kullanilacak paket ve fonksiyonlar calistayin odagini degistirebileceginden o kismi atlayip, ilk indirme islemi tamamlandiktan sonraki kisma odaklanacagiz. 
+
+**Veriyi indirmek icin GEO baglantisi:** https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE30272
 
 **Makale:** Colantuoni, C., Lipska, B. K., Ye, T., Hyde, T. M., Tao, R., Leek, J. T., Colantuoni, E. A., Elkahloun, A. G., Herman, M. M., Weinberger, D. R., & Kleinman, J. E. (2011). Temporal dynamics and genetic control of transcription in the human prefrontal cortex. Nature, 478(7370), 519–523. https://doi.org/10.1038/nature10524
-
-Kisaca bu verisetinde cok sayida, farkli yaslarda bireylerin olum sonrasi beyin, prefontal korteks bolgesinden alinan orneklerde gen ifade verisi var. Biz de bu verisetini indirip, yasa bagli anlatimi degisen genler neler vs. gibi kimi sorulara cevap arayacagiz. Veriseti GEO'da herkese acik bir sekilde bulunuyor, ancak veriyi indirme asamasinda kullanilacak paket ve fonksiyonlar calistayin odagini degistirebileceginden o kismi atlayip, ilk indirme islemi tamamlandiktan sonraki kisma odaklanacagiz. 
 
 ## Calistay icin verinin on hazirligi
 
 Bu kismi calistay sirasinda yapmayacagim ve sizlere on hazirligi yapilmis bir veriseti sunacagim. Ancak kendiniz veriyi GEO'dan indirip ayni basamaklari tekrar etmek isterseniz, basamaklari burada paylasiyorum:
+
+Kismi islenmis veriyi GEOquery paketi ile GEOdan indirebiliriz: 
 
 ```{r, eval = F}
 BiocManager::install("GEOquery")
@@ -21,10 +23,14 @@ library(GEOquery)
 gse <- getGEO('GSE30272',GSEMatrix=TRUE)
 ```
 
+Bu bize bir `ExpressionSet` objesi veriyor:
 
 ```{r, eval = F}
 gse
 ```
+
+
+Buradan bireylere ait metadata, gen ekspresyon matrisi, ve gen-probeset eslesmesini bulabilecegimiz bir feature verisi olusturalim:
 
 ```{r , eval = F}
 metadata = pData(gse$GSE30272_series_matrix.txt.gz)
@@ -32,16 +38,21 @@ exprmat = exprs(gse$GSE30272_series_matrix.txt.gz)
 featdata = fData(gse$GSE30272_series_matrix.txt.gz)
 ```
 
+Bazi bilgileri kullanmayacagiz, bu yuzden verisetinin sadece belli sutunlarini aliyorum:
 ```{r, eval = F}
 metadata = metadata[,c(1,2,10:17)]
 featdata = featdata[,c(1,6,7,8)]
 ```
+
+.rds objesi olarak kaydetmek icin:
+
 ```{r, eval = F}
 saveRDS(exprmat, './data/expressionmatrix.rds')
 saveRDS(featdata, './data/featuredat.rds')
 saveRDS(metadata, './data/metadata.rds')
 ```
 
+.csv dosyasi olarak kaydetmek icin: 
 ```{r, eval = F}
 write.csv(exprmat,'./data/expressionmatrix.csv')
 write.csv(featdata,'./data/featuredat.csv')

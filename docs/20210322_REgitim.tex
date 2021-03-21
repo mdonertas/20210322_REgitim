@@ -141,7 +141,7 @@ R konusunda karşılaştığınız sorular için öncelikle aldığınız hata v
 \hypertarget{uxe7alux131ux15ftay-iuxe7eriux11fi}{%
 \chapter{Çalıştay içeriği}\label{uxe7alux131ux15ftay-iuxe7eriux11fi}}
 
-R'a giriş niteliğinde birkaç ders içeriği zaten mevcut. Bu çalıştayda, süremizin de sadece 2 saat olduğunu göz önüne alarak, bir R eğitiminden ziyade R'ın biyolojide uygulamalarına yönelik kısa bir örnekleme hedefledim. Çalıştay R'daki temel işlemler, operatörler, fonksiyonlar ve görselleştirme araçlarının kullanımına örnekler içerecek. Bunun için bir transkriptom veriseti kullanacağız. Bu veriseti halka açık veritabanı olan GEO'dan indirilecek. Ancak bu çalıştay ``transkriptom veri analizi nasıl yapılır?''ı öğretmeyi amaçlamamaktadır. Transkriptom veri analizinde batch etkileri, normalizasyon gereklilikleri vs.~bir çok kaygı vardır ve buna göre analiz basamakları gerektirmektedir. Burada yapacağımız örnek çok basit olup, gerekli olabilecek bazı basamakları atlamaktadır, bu sebeple transkriptom veri analizi örneği olarak değil R uygulamasına örnek olarak düşünülmelidir.
+R'a giriş niteliğinde birkaç ders içeriği zaten mevcut. Bu çalıştayda, süremizin sadece 2 saat olduğunu ve interaktifliğin kısıtlı olduğunu göz önüne alarak, bir R eğitiminden ziyade R'ın biyolojide uygulamalarına yönelik kısa bir örnekleme hedefledim. Çalıştay R'daki temel işlemler, operatörler, fonksiyonlar ve görselleştirme araçlarının kullanımına örnekler içerecek. Bunun için bir transkriptom veriseti kullanacağız. Bu veriseti halka açık veritabanı olan GEO'dan indirilecek. Ancak bu çalıştay ``transkriptom veri analizi nasıl yapılır?''ı öğretmeyi amaçlamamaktadır. Transkriptom veri analizinde batch etkileri, normalizasyon gereklilikleri vs.~bir çok kaygı vardır ve buna göre analiz basamakları gerektirmektedir. Burada yapacağımız örnek çok basit olup, gerekli olabilecek bazı basamakları atlamaktadır, bu sebeple transkriptom veri analizi örneği olarak değil R uygulamasına örnek olarak düşünülmelidir.
 
 \hypertarget{giriux15f}{%
 \chapter{Giriş}\label{giriux15f}}
@@ -154,29 +154,31 @@ R'ı kullandığınız işletim sistemine göre \href{https://cran.r-project.org
 \hypertarget{rstudio}{%
 \section{RStudio}\label{rstudio}}
 
-RStudio, R için bir ``entegre geliştirme ortamı''dır ve ücretsiz olarak \href{https://www.rstudio.com/}{RStudio websayfası}ndan indirilebilir. Entegre geliştirme ortamları kod yazma, sonuçları ve çizdiğiniz grafikleri vs.~görüntüle, otomasyon, hata ayıklama (debugging) gibi programlama ve yazılım geliştirme bileşenlerini içinde bulunduran araçlardır. RStudio ise bunların ötesinde başka programlama dilleriyle beraber kodlama, raporlama, versiyon kontrolü, komut istemcisi ve zamanlı iş çalıştırma ve daha bir çok özellik ile birlikte geliyor. R kodlama için kesinlikle RStudio ile çalışılmasını öneriyorum.
+RStudio, R için bir IDE yani ``entegre geliştirme ortamı''dır ve ücretsiz olarak \href{https://www.rstudio.com/}{RStudio websayfası}ndan indirilebilir. Entegre geliştirme ortamları kod yazma, sonuçları ve çizdiğiniz grafikleri vs.~görüntüleme, otomasyon, hata ayıklama (debugging) gibi programlama ve yazılım geliştirme bileşenlerini içinde bulunduran araçlardır. RStudio ise bunların ötesinde başka programlama dilleriyle beraber kodlama, raporlama, versiyon kontrolü, komut istemcisi ve zamanlı iş çalıştırma ve daha bir çok özellik ile birlikte geliyor. R kodlama için kesinlikle RStudio ile çalışılmasını öneriyorum.
 
 \hypertarget{baux15flangux131uxe7}{%
 \section{Başlangıç}\label{baux15flangux131uxe7}}
 
-Hem R hem Rstudio'yu yükleyip, RStudio açtığımızda karşımıza 3 ekran çıkar. Bunlar haricinde sol üst köşedeki ``yeni'' tuşuna basıp R Scriptini seçersek 4. ekran açılır. Hızlıca bunların bazılarına bakalım:
+Hem R hem Rstudio'yu yükleyip, RStudio açtığımızda karşımıza 3 ekran çıkar. Bunlar haricinde sol üst köşedeki ``yeni'' tuşuna basıp R Scriptini seçersek 4. ekran açılır. Hızlıca bunların içeriğine bakalım:
 
 \begin{itemize}
 \tightlist
 \item
-  Files:
+  Files: İçinde bulunduğumuz klasörün içindeki dosyaları listeliyor.
 \item
-  Terminal:
+  Console: Burası kodu yazıp sonuçları gördüğümüz kısım. Denemek için \texttt{2+2} yazıp enter'a basalım.
 \item
-  Console:
+  Terminal: Burası da bilgisayarınızın terminali veya komut istemcisine erişim sağlayan bir kısım.
 \item
-  Environment:
+  Environment: Oluşturduğumuz değişkenlerin listesini ve bilgilerini burada görebiliriz.
 \item
-  Plots:
+  Plots: Çizdiğimiz grafikleri görüntüleyebileceğimiz kısım.
 \item
-  Help:
+  Help: Bu sekme RStudio'daki en büyük dostumuz. Açıp öğrenme linklerini kurcalamak iyi bir başlangıç. Ayrıca \texttt{?} operatörü ile burada fonksiyonların yardım sayfalarını görüntüleyebiliriz.
 \item
-  History:
+  History: Mevcut R oturumunuzda yazdığınız kodları listeleyen bir kısım. Buradan önceden çalıştırdığınız kodları görebilirsiniz. Ancak daha pratik, daha çok kullanılan bir kısa yol, konsolda iken klavyedeki yukarı ok tuşu ile önceki kodları tekrar çağırmak. Geçmiş sadece açık oturumdaki kodları kaydediyor olsa da, .Rhistory dosyası sayesinde ortamlar arası geçmiş bilgisini aktarabilirsiniz. Yine de buna bağlı kalmak yerine daha sonra tekrar kullanacağımız kodları .R scripti olarak kaydetmek çok daha elverişli olacaktır.
+\item
+  Packages: R'da yüklü olan çeşitli paketleri (kütüphaneleri) görüyoruz. Ancak buradan R ortamımıza yükleme yapmaktansa \texttt{library()} komutunu kullanmalıyız ki yazdığımız kodlar daha sonra hem biz hem başkaları tarafından kolaylıkla çalıştırılabilsin.
 \end{itemize}
 
 Bunlardan yeni açtığımız ekran da script (betik) editör ekranı, yani kodu yazıp kaydedeceğimiz kod editörümüz. Kodu konsola yazıp çalıştabiliriz ama önerim hep editörde çalışıp çalışan kodları kaydetmeniz. Editörde yazdığımız kodu kopyala yapıştır yapmadan çalıştırmanın kolay bir yolu var: Windows'ta Ctrl + Enter, Mac'te Cmd + Enter.
@@ -184,7 +186,9 @@ Bunlardan yeni açtığımız ekran da script (betik) editör ekranı, yani kodu
 \hypertarget{temel-bilgiler}{%
 \chapter{Temel Bilgiler}\label{temel-bilgiler}}
 
-Kodlari editorde yazip Ctrl+Enter ile calistirabilirsiniz. Alternatif olarak Konsol'da da kodlari yazabilirsiniz ancak editore yazdiklarinizi kaydederek yazdiklarinizdan elinizde bulunmasini istediklerinizi
+Kodlari editorde yazip Ctrl+Enter ile calistirabilirsiniz. Alternatif olarak Konsol'da da kodlari yazabilirsiniz ancak editore yazdiklarinizi kaydederek yazdiklarinizdan elinizde bulunmasini istediklerinizi kaydedebilirsiniz. Onerim hep konsolu kullanmaniz, kullanisli olan kodlari tutup digerlerini / calismayanlari silip temiz bir sekilde dosyanizi kaydetmeniz.
+
+Ilk olarak hangi klasorde nerde calisiyoruz buna bakalim. Bu R'da dosya acarken ve yaptiklarimizi kaydederken onemli bir detay. Bunun icin \texttt{getwd()} yani `get directory' komutunu kullanacagiz. Bunu calistirdigimizda aldigimiz sonuc hepimizde farkli olacaktir. Bu bilgisayarinizda nerede calistiginizi gosteriyor:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -196,9 +200,11 @@ Kodlari editorde yazip Ctrl+Enter ile calistirabilirsiniz. Alternatif olarak Kon
 ## [1] "/Users/melike/GDrive/githubbooks/20210322_REgitim"
 \end{verbatim}
 
+Bu varsayilan ortamda degil de belli bir klasorun icinde calismak istiyorsaniz, istediginiz klasore \texttt{setwd()} fonksiyonu ile asagidaki sekilde gecebiliriz. Ancak onerim az sonra aciklayacagim sekilde RStudio projesi kullanmaniz.
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{setwd}\NormalTok{(}\StringTok{"\textasciitilde{}/GDrive/projects/"}\NormalTok{)}
+\FunctionTok{setwd}\NormalTok{(}\StringTok{"\textasciitilde{}/GDrive/projects/R\_Egitim"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1179,18 +1185,20 @@ GitHub'dan bir paket indirmek icinse CRANdan indireceginiz \texttt{devtools} pak
 \hypertarget{insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri}{%
 \chapter{Insan prefrontal korteksinde gen ifadesinin zamansal dinamikleri}\label{insan-prefrontal-korteksinde-gen-ifadesinin-zamansal-dinamikleri}}
 
-Bu calismada 2011 yilinda yayinlanmis bir makalede uretilmis olan bir mikrodizin veriseti kullanacagiz. Gorece eski bir teknolojiyle uretilmis olsa da verinin ve veri isleme basamaklarinin acik bir sekilde makalede paylasilmis durumda. Bu calistay mikrodizin / transkriptom veri analizi calistayi olmadigindan bu basamaklardan bazilarini atlayacagiz (orn. kismen islenmis veri ile baslayacak ve veride batch etkisi olmadigini varsayacagiz) ve kendi verinizi analiz edecek olursaniz bu calistayi birebir takip etmeniz yeterli olmayacaktir. Ancak makalede basamaklar anlatildigindan, kendiniz tekrar edebilirsiniz.
+Bu calismada 2011 yilinda yayinlanmis bir makalede uretilmis olan bir microarray (mikrodizin?) veriseti kullanacagiz. Gorece eski bir teknolojiyle uretilmis olsa da verinin ve veri isleme basamaklari acik bir sekilde makalede paylasilmis durumda. Bu calistay mikrodizin / transkriptom veri analizi calistayi olmadigindan bu basamaklardan bazilarini atlayacagiz (orn. kismen islenmis veri ile baslayacak ve veride batch etkisi olmadigini varsayacagiz) ve kendi verinizi analiz edecek olursaniz bu calistayi birebir takip etmeniz yeterli olmayacaktir. Ancak makalede basamaklar anlatildigindan, kendiniz onlari tekrar edebilir daha detayli ogrenebilirsiniz.
 
-\textbf{GEO baglantisi:} \url{https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE30272}
+Kisaca, bu verisetinde cok sayida, farkli yaslarda bireylerin olum sonrasi beyin, prefontal korteks bolgesinden alinan orneklerde gen ifade verisi var. Biz de bu verisetini indirip, yasa bagli anlatimi degisen genler neler vs.~gibi kimi sorulara cevap arayacagiz. Veriseti GEO'da herkese acik bir sekilde bulunuyor, ancak veriyi indirme asamasinda kullanilacak paket ve fonksiyonlar calistayin odagini degistirebileceginden o kismi atlayip, ilk indirme islemi tamamlandiktan sonraki kisma odaklanacagiz.
+
+\textbf{Veriyi indirmek icin GEO baglantisi:} \url{https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE30272}
 
 \textbf{Makale:} Colantuoni, C., Lipska, B. K., Ye, T., Hyde, T. M., Tao, R., Leek, J. T., Colantuoni, E. A., Elkahloun, A. G., Herman, M. M., Weinberger, D. R., \& Kleinman, J. E. (2011). Temporal dynamics and genetic control of transcription in the human prefrontal cortex. Nature, 478(7370), 519--523. \url{https://doi.org/10.1038/nature10524}
-
-Kisaca bu verisetinde cok sayida, farkli yaslarda bireylerin olum sonrasi beyin, prefontal korteks bolgesinden alinan orneklerde gen ifade verisi var. Biz de bu verisetini indirip, yasa bagli anlatimi degisen genler neler vs.~gibi kimi sorulara cevap arayacagiz. Veriseti GEO'da herkese acik bir sekilde bulunuyor, ancak veriyi indirme asamasinda kullanilacak paket ve fonksiyonlar calistayin odagini degistirebileceginden o kismi atlayip, ilk indirme islemi tamamlandiktan sonraki kisma odaklanacagiz.
 
 \hypertarget{calistay-icin-verinin-on-hazirligi}{%
 \section{Calistay icin verinin on hazirligi}\label{calistay-icin-verinin-on-hazirligi}}
 
 Bu kismi calistay sirasinda yapmayacagim ve sizlere on hazirligi yapilmis bir veriseti sunacagim. Ancak kendiniz veriyi GEO'dan indirip ayni basamaklari tekrar etmek isterseniz, basamaklari burada paylasiyorum:
+
+Kismi islenmis veriyi GEOquery paketi ile GEOdan indirebiliriz:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1205,11 +1213,15 @@ Bu kismi calistay sirasinda yapmayacagim ve sizlere on hazirligi yapilmis bir ve
 \end{Highlighting}
 \end{Shaded}
 
+Bu bize bir \texttt{ExpressionSet} objesi veriyor:
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{gse}
 \end{Highlighting}
 \end{Shaded}
+
+Buradan bireylere ait metadata, gen ekspresyon matrisi, ve gen-probeset eslesmesini bulabilecegimiz bir feature verisi olusturalim:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1219,12 +1231,16 @@ Bu kismi calistay sirasinda yapmayacagim ve sizlere on hazirligi yapilmis bir ve
 \end{Highlighting}
 \end{Shaded}
 
+Bazi bilgileri kullanmayacagiz, bu yuzden verisetinin sadece belli sutunlarini aliyorum:
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{metadata }\OtherTok{=}\NormalTok{ metadata[,}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{10}\SpecialCharTok{:}\DecValTok{17}\NormalTok{)]}
 \NormalTok{featdata }\OtherTok{=}\NormalTok{ featdata[,}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{8}\NormalTok{)]}
 \end{Highlighting}
 \end{Shaded}
+
+.rds objesi olarak kaydetmek icin:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1233,6 +1249,8 @@ Bu kismi calistay sirasinda yapmayacagim ve sizlere on hazirligi yapilmis bir ve
 \FunctionTok{saveRDS}\NormalTok{(metadata, }\StringTok{\textquotesingle{}./data/metadata.rds\textquotesingle{}}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+
+.csv dosyasi olarak kaydetmek icin:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1248,13 +1266,14 @@ Bu kismi calistay sirasinda yapmayacagim ve sizlere on hazirligi yapilmis bir ve
 Veriyi GEO'dan ifade matrisi, metadata yani bireylere dair bilginin bulundugu bir tablo, ve feature data yani probeset-gen eslesmelerinin verildigi bir tablo olarak kaydettim. Simdi bunlari okuyarak baslayacagiz. Ilk olarak gen ifade verisiyle baslayalim.
 
 \hypertarget{read.csv-ve-readrds-ile-veri-okuma}{%
-\section{\texorpdfstring{\texttt{read.csv()} ve `readRDS()`` ile veri okuma}{read.csv() ve `readRDS()`` ile veri okuma}}\label{read.csv-ve-readrds-ile-veri-okuma}}
+\section{\texorpdfstring{\texttt{read.csv()} ve \texttt{readRDS()} ile veri okuma}{read.csv() ve readRDS() ile veri okuma}}\label{read.csv-ve-readrds-ile-veri-okuma}}
 
-\texttt{read.csv} fonksiyonu hem URL'den okuma hem de bilgisayarimizdaki bir dosyadan okuma yapmamizi saglar. Dosyayi benim github repomdan indirip, fonksiyona \texttt{file\ =} degiskeni olarak indirdiginiz yeri vererek okuyabilirsiniz. Simdi kolaylik olmasi acisindan direkt olarak github repomdan okuyacagiz. Bu fonksiyon ayrica baska argumanlar da aliyor. \texttt{header} dosyada sutun isimlerinin yer alip almadigini belirtmek icin kullaniliyor ve mantiksal bir arguman yani \texttt{TRUE} ya da \texttt{FALSE} degerlerini alabilir. Kullanacagimiz bir diger arguman ise \texttt{row.names\ =}, bu da satir isimlerinin hangi sutunda yer aldigini belirtmemiz icin gerekli. Eger bu argumani kullanmazsak, matrisimizin satir isimleri de bir sutun olarak okunacaktir.
+\texttt{read.csv} fonksiyonu hem URL'den okuma hem de bilgisayarimizdaki bir dosyadan okuma yapmamizi saglar. Dosyayi \href{https://github.com/mdonertas/20210322_REgitim/tree/master/data}{github repomdan} indirip, fonksiyona \texttt{file\ =} degiskeni olarak bilgisayarinizda indirdiginiz yeri vererek okuyabilirsiniz. Simdi kolaylik olmasi acisindan direkt olarak github repomdan okuyacagiz. Bu fonksiyon ayrica baska argumanlar da aliyor. \texttt{header} dosyada sutun isimlerinin yer alip almadigini belirtmek icin kullaniliyor ve mantiksal bir arguman yani \texttt{TRUE} ya da \texttt{FALSE} degerlerini alabilir. Kullanacagimiz bir diger arguman ise \texttt{row.names\ =}, bu da satir isimlerinin hangi sutunda yer aldigini belirtmemiz icin gerekli. Eger bu argumani kullanmazsak, matrisimizin satir isimleri de bir sutun olarak okunacaktir.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{expr }\OtherTok{=} \FunctionTok{read.csv}\NormalTok{(}\AttributeTok{file =} \StringTok{\textquotesingle{}./data/expressionmatrix.csv\textquotesingle{}}\NormalTok{, }\AttributeTok{header =}\NormalTok{ T, }
+\NormalTok{expr }\OtherTok{=} \FunctionTok{read.csv}\NormalTok{(}\AttributeTok{file =} \StringTok{\textquotesingle{}https://github.com/mdonertas/20210322\_REgitim/raw/master/data/expressionmatrix.csv\textquotesingle{}}\NormalTok{, }
+                \AttributeTok{header =}\NormalTok{ T, }
                 \AttributeTok{row.names =} \DecValTok{1}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -1289,7 +1308,7 @@ Her sey yolunda gozukuyor ama bir de bu objenin daha onceden ogrendigimiz gibi \
 ## [1] "data.frame"
 \end{verbatim}
 
-Genellikle \texttt{read.csv} fonksiyonu bir data.frame olusturur. Biz bu objede kimi matris operasyonlari yapmak istiyoruz. O yuzden bunu matrise donusturmeliyiz. Bunun icin \texttt{as.matrix} yani `matrix olarak' fonksiyonunu kullanabiliriz.
+Genellikle \texttt{read.csv} fonksiyonu bir data.frame olusturur. Biz bu objede kimi matris operasyonlari yapmak istiyoruz ve verimiz de sadece numerik degerlerden olusuyor. O yuzden bunu matrise donusturebiliriz. Bunun icin \texttt{as.matrix} yani `matrix olarak' fonksiyonunu kullanabiliriz.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1410,7 +1429,7 @@ Daha ileri gecmeden hemen bu asamada cok kisaca verimiz neye benziyor bakabiliri
 \hypertarget{histogram}{%
 \subsection{Histogram}\label{histogram}}
 
-Ilk olarak verimizin dagilimi nedir, ne gibi degerler var bunlara bakalim:
+Ilk olarak verimizin dagilimi nedir, ne gibi degerler var bunlara bakalim. Bunun icin histogram kullanabiliriz, ve ilk olarak temel Rda histogram cizmeyi gorelim.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1422,10 +1441,39 @@ Ilk olarak verimizin dagilimi nedir, ne gibi degerler var bunlara bakalim:
 
 Bu sekilde, hangi bireyin veya genin verisi olduguna bakmaksizin tum degerlerin bir histogramini aliriz. Bu histogram cogu gen ekpresyon verisinde alacaginiz ham veri grafiginden cok farkli, bunun sebebi bunun two channel microarray olmasi ve loess normalizasyonu gibi kimi normalizasyon asamalarindan da gecirilmis olmasi.
 
+Buna bakmak oldukca kolaydi, ama ben genel olarak \texttt{ggplot2} paketinin gorsellestirmelerini kullaniyorum ve herkese en bastan itibaren ggplot ogrenmesini tavsiye ediyorum. Basit grafiklerde biraz zahmetli gelse de kompleks yayina hazir figur olusturmak icin cok ciddi kolaylik sagliyor. \texttt{ggplot2} data.frame objesiyle calisir, oysa bu bir matris. Bu yuzden ufak bir degisiklik yapmamiz lazim:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\NormalTok{mydat }\OtherTok{=}\NormalTok{ reshape2}\SpecialCharTok{::}\FunctionTok{melt}\NormalTok{(expr)}
+\FunctionTok{ggplot}\NormalTok{(mydat, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ value)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+\end{verbatim}
+
+\includegraphics{20210322_REgitim_files/figure-latex/unnamed-chunk-59-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(mydat, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ value)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{color =} \StringTok{\textquotesingle{}gray60\textquotesingle{}}\NormalTok{, }\AttributeTok{bins =} \DecValTok{50}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\StringTok{\textquotesingle{}Probeset Expression\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ylab}\NormalTok{(}\StringTok{\textquotesingle{}Count\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_bw}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{20210322_REgitim_files/figure-latex/unnamed-chunk-60-1.pdf}
+
 \hypertarget{boxplot}{%
 \subsection{Boxplot}\label{boxplot}}
 
-Simdi de ilk birkac bireyin gen anlatim profillerine bakalim.
+Simdi de ilk birkac bireyin gen anlatim profillerine bakalim. Ilk once base R gorsellestirme fonksiyonu ile:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1433,7 +1481,7 @@ Simdi de ilk birkac bireyin gen anlatim profillerine bakalim.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{20210322_REgitim_files/figure-latex/unnamed-chunk-59-1.pdf}
+\includegraphics{20210322_REgitim_files/figure-latex/unnamed-chunk-61-1.pdf}
 
 Ayni grafigi ilk bir kac gen icin cizmek isteyecek olsak, hem matrisi subset etmemiz hem de transpoze etmemiz gerekir. Bunu \texttt{t()} fonksiyonu ile kolaylikla yapabiliriz:
 
@@ -1443,7 +1491,66 @@ Ayni grafigi ilk bir kac gen icin cizmek isteyecek olsak, hem matrisi subset etm
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{20210322_REgitim_files/figure-latex/unnamed-chunk-60-1.pdf}
+\includegraphics{20210322_REgitim_files/figure-latex/unnamed-chunk-62-1.pdf}
+
+Aynisini ggplot ile yapalim:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mydat }\OtherTok{=}\NormalTok{ reshape2}\SpecialCharTok{::}\FunctionTok{melt}\NormalTok{(expr[,}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{])}
+\FunctionTok{head}\NormalTok{(mydat)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                 Var1      Var2     value
+## 1  HEEBO-002-CTRL2I1 GSM749899 -1.455124
+## 2 HEEBO-002-CTRL2I10 GSM749899  1.044670
+## 3 HEEBO-002-CTRL2I11 GSM749899  1.164344
+## 4 HEEBO-002-CTRL2I14 GSM749899  1.597227
+## 5 HEEBO-002-CTRL2I15 GSM749899 -1.454337
+## 6 HEEBO-002-CTRL2I16 GSM749899  1.396667
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(mydat,}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Var2, }\AttributeTok{y =}\NormalTok{ value)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{outlier.size =} \FloatTok{0.01}\NormalTok{, }\AttributeTok{outlier.color =} \StringTok{\textquotesingle{}gray\textquotesingle{}}\NormalTok{, }\AttributeTok{color =} \StringTok{\textquotesingle{}darkred\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_bw}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\ConstantTok{NULL}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{ylab}\NormalTok{(}\StringTok{\textquotesingle{}Probeset Expression Value\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{20210322_REgitim_files/figure-latex/unnamed-chunk-63-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mydat }\OtherTok{=}\NormalTok{ reshape2}\SpecialCharTok{::}\FunctionTok{melt}\NormalTok{(expr[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{,])}
+\FunctionTok{head}\NormalTok{(mydat)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                 Var1      Var2     value
+## 1  HEEBO-002-CTRL2I1 GSM749899 -1.455124
+## 2 HEEBO-002-CTRL2I10 GSM749899  1.044670
+## 3 HEEBO-002-CTRL2I11 GSM749899  1.164344
+## 4 HEEBO-002-CTRL2I14 GSM749899  1.597227
+## 5 HEEBO-002-CTRL2I15 GSM749899 -1.454337
+## 6  HEEBO-002-CTRL2I1 GSM749900 -2.624420
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(mydat,}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Var1, }\AttributeTok{y =}\NormalTok{ value)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{outlier.shape=}\ConstantTok{NA}\NormalTok{, }\AttributeTok{color =} \StringTok{\textquotesingle{}darkred\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_jitter}\NormalTok{(}\AttributeTok{size =} \FloatTok{0.5}\NormalTok{, }\AttributeTok{width =} \FloatTok{0.1}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_bw}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{xlab}\NormalTok{(}\ConstantTok{NULL}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{ylab}\NormalTok{(}\StringTok{\textquotesingle{}Probeset Expression Value\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{20210322_REgitim_files/figure-latex/unnamed-chunk-64-1.pdf}
 
 \hypertarget{probesetid---gen-eslestirmesi}{%
 \section{ProbesetID - Gen eslestirmesi}\label{probesetid---gen-eslestirmesi}}
@@ -1452,7 +1559,7 @@ Ayni gen ifade verisi gibi probesetID - gen eslesmesi bilgisinin kayitli oldugu 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{genedata }\OtherTok{=} \FunctionTok{read.csv}\NormalTok{(}\StringTok{\textquotesingle{}./data/featuredat.csv\textquotesingle{}}\NormalTok{)}
+\NormalTok{genedata }\OtherTok{=} \FunctionTok{read.csv}\NormalTok{(}\StringTok{\textquotesingle{}https://github.com/mdonertas/20210322\_REgitim/raw/master/data/featuredat.csv\textquotesingle{}}\NormalTok{)}
 \NormalTok{genedata[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{,]}
 \end{Highlighting}
 \end{Shaded}
@@ -1942,7 +2049,7 @@ Son olarak bu gen ifade matrixinde bir normalizasyon metodu uygulayalim. Burada 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{20210322_REgitim_files/figure-latex/unnamed-chunk-88-1.pdf}
+\includegraphics{20210322_REgitim_files/figure-latex/unnamed-chunk-92-1.pdf}
 Gordugunuz gibi ortalamalari hemen hemen ayni olsa da (bunun sebebi verinin zaten baska bir yontemle kismen normalize edilmis olmasi), Dagilimlar farkli.
 
 Normalizasyon icin Rda olmayan bir fonksiyon kullanacagiz, bunun icin de \texttt{preprocessCore} paketini yuklememiz gerekiyor:
@@ -2013,7 +2120,7 @@ Tekrar dagilimlara bakacak olursak:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{20210322_REgitim_files/figure-latex/unnamed-chunk-93-1.pdf}
+\includegraphics{20210322_REgitim_files/figure-latex/unnamed-chunk-97-1.pdf}
 
 Gordugunuz gibi dagilimlar birebir esit oldu. Bundan sonraki asamalarda bu veriyi kullanacagiz.
 
@@ -2024,7 +2131,7 @@ Son olarak, bir de orneklerle ilgili bilgilerin yer aldigi (yas, biyolojik cinsi
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{metadata }\OtherTok{=} \FunctionTok{read.csv}\NormalTok{(}\StringTok{\textquotesingle{}./data/metadata.csv\textquotesingle{}}\NormalTok{)}
+\NormalTok{metadata }\OtherTok{=} \FunctionTok{read.csv}\NormalTok{(}\StringTok{\textquotesingle{}https://github.com/mdonertas/20210322\_REgitim/raw/master/data/metadata.csv\textquotesingle{}}\NormalTok{)}
 \FunctionTok{head}\NormalTok{(metadata)}
 \end{Highlighting}
 \end{Shaded}
@@ -2158,7 +2265,7 @@ Ancak gordugunuz gibi, veri hala karakter. Bunu numerik yapmak icin \texttt{as.n
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{20210322_REgitim_files/figure-latex/unnamed-chunk-99-1.pdf}
+\includegraphics{20210322_REgitim_files/figure-latex/unnamed-chunk-103-1.pdf}
 
 Daha net bir sekilde verinin ozetini gormek istersek \texttt{summary()} fonksiyonunu kullanabiliriz:
 
@@ -2248,7 +2355,41 @@ Kac kadin kac erkek bireyin olduguna bakmak icin \texttt{table()} fonksiyonunu k
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{20210322_REgitim_files/figure-latex/unnamed-chunk-106-1.pdf}
+\includegraphics{20210322_REgitim_files/figure-latex/unnamed-chunk-110-1.pdf}
+
+Ayni figuru ggplot ile yapabiliriz. Ancak bunun icin bir kac \texttt{tidyverse}de yer alan paketlerden bir kac fonksiyon kullanarak veriyi sekillendirmem gerekiyor:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\NormalTok{pcadat }\OtherTok{=} \FunctionTok{as.data.frame}\NormalTok{(tba}\SpecialCharTok{$}\NormalTok{x[,}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{]) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{sample =} \FunctionTok{rownames}\NormalTok{(tba}\SpecialCharTok{$}\NormalTok{x)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{yas =}\NormalTok{ yas[sample],}
+         \AttributeTok{cinsiyet =}\NormalTok{ cinsiyet[sample])}
+\FunctionTok{head}\NormalTok{(pcadat)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         PC1        PC2    sample        yas cinsiyet
+## 1 -138.7854 -0.7978871 GSM749899 -0.4986301    Kadin
+## 2 -137.1751 15.9124596 GSM749900 -0.4986301    Kadin
+## 3 -142.7689 13.8844269 GSM749901 -0.4986301    Erkek
+## 4 -137.0419  9.0980053 GSM749902 -0.4986301    Erkek
+## 5 -133.6389  0.6007799 GSM749903 -0.4794521    Erkek
+## 6 -131.6583 16.4774424 GSM749904 -0.4794521    Erkek
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(pcadat, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ PC1, }\AttributeTok{y =}\NormalTok{ PC2, }\AttributeTok{color =}\NormalTok{ yas, }\AttributeTok{shape =}\NormalTok{ cinsiyet)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{size =} \DecValTok{3}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_color\_gradient}\NormalTok{(}\AttributeTok{low =} \StringTok{\textquotesingle{}pink\textquotesingle{}}\NormalTok{, }\AttributeTok{high =} \StringTok{\textquotesingle{}darkred\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_bw}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{20210322_REgitim_files/figure-latex/unnamed-chunk-111-1.pdf}
 
 \hypertarget{yasla-degisim-analizi}{%
 \chapter{Yasla degisim analizi}\label{yasla-degisim-analizi}}
@@ -2343,7 +2484,7 @@ Bunlardan 1419 tanesi artis yonunde anlamli degisim gosteriyor, 1538 tanesi ise 
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{20210322_REgitim_files/figure-latex/unnamed-chunk-112-1.pdf}
+\includegraphics{20210322_REgitim_files/figure-latex/unnamed-chunk-117-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2366,6 +2507,26 @@ Bunlardan 1419 tanesi artis yonunde anlamli degisim gosteriyor, 1538 tanesi ise 
           \AttributeTok{row.names =}\NormalTok{ T)}
 \end{Highlighting}
 \end{Shaded}
+
+Ayni figuru ggplot ile cizelim:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mydat }\OtherTok{=} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{expression =}\NormalTok{ subexp[maxartis,], }\AttributeTok{sample  =} \FunctionTok{colnames}\NormalTok{(subexp), }
+                   \AttributeTok{yas =}\NormalTok{ subyas[}\FunctionTok{colnames}\NormalTok{(subexp)],}\AttributeTok{cinsiyet =}\NormalTok{ cinsiyet[}\FunctionTok{colnames}\NormalTok{(subexp)])}
+\FunctionTok{ggplot}\NormalTok{(mydat, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ yas, }\AttributeTok{y =}\NormalTok{ expression)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{color =}\NormalTok{ cinsiyet)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{\textquotesingle{}lm\textquotesingle{}}\NormalTok{, }\AttributeTok{color =} \StringTok{\textquotesingle{}midnightblue\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_color\_brewer}\NormalTok{(}\AttributeTok{type =} \StringTok{\textquotesingle{}qual\textquotesingle{}}\NormalTok{, }\AttributeTok{palette =} \DecValTok{6}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_bw}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula 'y ~ x'
+\end{verbatim}
+
+\includegraphics{20210322_REgitim_files/figure-latex/unnamed-chunk-120-1.pdf}
 
 \hypertarget{biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi}{%
 \chapter{Biyolojik cinsiyete gore farklilik gosteren gen analizi}\label{biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi}}
@@ -2435,13 +2596,13 @@ Kadin ve erkek sayisindaki fark cok fazla. Hem erkek hem de kadinlarin icinden r
 \end{Shaded}
 
 \begin{verbatim}
-##                  t          
-## CTSD   -0.79374171 0.4378954
-## EEF2    0.30360979 0.7651888
-## VIM    -0.13151477 0.8968374
-## GSN     0.06478236 0.9490770
-## RPN2    0.26329298 0.7957976
-## POLR2A  0.41606459 0.6825590
+##                t           
+## CTSD   0.5578246 0.58411736
+## EEF2   1.4946400 0.15355839
+## VIM    1.3385760 0.19762426
+## GSN    0.6706439 0.51180855
+## RPN2   1.8386448 0.08256833
+## POLR2A 1.0043784 0.32906296
 \end{verbatim}
 
 \begin{Shaded}
@@ -2461,7 +2622,7 @@ Hangi genler yasla istatistiksel olarak anlamli degisim gosteriyor?
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 12
+## [1] 11
 \end{verbatim}
 
 Sadece 12 gen anlamli fark gostermis.
@@ -2475,7 +2636,7 @@ Sadece 12 gen anlamli fark gostermis.
 
 \begin{verbatim}
 ##            t            p              
-## 4.350552e+01 1.584095e-18 2.718308e-14
+## 4.130682e+01 1.286897e-17 1.104158e-13
 \end{verbatim}
 
 \begin{Shaded}
@@ -2485,9 +2646,9 @@ Sadece 12 gen anlamli fark gostermis.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{20210322_REgitim_files/figure-latex/unnamed-chunk-121-1.pdf}
+\includegraphics{20210322_REgitim_files/figure-latex/unnamed-chunk-127-1.pdf}
 
-Figur kaydetmek:
+Figuru kaydetmek icin:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2502,6 +2663,65 @@ Figur kaydetmek:
 ## pdf 
 ##   2
 \end{verbatim}
+
+Ayni figuru ggplotta cizelim:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mydat }\OtherTok{=} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{expression =}\NormalTok{ subexp[maxfark,], }
+                   \AttributeTok{cinsiyet =}\NormalTok{ subcins[}\FunctionTok{colnames}\NormalTok{(subexp)], }
+                   \AttributeTok{yas =}\NormalTok{ yas[}\FunctionTok{colnames}\NormalTok{(subexp)])}
+\FunctionTok{ggplot}\NormalTok{(mydat, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ cinsiyet, }\AttributeTok{y =}\NormalTok{ expression)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_violin}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ cinsiyet), }\AttributeTok{alpha =} \FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_brewer}\NormalTok{(}\AttributeTok{type=}\StringTok{\textquotesingle{}qual\textquotesingle{}}\NormalTok{, }\AttributeTok{palette =} \DecValTok{6}\NormalTok{)}\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{outlier.shape =} \ConstantTok{NA}\NormalTok{, }\AttributeTok{width =} \FloatTok{0.1}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_bw}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{20210322_REgitim_files/figure-latex/unnamed-chunk-129-1.pdf}
+
+\hypertarget{kaynak-onerileri}{%
+\chapter{Kaynak onerileri}\label{kaynak-onerileri}}
+
+\hypertarget{online-ders}{%
+\section{Online ders}\label{online-ders}}
+
+\begin{itemize}
+\item
+  R ve veri bilimine giris: \url{https://www.edx.org/professional-certificate/harvardx-data-science}
+\item
+  R ve yasam bilimlerinde veri analizi: \url{https://www.edx.org/professional-certificate/harvardx-data-analysis-for-life-sciences}
+\item
+  Rda genomik analiz: \url{https://www.edx.org/professional-certificate/harvardx-data-analysis-for-genomics}
+\item
+  R programlama: \url{https://www.coursera.org/learn/r-programming}
+\item
+  Coursera Data Science Specialization icinde \textasciitilde10 ders var: \url{https://www.coursera.org/specializations/jhu-data-science}
+\end{itemize}
+
+\hypertarget{kitaplar}{%
+\section{Kitaplar}\label{kitaplar}}
+
+\begin{itemize}
+\item
+  R Programming for Data Science: \url{https://leanpub.com/rprogramming}
+\item
+  Data Analysis for the Life Sciences: \url{https://leanpub.com/dataanalysisforthelifesciences}
+\item
+  Tidyverse ogrenmek icin: \url{https://r4ds.had.co.nz/}
+\item
+  ggplot'ta grafikler: \url{https://ggplot2-book.org/}
+\end{itemize}
+
+\hypertarget{diger}{%
+\section{Diger}\label{diger}}
+
+Zaman zaman R'da hem giris duzeyinde Turkce ders notlari hem de biyolojide kullanilan grafiklere ornekler paylastigim bir blogum var: \url{https://compbioscratchpad.com/bilgi-deposu/}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\textbf{Kaynak onerileriniz olursa bana iletirseniz bu sayfayi guncelleyebilirim.}
 
   \bibliography{book.bib}
 

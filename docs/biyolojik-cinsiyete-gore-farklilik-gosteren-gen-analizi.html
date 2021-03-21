@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="yasla-degisim-analizi.html"/>
-
+<link rel="next" href="kaynak-onerileri.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -170,7 +170,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html"><i class="fa fa-check"></i><b>5</b> Veri on isleme basamaklari</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#read.csv-ve-readrds-ile-veri-okuma"><i class="fa fa-check"></i><b>5.1</b> <code>read.csv()</code> ve `readRDS()`` ile veri okuma</a></li>
+<li class="chapter" data-level="5.1" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#read.csv-ve-readrds-ile-veri-okuma"><i class="fa fa-check"></i><b>5.1</b> <code>read.csv()</code> ve <code>readRDS()</code> ile veri okuma</a></li>
 <li class="chapter" data-level="5.2" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#kesifci-veri-analizi"><i class="fa fa-check"></i><b>5.2</b> Kesifci veri analizi</a>
 <ul>
 <li class="chapter" data-level="5.2.1" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#histogram"><i class="fa fa-check"></i><b>5.2.1</b> Histogram</a></li>
@@ -190,6 +190,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6" data-path="temel-bilesenler-analizi.html"><a href="temel-bilesenler-analizi.html"><i class="fa fa-check"></i><b>6</b> Temel bilesenler analizi</a></li>
 <li class="chapter" data-level="7" data-path="yasla-degisim-analizi.html"><a href="yasla-degisim-analizi.html"><i class="fa fa-check"></i><b>7</b> Yasla degisim analizi</a></li>
 <li class="chapter" data-level="8" data-path="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html"><i class="fa fa-check"></i><b>8</b> Biyolojik cinsiyete gore farklilik gosteren gen analizi</a></li>
+<li class="chapter" data-level="9" data-path="kaynak-onerileri.html"><a href="kaynak-onerileri.html"><i class="fa fa-check"></i><b>9</b> Kaynak onerileri</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="kaynak-onerileri.html"><a href="kaynak-onerileri.html#online-ders"><i class="fa fa-check"></i><b>9.1</b> Online ders</a></li>
+<li class="chapter" data-level="9.2" data-path="kaynak-onerileri.html"><a href="kaynak-onerileri.html#kitaplar"><i class="fa fa-check"></i><b>9.2</b> Kitaplar</a></li>
+<li class="chapter" data-level="9.3" data-path="kaynak-onerileri.html"><a href="kaynak-onerileri.html#diger"><i class="fa fa-check"></i><b>9.3</b> Diger</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -213,76 +219,80 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi" class="section level1" number="8">
 <h1><span class="header-section-number">Bölüm 8</span> Biyolojik cinsiyete gore farklilik gosteren gen analizi</h1>
 <p>Diyelim ki sadece dogum sonrasi donemde 20 sonrasi ve 40 yas oncesi yasta kadin ve erkekler arasinda farkli gen ifadesi gosteren genlerle ilgileniyoruz.</p>
-<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb316-1" aria-hidden="true" tabindex="-1"></a>subsamp <span class="ot">=</span> <span class="fu">names</span>(<span class="fu">which</span>(yas<span class="sc">&gt;=</span><span class="dv">20</span> <span class="sc">&amp;</span> yas<span class="sc">&lt;</span><span class="dv">40</span>))</span>
-<span id="cb316-2"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb316-2" aria-hidden="true" tabindex="-1"></a>subexp <span class="ot">=</span> genexpr_qn[,subsamp]</span>
-<span id="cb316-3"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb316-3" aria-hidden="true" tabindex="-1"></a>subyas <span class="ot">=</span> yas[subsamp]</span>
-<span id="cb316-4"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb316-4" aria-hidden="true" tabindex="-1"></a>subcins <span class="ot">=</span> cinsiyet[subsamp]</span>
-<span id="cb316-5"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb316-5" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(subcins)</span></code></pre></div>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb334-1" aria-hidden="true" tabindex="-1"></a>subsamp <span class="ot">=</span> <span class="fu">names</span>(<span class="fu">which</span>(yas<span class="sc">&gt;=</span><span class="dv">20</span> <span class="sc">&amp;</span> yas<span class="sc">&lt;</span><span class="dv">40</span>))</span>
+<span id="cb334-2"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb334-2" aria-hidden="true" tabindex="-1"></a>subexp <span class="ot">=</span> genexpr_qn[,subsamp]</span>
+<span id="cb334-3"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb334-3" aria-hidden="true" tabindex="-1"></a>subyas <span class="ot">=</span> yas[subsamp]</span>
+<span id="cb334-4"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb334-4" aria-hidden="true" tabindex="-1"></a>subcins <span class="ot">=</span> cinsiyet[subsamp]</span>
+<span id="cb334-5"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb334-5" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(subcins)</span></code></pre></div>
 <pre><code>## subcins
 ## Erkek Kadin 
 ##    41    12</code></pre>
 <p>Kadin ve erkek sayisindaki fark cok fazla. Hem erkek hem de kadinlarin icinden rastegele 10ar birey secip analiz yapalim (- rastgele secim yapmayi gostermek icin!).</p>
-<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb318-1" aria-hidden="true" tabindex="-1"></a>erkek <span class="ot">=</span> <span class="fu">sample</span>(<span class="fu">names</span>(<span class="fu">which</span>(subcins <span class="sc">==</span> <span class="st">&#39;Erkek&#39;</span>)),<span class="dv">10</span>,<span class="at">replace =</span> F)</span>
-<span id="cb318-2"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb318-2" aria-hidden="true" tabindex="-1"></a>kadin <span class="ot">=</span> <span class="fu">sample</span>(<span class="fu">names</span>(<span class="fu">which</span>(subcins <span class="sc">==</span> <span class="st">&#39;Kadin&#39;</span>)),<span class="dv">10</span>,<span class="at">replace =</span> F)</span>
-<span id="cb318-3"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb318-3" aria-hidden="true" tabindex="-1"></a>subsamp <span class="ot">=</span> <span class="fu">c</span>(erkek,kadin)</span>
-<span id="cb318-4"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb318-4" aria-hidden="true" tabindex="-1"></a>subexp <span class="ot">=</span> genexpr_qn[,subsamp]</span>
-<span id="cb318-5"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb318-5" aria-hidden="true" tabindex="-1"></a>subyas <span class="ot">=</span> yas[subsamp]</span>
-<span id="cb318-6"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb318-6" aria-hidden="true" tabindex="-1"></a>subcins <span class="ot">=</span> cinsiyet[subsamp]</span>
-<span id="cb318-7"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb318-7" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(subcins)</span></code></pre></div>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb336-1" aria-hidden="true" tabindex="-1"></a>erkek <span class="ot">=</span> <span class="fu">sample</span>(<span class="fu">names</span>(<span class="fu">which</span>(subcins <span class="sc">==</span> <span class="st">&#39;Erkek&#39;</span>)),<span class="dv">10</span>,<span class="at">replace =</span> F)</span>
+<span id="cb336-2"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb336-2" aria-hidden="true" tabindex="-1"></a>kadin <span class="ot">=</span> <span class="fu">sample</span>(<span class="fu">names</span>(<span class="fu">which</span>(subcins <span class="sc">==</span> <span class="st">&#39;Kadin&#39;</span>)),<span class="dv">10</span>,<span class="at">replace =</span> F)</span>
+<span id="cb336-3"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb336-3" aria-hidden="true" tabindex="-1"></a>subsamp <span class="ot">=</span> <span class="fu">c</span>(erkek,kadin)</span>
+<span id="cb336-4"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb336-4" aria-hidden="true" tabindex="-1"></a>subexp <span class="ot">=</span> genexpr_qn[,subsamp]</span>
+<span id="cb336-5"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb336-5" aria-hidden="true" tabindex="-1"></a>subyas <span class="ot">=</span> yas[subsamp]</span>
+<span id="cb336-6"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb336-6" aria-hidden="true" tabindex="-1"></a>subcins <span class="ot">=</span> cinsiyet[subsamp]</span>
+<span id="cb336-7"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb336-7" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(subcins)</span></code></pre></div>
 <pre><code>## subcins
 ## Erkek Kadin 
 ##    10    10</code></pre>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb320-1" aria-hidden="true" tabindex="-1"></a>cinsiyetfark <span class="ot">=</span> <span class="fu">apply</span>(subexp, <span class="dv">1</span>, <span class="cf">function</span>(x){</span>
-<span id="cb320-2"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb320-2" aria-hidden="true" tabindex="-1"></a>  tres <span class="ot">=</span> <span class="fu">t.test</span>(x<span class="sc">~</span>subcins)</span>
-<span id="cb320-3"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb320-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(tres<span class="sc">$</span>statistic, tres<span class="sc">$</span>p.value)</span>
-<span id="cb320-4"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb320-4" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
-<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb321-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(cinsiyetfark)</span></code></pre></div>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb338-1" aria-hidden="true" tabindex="-1"></a>cinsiyetfark <span class="ot">=</span> <span class="fu">apply</span>(subexp, <span class="dv">1</span>, <span class="cf">function</span>(x){</span>
+<span id="cb338-2"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb338-2" aria-hidden="true" tabindex="-1"></a>  tres <span class="ot">=</span> <span class="fu">t.test</span>(x<span class="sc">~</span>subcins)</span>
+<span id="cb338-3"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb338-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(tres<span class="sc">$</span>statistic, tres<span class="sc">$</span>p.value)</span>
+<span id="cb338-4"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb338-4" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb339-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(cinsiyetfark)</span></code></pre></div>
 <pre><code>## [1]     2 17160</code></pre>
-<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb323-1" aria-hidden="true" tabindex="-1"></a>cinsiyetfark <span class="ot">=</span> <span class="fu">t</span>(cinsiyetfark)</span>
-<span id="cb323-2"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb323-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cinsiyetfark)</span></code></pre></div>
-<pre><code>##                t           
-## CTSD   0.7244042 0.47958748
-## EEF2   1.7561167 0.09801096
-## VIM    0.7714653 0.45046692
-## GSN    1.6067940 0.12576619
-## RPN2   1.3568993 0.19176363
-## POLR2A 0.4250231 0.67587792</code></pre>
-<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb325-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(cinsiyetfark) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;t&#39;</span>,<span class="st">&#39;p&#39;</span>)</span>
-<span id="cb325-2"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb325-2" aria-hidden="true" tabindex="-1"></a>cinsiyetfark <span class="ot">=</span> <span class="fu">cbind</span>(cinsiyetfark,<span class="fu">p.adjust</span>(cinsiyetfark[,<span class="st">&#39;p&#39;</span>],<span class="at">method=</span> <span class="st">&#39;fdr&#39;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb341-1" aria-hidden="true" tabindex="-1"></a>cinsiyetfark <span class="ot">=</span> <span class="fu">t</span>(cinsiyetfark)</span>
+<span id="cb341-2"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb341-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cinsiyetfark)</span></code></pre></div>
+<pre><code>##                 t           
+## CTSD    1.3642735 0.19234196
+## EEF2    1.7886468 0.09072626
+## VIM    -0.3731643 0.71380830
+## GSN     0.3197629 0.75284137
+## RPN2    1.5259575 0.15179503
+## POLR2A  0.4085646 0.68768136</code></pre>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb343-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(cinsiyetfark) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;t&#39;</span>,<span class="st">&#39;p&#39;</span>)</span>
+<span id="cb343-2"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb343-2" aria-hidden="true" tabindex="-1"></a>cinsiyetfark <span class="ot">=</span> <span class="fu">cbind</span>(cinsiyetfark,<span class="fu">p.adjust</span>(cinsiyetfark[,<span class="st">&#39;p&#39;</span>],<span class="at">method=</span> <span class="st">&#39;fdr&#39;</span>))</span></code></pre></div>
 <p>Hangi genler yasla istatistiksel olarak anlamli degisim gosteriyor?</p>
-<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb326-1"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb326-1" aria-hidden="true" tabindex="-1"></a>anlamli <span class="ot">=</span> <span class="fu">names</span>(<span class="fu">which</span>(cinsiyetfark[,<span class="dv">3</span>]<span class="sc">&lt;=</span><span class="fl">0.05</span>))</span>
-<span id="cb326-2"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb326-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(anlamli)</span></code></pre></div>
-<pre><code>## [1] 11</code></pre>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb344-1" aria-hidden="true" tabindex="-1"></a>anlamli <span class="ot">=</span> <span class="fu">names</span>(<span class="fu">which</span>(cinsiyetfark[,<span class="dv">3</span>]<span class="sc">&lt;=</span><span class="fl">0.05</span>))</span>
+<span id="cb344-2"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb344-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(anlamli)</span></code></pre></div>
+<pre><code>## [1] 12</code></pre>
 <p>Sadece 12 gen anlamli fark gostermis.</p>
-<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb328-1" aria-hidden="true" tabindex="-1"></a>maxfark <span class="ot">=</span> <span class="fu">names</span>(<span class="fu">which.max</span>(<span class="fu">abs</span>(cinsiyetfark[,<span class="dv">1</span>])))</span>
-<span id="cb328-2"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb328-2" aria-hidden="true" tabindex="-1"></a>cinsiyetfark[maxfark,]</span></code></pre></div>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb346-1" aria-hidden="true" tabindex="-1"></a>maxfark <span class="ot">=</span> <span class="fu">names</span>(<span class="fu">which.max</span>(<span class="fu">abs</span>(cinsiyetfark[,<span class="dv">1</span>])))</span>
+<span id="cb346-2"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb346-2" aria-hidden="true" tabindex="-1"></a>cinsiyetfark[maxfark,]</span></code></pre></div>
 <pre><code>##            t            p              
-## 4.530603e+01 9.266186e-19 1.094191e-14</code></pre>
-<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb330-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(subexp[maxfark,]<span class="sc">~</span>subcins, <span class="at">ylab =</span> <span class="st">&#39;Gen ifadesi&#39;</span>, <span class="at">main =</span> maxfark, </span>
-<span id="cb330-2"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb330-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&#39;Cinsiyet&#39;</span>)</span></code></pre></div>
-<p><img src="20210322_REgitim_files/figure-html/unnamed-chunk-121-1.png" width="672" /></p>
-<p>Figur kaydetmek:</p>
-<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb331-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pdf</span>(<span class="st">&#39;./cinsiyetfark.pdf&#39;</span>)</span>
-<span id="cb331-2"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb331-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(subexp[maxfark,]<span class="sc">~</span>subcins, <span class="at">ylab =</span> <span class="st">&#39;Gen ifadesi&#39;</span>, <span class="at">main =</span> maxfark, </span>
-<span id="cb331-3"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb331-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&#39;Cinsiyet&#39;</span>)</span>
-<span id="cb331-4"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb331-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+## 4.989918e+01 1.635048e-17 1.402871e-13</code></pre>
+<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb348-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(subexp[maxfark,]<span class="sc">~</span>subcins, <span class="at">ylab =</span> <span class="st">&#39;Gen ifadesi&#39;</span>, <span class="at">main =</span> maxfark, </span>
+<span id="cb348-2"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb348-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&#39;Cinsiyet&#39;</span>)</span></code></pre></div>
+<p><img src="20210322_REgitim_files/figure-html/unnamed-chunk-127-1.png" width="672" /></p>
+<p>Figuru kaydetmek icin:</p>
+<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb349-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pdf</span>(<span class="st">&#39;./cinsiyetfark.pdf&#39;</span>)</span>
+<span id="cb349-2"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb349-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(subexp[maxfark,]<span class="sc">~</span>subcins, <span class="at">ylab =</span> <span class="st">&#39;Gen ifadesi&#39;</span>, <span class="at">main =</span> maxfark, </span>
+<span id="cb349-3"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb349-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&#39;Cinsiyet&#39;</span>)</span>
+<span id="cb349-4"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb349-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
 <pre><code>## quartz_off_screen 
 ##                 2</code></pre>
+<p>Ayni figuru ggplotta cizelim:</p>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb351-1" aria-hidden="true" tabindex="-1"></a>mydat <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">expression =</span> subexp[maxfark,], </span>
+<span id="cb351-2"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb351-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">cinsiyet =</span> subcins[<span class="fu">colnames</span>(subexp)], </span>
+<span id="cb351-3"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb351-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">yas =</span> yas[<span class="fu">colnames</span>(subexp)])</span>
+<span id="cb351-4"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb351-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mydat, <span class="fu">aes</span>(<span class="at">x =</span> cinsiyet, <span class="at">y =</span> expression)) <span class="sc">+</span></span>
+<span id="cb351-5"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb351-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_violin</span>(<span class="fu">aes</span>(<span class="at">fill =</span> cinsiyet), <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb351-6"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb351-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">type=</span><span class="st">&#39;qual&#39;</span>, <span class="at">palette =</span> <span class="dv">6</span>)<span class="sc">+</span></span>
+<span id="cb351-7"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb351-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">outlier.shape =</span> <span class="cn">NA</span>, <span class="at">width =</span> <span class="fl">0.1</span>) <span class="sc">+</span></span>
+<span id="cb351-8"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb351-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="20210322_REgitim_files/figure-html/unnamed-chunk-129-1.png" width="672" /></p>
 
 </div>
-
-
-
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="yasla-degisim-analizi.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="yasla-degisim-analizi.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="kaynak-onerileri.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

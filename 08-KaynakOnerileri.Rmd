@@ -1,0 +1,31 @@
+# Kaynak onerileri
+
+## Online ders
+
+-   R ve veri bilimine giris: <https://www.edx.org/professional-certificate/harvardx-data-science>
+
+-   R ve yasam bilimlerinde veri analizi: <https://www.edx.org/professional-certificate/harvardx-data-analysis-for-life-sciences>
+
+-   Rda genomik analiz: <https://www.edx.org/professional-certificate/harvardx-data-analysis-for-genomics>
+
+-   R programlama: <https://www.coursera.org/learn/r-programming>
+
+-   Coursera Data Science Specialization icinde \~10 ders var: <https://www.coursera.org/specializations/jhu-data-science>
+
+## Kitaplar
+
+-   R Programming for Data Science: <https://leanpub.com/rprogramming>
+
+-   Data Analysis for the Life Sciences: <https://leanpub.com/dataanalysisforthelifesciences>
+
+-   Tidyverse ogrenmek icin: <https://r4ds.had.co.nz/>
+
+-   ggplot'ta grafikler: <https://ggplot2-book.org/>
+
+## Diger
+
+Zaman zaman R'da hem giris duzeyinde Turkce ders notlari hem de biyolojide kullanilan grafiklere ornekler paylastigim bir blogum var: <https://compbioscratchpad.com/bilgi-deposu/>
+
+------------------------------------------------------------------------
+
+**Kaynak onerileriniz olursa bana iletirseniz bu sayfayi guncelleyebilirim.**

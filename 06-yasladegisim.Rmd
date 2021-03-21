@@ -57,3 +57,15 @@ write.csv(x = yasladegisim, file = './yasladegisim.csv',quote = F,
           row.names = T)
 ```
 
+Ayni figuru ggplot ile cizelim:
+
+```{r}
+mydat = data.frame(expression = subexp[maxartis,], sample  = colnames(subexp), 
+                   yas = subyas[colnames(subexp)],cinsiyet = cinsiyet[colnames(subexp)])
+ggplot(mydat, aes(x = yas, y = expression)) +
+  geom_point(aes(color = cinsiyet)) + 
+  geom_smooth(method = 'lm', color = 'midnightblue') +
+  scale_color_brewer(type = 'qual', palette = 6) +
+  theme_bw()
+```
+

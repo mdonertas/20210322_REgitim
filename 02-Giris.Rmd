@@ -6,19 +6,20 @@ R'ı kullandığınız işletim sistemine göre [CRAN anasayfası](https://cran.
 
 ## RStudio
 
-RStudio, R için bir "entegre geliştirme ortamı"dır ve ücretsiz olarak [RStudio websayfası](https://www.rstudio.com/)ndan indirilebilir. Entegre geliştirme ortamları kod yazma, sonuçları ve çizdiğiniz grafikleri vs. görüntüle, otomasyon, hata ayıklama (debugging) gibi programlama ve yazılım geliştirme bileşenlerini içinde bulunduran araçlardır. RStudio ise bunların ötesinde başka programlama dilleriyle beraber kodlama, raporlama, versiyon kontrolü, komut istemcisi ve zamanlı iş çalıştırma ve daha bir çok özellik ile birlikte geliyor. R kodlama için kesinlikle RStudio ile çalışılmasını öneriyorum.
+RStudio, R için bir IDE yani "entegre geliştirme ortamı"dır ve ücretsiz olarak [RStudio websayfası](https://www.rstudio.com/)ndan indirilebilir. Entegre geliştirme ortamları kod yazma, sonuçları ve çizdiğiniz grafikleri vs. görüntüleme, otomasyon, hata ayıklama (debugging) gibi programlama ve yazılım geliştirme bileşenlerini içinde bulunduran araçlardır. RStudio ise bunların ötesinde başka programlama dilleriyle beraber kodlama, raporlama, versiyon kontrolü, komut istemcisi ve zamanlı iş çalıştırma ve daha bir çok özellik ile birlikte geliyor. R kodlama için kesinlikle RStudio ile çalışılmasını öneriyorum.
 
 ## Başlangıç
 
-Hem R hem Rstudio'yu yükleyip, RStudio açtığımızda karşımıza 3 ekran çıkar. Bunlar haricinde sol üst köşedeki "yeni" tuşuna basıp R Scriptini seçersek 4. ekran açılır. Hızlıca bunların bazılarına bakalım: 
+Hem R hem Rstudio'yu yükleyip, RStudio açtığımızda karşımıza 3 ekran çıkar. Bunlar haricinde sol üst köşedeki "yeni" tuşuna basıp R Scriptini seçersek 4. ekran açılır. Hızlıca bunların içeriğine bakalım: 
 
-* Files:
-* Terminal:
-* Console:
-* Environment:
-* Plots:
-* Help:
-* History:
+* Files: İçinde bulunduğumuz klasörün içindeki dosyaları listeliyor.
+* Console: Burası kodu yazıp sonuçları gördüğümüz kısım. Denemek için `2+2` yazıp enter’a basalım.
+* Terminal: Burası da bilgisayarınızın terminali veya komut istemcisine erişim sağlayan bir kısım.
+* Environment: Oluşturduğumuz değişkenlerin listesini ve bilgilerini burada görebiliriz.
+* Plots: Çizdiğimiz grafikleri görüntüleyebileceğimiz kısım. 
+* Help: Bu sekme RStudio’daki en büyük dostumuz. Açıp öğrenme linklerini kurcalamak iyi bir başlangıç. Ayrıca `?` operatörü ile burada fonksiyonların yardım sayfalarını görüntüleyebiliriz.
+* History: Mevcut R oturumunuzda yazdığınız kodları listeleyen bir kısım. Buradan önceden çalıştırdığınız kodları görebilirsiniz. Ancak daha pratik, daha çok kullanılan bir kısa yol, konsolda iken klavyedeki yukarı ok tuşu ile önceki kodları tekrar çağırmak. Geçmiş sadece açık oturumdaki kodları kaydediyor olsa da, .Rhistory dosyası sayesinde ortamlar arası geçmiş bilgisini aktarabilirsiniz. Yine de buna bağlı kalmak yerine daha sonra tekrar kullanacağımız kodları .R scripti olarak kaydetmek çok daha elverişli olacaktır.
+* Packages: R’da yüklü olan çeşitli paketleri (kütüphaneleri) görüyoruz. Ancak buradan R ortamımıza yükleme yapmaktansa `library()` komutunu kullanmalıyız ki yazdığımız kodlar daha sonra hem biz hem başkaları tarafından kolaylıkla çalıştırılabilsin. 
 
 Bunlardan yeni açtığımız ekran da script (betik) editör ekranı, yani kodu yazıp kaydedeceğimiz kod editörümüz. Kodu konsola yazıp çalıştabiliriz ama önerim hep editörde çalışıp çalışan kodları kaydetmeniz. Editörde yazdığımız kodu kopyala yapıştır yapmadan çalıştırmanın kolay bir yolu var: Windows'ta Ctrl + Enter, Mac'te Cmd + Enter. 
 

@@ -1,13 +1,17 @@
 # Temel Bilgiler
 
-Kodlari editorde yazip Ctrl+Enter ile calistirabilirsiniz. Alternatif olarak Konsol'da da kodlari yazabilirsiniz ancak editore yazdiklarinizi kaydederek yazdiklarinizdan elinizde bulunmasini istediklerinizi 
+Kodlari editorde yazip Ctrl+Enter ile calistirabilirsiniz. Alternatif olarak Konsol'da da kodlari yazabilirsiniz ancak editore yazdiklarinizi kaydederek yazdiklarinizdan elinizde bulunmasini istediklerinizi kaydedebilirsiniz. Onerim hep konsolu kullanmaniz, kullanisli olan kodlari tutup digerlerini / calismayanlari silip temiz bir sekilde dosyanizi kaydetmeniz. 
+
+Ilk olarak hangi klasorde nerde calisiyoruz buna bakalim. Bu R'da dosya acarken ve yaptiklarimizi kaydederken onemli bir detay. Bunun icin `getwd()` yani 'get directory' komutunu kullanacagiz. Bunu calistirdigimizda aldigimiz sonuc hepimizde farkli olacaktir. Bu bilgisayarinizda nerede calistiginizi gosteriyor:
 
 ```{r}
 getwd()
 ```
 
+Bu varsayilan ortamda degil de belli bir klasorun icinde calismak istiyorsaniz, istediginiz klasore `setwd()` fonksiyonu ile asagidaki sekilde gecebiliriz. Ancak onerim az sonra aciklayacagim sekilde RStudio projesi kullanmaniz. 
+
 ```{r, eval = F}
-setwd("~/GDrive/projects/")
+setwd("~/GDrive/projects/R_Egitim")
 ```
 
 ## RStudio projesi

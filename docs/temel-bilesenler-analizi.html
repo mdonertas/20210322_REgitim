@@ -170,7 +170,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html"><i class="fa fa-check"></i><b>5</b> Veri on isleme basamaklari</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#read.csv-ve-readrds-ile-veri-okuma"><i class="fa fa-check"></i><b>5.1</b> <code>read.csv()</code> ve `readRDS()`` ile veri okuma</a></li>
+<li class="chapter" data-level="5.1" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#read.csv-ve-readrds-ile-veri-okuma"><i class="fa fa-check"></i><b>5.1</b> <code>read.csv()</code> ve <code>readRDS()</code> ile veri okuma</a></li>
 <li class="chapter" data-level="5.2" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#kesifci-veri-analizi"><i class="fa fa-check"></i><b>5.2</b> Kesifci veri analizi</a>
 <ul>
 <li class="chapter" data-level="5.2.1" data-path="veri-on-isleme-basamaklari.html"><a href="veri-on-isleme-basamaklari.html#histogram"><i class="fa fa-check"></i><b>5.2.1</b> Histogram</a></li>
@@ -190,6 +190,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6" data-path="temel-bilesenler-analizi.html"><a href="temel-bilesenler-analizi.html"><i class="fa fa-check"></i><b>6</b> Temel bilesenler analizi</a></li>
 <li class="chapter" data-level="7" data-path="yasla-degisim-analizi.html"><a href="yasla-degisim-analizi.html"><i class="fa fa-check"></i><b>7</b> Yasla degisim analizi</a></li>
 <li class="chapter" data-level="8" data-path="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html"><i class="fa fa-check"></i><b>8</b> Biyolojik cinsiyete gore farklilik gosteren gen analizi</a></li>
+<li class="chapter" data-level="9" data-path="kaynak-onerileri.html"><a href="kaynak-onerileri.html"><i class="fa fa-check"></i><b>9</b> Kaynak onerileri</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="kaynak-onerileri.html"><a href="kaynak-onerileri.html#online-ders"><i class="fa fa-check"></i><b>9.1</b> Online ders</a></li>
+<li class="chapter" data-level="9.2" data-path="kaynak-onerileri.html"><a href="kaynak-onerileri.html#kitaplar"><i class="fa fa-check"></i><b>9.2</b> Kitaplar</a></li>
+<li class="chapter" data-level="9.3" data-path="kaynak-onerileri.html"><a href="kaynak-onerileri.html#diger"><i class="fa fa-check"></i><b>9.3</b> Diger</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -212,12 +218,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="temel-bilesenler-analizi" class="section level1" number="6">
 <h1><span class="header-section-number">Bölüm 6</span> Temel bilesenler analizi</h1>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="temel-bilesenler-analizi.html#cb299-1" aria-hidden="true" tabindex="-1"></a>tba <span class="ot">=</span> <span class="fu">prcomp</span>(<span class="fu">t</span>(genexpr_qn), <span class="at">scale. =</span> T)</span></code></pre></div>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="temel-bilesenler-analizi.html#cb300-1" aria-hidden="true" tabindex="-1"></a>renkler <span class="ot">=</span> <span class="fu">colorRampPalette</span>(<span class="fu">c</span>(<span class="st">&#39;pink&#39;</span>,<span class="st">&#39;darkred&#39;</span>))(<span class="fu">length</span>(yas))</span>
-<span id="cb300-2"><a href="temel-bilesenler-analizi.html#cb300-2" aria-hidden="true" tabindex="-1"></a>renkler_sirali <span class="ot">=</span> renkler[<span class="fu">rank</span>(yas[<span class="fu">rownames</span>(tba<span class="sc">$</span>x)], <span class="at">ties.method =</span> <span class="st">&#39;min&#39;</span>)]</span>
-<span id="cb300-3"><a href="temel-bilesenler-analizi.html#cb300-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> tba<span class="sc">$</span>x[,<span class="dv">1</span>], <span class="at">y =</span> tba<span class="sc">$</span>x[,<span class="dv">2</span>], <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">cex =</span> <span class="fl">0.5</span>, <span class="at">col =</span> renkler_sirali, </span>
-<span id="cb300-4"><a href="temel-bilesenler-analizi.html#cb300-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&#39;PC1&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;PC2&#39;</span>)</span></code></pre></div>
-<p><img src="20210322_REgitim_files/figure-html/unnamed-chunk-106-1.png" width="672" /></p>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="temel-bilesenler-analizi.html#cb308-1" aria-hidden="true" tabindex="-1"></a>tba <span class="ot">=</span> <span class="fu">prcomp</span>(<span class="fu">t</span>(genexpr_qn), <span class="at">scale. =</span> T)</span></code></pre></div>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="temel-bilesenler-analizi.html#cb309-1" aria-hidden="true" tabindex="-1"></a>renkler <span class="ot">=</span> <span class="fu">colorRampPalette</span>(<span class="fu">c</span>(<span class="st">&#39;pink&#39;</span>,<span class="st">&#39;darkred&#39;</span>))(<span class="fu">length</span>(yas))</span>
+<span id="cb309-2"><a href="temel-bilesenler-analizi.html#cb309-2" aria-hidden="true" tabindex="-1"></a>renkler_sirali <span class="ot">=</span> renkler[<span class="fu">rank</span>(yas[<span class="fu">rownames</span>(tba<span class="sc">$</span>x)], <span class="at">ties.method =</span> <span class="st">&#39;min&#39;</span>)]</span>
+<span id="cb309-3"><a href="temel-bilesenler-analizi.html#cb309-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> tba<span class="sc">$</span>x[,<span class="dv">1</span>], <span class="at">y =</span> tba<span class="sc">$</span>x[,<span class="dv">2</span>], <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">cex =</span> <span class="fl">0.5</span>, <span class="at">col =</span> renkler_sirali, </span>
+<span id="cb309-4"><a href="temel-bilesenler-analizi.html#cb309-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&#39;PC1&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;PC2&#39;</span>)</span></code></pre></div>
+<p><img src="20210322_REgitim_files/figure-html/unnamed-chunk-110-1.png" width="672" /></p>
+<p>Ayni figuru ggplot ile yapabiliriz. Ancak bunun icin bir kac <code>tidyverse</code>de yer alan paketlerden bir kac fonksiyon kullanarak veriyi sekillendirmem gerekiyor:</p>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb310-1"><a href="temel-bilesenler-analizi.html#cb310-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ✓ tibble  3.0.6     ✓ dplyr   1.0.2
+## ✓ tidyr   1.1.0     ✓ stringr 1.4.0
+## ✓ readr   1.3.1     ✓ forcats 0.5.1
+## ✓ purrr   0.3.4</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="temel-bilesenler-analizi.html#cb314-1" aria-hidden="true" tabindex="-1"></a>pcadat <span class="ot">=</span> <span class="fu">as.data.frame</span>(tba<span class="sc">$</span>x[,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]) <span class="sc">%&gt;%</span></span>
+<span id="cb314-2"><a href="temel-bilesenler-analizi.html#cb314-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">sample =</span> <span class="fu">rownames</span>(tba<span class="sc">$</span>x)) <span class="sc">%&gt;%</span></span>
+<span id="cb314-3"><a href="temel-bilesenler-analizi.html#cb314-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">yas =</span> yas[sample],</span>
+<span id="cb314-4"><a href="temel-bilesenler-analizi.html#cb314-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">cinsiyet =</span> cinsiyet[sample])</span>
+<span id="cb314-5"><a href="temel-bilesenler-analizi.html#cb314-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(pcadat)</span></code></pre></div>
+<pre><code>##         PC1        PC2    sample        yas cinsiyet
+## 1 -138.7854 -0.7978871 GSM749899 -0.4986301    Kadin
+## 2 -137.1751 15.9124596 GSM749900 -0.4986301    Kadin
+## 3 -142.7689 13.8844269 GSM749901 -0.4986301    Erkek
+## 4 -137.0419  9.0980053 GSM749902 -0.4986301    Erkek
+## 5 -133.6389  0.6007799 GSM749903 -0.4794521    Erkek
+## 6 -131.6583 16.4774424 GSM749904 -0.4794521    Erkek</code></pre>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="temel-bilesenler-analizi.html#cb316-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pcadat, <span class="fu">aes</span>(<span class="at">x =</span> PC1, <span class="at">y =</span> PC2, <span class="at">color =</span> yas, <span class="at">shape =</span> cinsiyet)) <span class="sc">+</span></span>
+<span id="cb316-2"><a href="temel-bilesenler-analizi.html#cb316-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb316-3"><a href="temel-bilesenler-analizi.html#cb316-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_gradient</span>(<span class="at">low =</span> <span class="st">&#39;pink&#39;</span>, <span class="at">high =</span> <span class="st">&#39;darkred&#39;</span>) <span class="sc">+</span></span>
+<span id="cb316-4"><a href="temel-bilesenler-analizi.html#cb316-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="20210322_REgitim_files/figure-html/unnamed-chunk-111-1.png" width="672" /></p>
 
 </div>
             </section>

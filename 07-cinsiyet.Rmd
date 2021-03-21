@@ -57,12 +57,25 @@ boxplot(subexp[maxfark,]~subcins, ylab = 'Gen ifadesi', main = maxfark,
         xlab = 'Cinsiyet')
 ```
 
-Figur kaydetmek:
+Figuru kaydetmek icin:
 
 ```{r}
 pdf('./cinsiyetfark.pdf')
 boxplot(subexp[maxfark,]~subcins, ylab = 'Gen ifadesi', main = maxfark, 
         xlab = 'Cinsiyet')
 dev.off()
+```
+
+Ayni figuru ggplotta cizelim:
+
+```{r}
+mydat = data.frame(expression = subexp[maxfark,], 
+                   cinsiyet = subcins[colnames(subexp)], 
+                   yas = yas[colnames(subexp)])
+ggplot(mydat, aes(x = cinsiyet, y = expression)) +
+  geom_violin(aes(fill = cinsiyet), alpha = 0.5) +
+  scale_fill_brewer(type='qual', palette = 6)+
+  geom_boxplot(outlier.shape = NA, width = 0.1) +
+  theme_bw()
 ```
 
