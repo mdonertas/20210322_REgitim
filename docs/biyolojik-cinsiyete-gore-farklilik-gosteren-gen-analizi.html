@@ -246,24 +246,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1]     2 17160</code></pre>
 <div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb341-1" aria-hidden="true" tabindex="-1"></a>cinsiyetfark <span class="ot">=</span> <span class="fu">t</span>(cinsiyetfark)</span>
 <span id="cb341-2"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb341-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cinsiyetfark)</span></code></pre></div>
-<pre><code>##                 t           
-## CTSD    1.3642735 0.19234196
-## EEF2    1.7886468 0.09072626
-## VIM    -0.3731643 0.71380830
-## GSN     0.3197629 0.75284137
-## RPN2    1.5259575 0.15179503
-## POLR2A  0.4085646 0.68768136</code></pre>
+<pre><code>##                 t          
+## CTSD    1.2022368 0.2475190
+## EEF2    0.7313033 0.4743186
+## VIM     0.1130708 0.9113746
+## GSN    -0.1262172 0.9010494
+## RPN2    0.6787791 0.5072433
+## POLR2A  0.1274177 0.9001053</code></pre>
 <div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb343-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(cinsiyetfark) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&#39;t&#39;</span>,<span class="st">&#39;p&#39;</span>)</span>
 <span id="cb343-2"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb343-2" aria-hidden="true" tabindex="-1"></a>cinsiyetfark <span class="ot">=</span> <span class="fu">cbind</span>(cinsiyetfark,<span class="fu">p.adjust</span>(cinsiyetfark[,<span class="st">&#39;p&#39;</span>],<span class="at">method=</span> <span class="st">&#39;fdr&#39;</span>))</span></code></pre></div>
 <p>Hangi genler yasla istatistiksel olarak anlamli degisim gosteriyor?</p>
 <div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb344-1"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb344-1" aria-hidden="true" tabindex="-1"></a>anlamli <span class="ot">=</span> <span class="fu">names</span>(<span class="fu">which</span>(cinsiyetfark[,<span class="dv">3</span>]<span class="sc">&lt;=</span><span class="fl">0.05</span>))</span>
 <span id="cb344-2"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb344-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(anlamli)</span></code></pre></div>
-<pre><code>## [1] 12</code></pre>
+<pre><code>## [1] 13</code></pre>
 <p>Sadece 12 gen anlamli fark gostermis.</p>
 <div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb346-1"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb346-1" aria-hidden="true" tabindex="-1"></a>maxfark <span class="ot">=</span> <span class="fu">names</span>(<span class="fu">which.max</span>(<span class="fu">abs</span>(cinsiyetfark[,<span class="dv">1</span>])))</span>
 <span id="cb346-2"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb346-2" aria-hidden="true" tabindex="-1"></a>cinsiyetfark[maxfark,]</span></code></pre></div>
 <pre><code>##            t            p              
-## 4.989918e+01 1.635048e-17 1.402871e-13</code></pre>
+## 4.814198e+01 2.327394e-20 3.993809e-16</code></pre>
 <div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb348-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(subexp[maxfark,]<span class="sc">~</span>subcins, <span class="at">ylab =</span> <span class="st">&#39;Gen ifadesi&#39;</span>, <span class="at">main =</span> maxfark, </span>
 <span id="cb348-2"><a href="biyolojik-cinsiyete-gore-farklilik-gosteren-gen-analizi.html#cb348-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">&#39;Cinsiyet&#39;</span>)</span></code></pre></div>
 <p><img src="20210322_REgitim_files/figure-html/unnamed-chunk-127-1.png" width="672" /></p>
